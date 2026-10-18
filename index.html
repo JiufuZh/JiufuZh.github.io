@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FFFFFF">
-  <meta name="description" content="Jiufu Zhou, MS student at the University of Washington. Software engineering internship projects in chess coaching and Fog of War chess AI.">
+  <meta name="theme-color" content="#4054ad">
+  <meta name="description" content="Jiufu Zhou, MS student at the University of Washington. Software engineering internship work in chess coaching and Fog of War chess AI.">
   <meta property="og:title" content="Jiufu Zhou">
-  <meta property="og:description" content="Software engineering, chess coaching, and learning with incomplete information.">
+  <meta property="og:description" content="Software engineering and applied AI. Selected work from my DeepBrain Technology internship.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jiufuzh.github.io/">
   <link rel="canonical" href="https://jiufuzh.github.io/">
@@ -19,124 +19,148 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-    <nav aria-label="Main navigation">
-      <a href="#experience">Experience</a>
-      <a href="#work">Projects</a>
-      <a href="#about">Education &amp; research</a>
-    </nav>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="site-name" href="#about">Jiufu Zhou</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="main" class="wrap">
-    <section class="intro" aria-labelledby="name">
-      <div>
-        <h1 id="name">Jiufu Zhou</h1>
-        <p>I'm a master's student in Information Management at the University of Washington, based in Seattle. I expect to graduate in June 2027.</p>
-        <p>During my software engineering internship at DeepBrain Technology, I worked on a <a href="#chess-analysis">chess coaching app</a> and a <a href="#fog-of-war">Fog of War chess agent</a>. My work covered the web interface, inference services, and model training.</p>
+  <main id="main">
+    <section class="about-section wrap" id="about" aria-labelledby="about-title">
+      <aside class="profile" aria-label="Profile and contact">
+        <img class="portrait" src="assets/jiufu-zhou.jpg" width="779" height="1134" alt="Jiufu Zhou" fetchpriority="high">
+        <h1>Jiufu Zhou</h1>
+        <p class="profile-role">MS Information Management</p>
+        <p class="profile-school">University of Washington</p>
+        <p class="profile-location">Seattle, Washington</p>
         <div class="profile-links">
-          <a href="mailto:zjfu2003@gmail.com">Email</a>
-          <a href="https://github.com/JiufuZh" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:zjfu2003@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a>
+          <a href="https://github.com/JiufuZh" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1 .1-1.5-.5-2 3-.3 6-1.5 6-7A5.5 5.5 0 0 0 19 5c.2-1 .2-2-.2-3 0 0-1.2-.3-4 1a13 13 0 0 0-6 0C6 1.7 4.8 2 4.8 2c-.4 1-.4 2-.2 3A5.5 5.5 0 0 0 3 9c0 5.5 3 6.7 6 7-.6.5-.6 1.2-.6 2v4"/></svg><span>GitHub</span></a>
         </div>
-      </div>
-      <img class="portrait" src="assets/jiufu-zhou.jpg" width="779" height="1134" alt="Jiufu Zhou" fetchpriority="high">
-    </section>
-
-    <section class="experience" id="experience" aria-labelledby="experience-title">
-      <h2 id="experience-title">Experience</h2>
-      <div class="job-heading">
-        <div>
-          <h3>DeepBrain Technology</h3>
-          <p>Software Development Engineer Intern</p>
-        </div>
-        <p class="date">May – September 2026</p>
-      </div>
-      <p class="job-description">StaySafeNow, Inc., Tenafly, New Jersey (hybrid)</p>
-    </section>
-
-    <section class="work" id="work" aria-labelledby="work-title">
-      <h2 id="work-title">Internship projects</h2>
-      <article class="project" id="chess-analysis" aria-labelledby="chess-title">
-        <h3 id="chess-title">Chess analysis and coaching</h3>
-        <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
-        <p>I built a web app that takes a PGN game history and produces move analysis, explanations, and practice recommendations. Players can review a mistake, compare it with an alternative, then practice the position.</p>
-
-        <figure class="chess-media" id="chess-media">
-          <div class="capture-stage">
-            <img id="chess-capture" src="assets/chess/04-review.png" alt="Chess app showing Stockfish analysis of a sample game" width="1280" height="720" loading="lazy">
+      </aside>
+      <div class="biography">
+        <h2 id="about-title">About me</h2>
+        <p>I'm Jiufu, a master's student in Information Management at the <a href="https://www.washington.edu/">University of Washington</a>. I work on software engineering and applied AI, with experience across web interfaces, inference services, and model training.</p>
+        <p>During my internship at <a href="#experience">DeepBrain Technology</a>, I worked on two chess projects: an app that helps players understand their moves, and an agent that learns to play with only a partial view of the board.</p>
+        <div class="about-facts">
+          <div class="focus">
+            <h3>Technical focus</h3>
+            <ul>
+              <li>Web applications</li>
+              <li>Applied machine learning</li>
+              <li>AI-assisted learning tools</li>
+            </ul>
           </div>
-          <div class="capture-controls" aria-label="Chess walkthrough stages">
-            <div class="stage-buttons">
-              <button type="button" data-frame="0" aria-pressed="true">Review</button>
-              <button type="button" data-frame="1" aria-pressed="false">Compare</button>
-              <button type="button" data-frame="2" aria-pressed="false">Practice</button>
+          <div class="education">
+            <h3>Education</h3>
+            <div class="education-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m1 8 11-5 11 5-11 5Zm4 3v6c4 3 10 3 14 0v-6M23 8v9"/></svg>
+              <div><h4>University of Washington</h4><p>MS Information Management</p><p class="secondary">Expected June 2027 · GPA 3.90/4.00</p></div>
             </div>
-            <div class="media-actions">
-              <button id="capture-play" type="button" aria-pressed="false" aria-label="Play Chess walkthrough">Play walkthrough</button>
-              <button id="expand-demo" type="button">Enlarge</button>
+            <div class="education-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m1 8 11-5 11 5-11 5Zm4 3v6c4 3 10 3 14 0v-6M23 8v9"/></svg>
+              <div><h4>University at Albany, SUNY</h4><p>BS Informatics</p><p class="secondary">May 2025 · GPA 3.88/4.00</p></div>
             </div>
           </div>
-          <figcaption id="capture-caption">Local sample game. Stockfish analysis; no live LLM request.</figcaption>
-        </figure>
-
-        <div class="implementation">
-          <p><strong>Keeping the interface responsive.</strong> Stockfish runs in a Web Worker. I added request cancellation and result versioning so changing positions during analysis would not leave the interface showing an old result.</p>
-          <p><strong>Checking the feedback.</strong> The coaching pipeline adapts explanations to the player's rating and language. I added structured-output validation, checks against engine evidence, and fallback responses for API failures. Saved reviews can be opened without another LLM call.</p>
-        </div>
-      </article>
-
-      <article class="project" id="fog-of-war" aria-labelledby="fow-title">
-        <h3 id="fow-title">Fog of War chess AI</h3>
-        <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
-        <p>In Fog of War chess, players cannot see the entire board. I prepared training data from <strong>1,554 games and 88,949 plies</strong>, using observations limited to each player's view.</p>
-        <div id="fow-demo">
-          <p>Dataset → Model training → Self-play → Inference and browser bridge. The pipeline uses player-visible observations and game-level splits.</p>
-        </div>
-        <div class="implementation">
-          <p><strong>Avoiding information leakage.</strong> I split the data by game and masked opponent histories, so the input would not reveal information the player could not know.</p>
-          <p><strong>Training and integration.</strong> I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script connect inference to the game, keeping observations and move execution in sync.</p>
-        </div>
-      </article>
-    </section>
-
-    <section class="background" id="about" aria-label="Education and research">
-      <div class="education">
-        <h2>Education</h2>
-        <div class="education-item">
-          <h3>University of Washington</h3>
-          <p>MS Information Management</p>
-          <p class="secondary">Expected June 2027 · GPA 3.90/4.00</p>
-        </div>
-        <div class="education-item">
-          <h3>University at Albany, SUNY</h3>
-          <p>BS Informatics</p>
-          <p class="secondary">May 2025 · GPA 3.88/4.00</p>
         </div>
       </div>
-      <div class="research">
-        <h2>Research</h2>
-        <p>At the University at Albany, I studied how Instagram posts disclose sponsorship and health credentials in supplement promotion. I developed and validated a codebook for <strong>417 posts</strong> and analyzed the results in Python.</p>
-        <p class="secondary">Our co-authored extended abstract was accepted for presentation at the 112th NCA Annual Conference in November 2026.</p>
+    </section>
+
+    <section class="experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-grid wrap">
+        <div class="section-intro">
+          <h2 id="experience-title">Internship <br>projects</h2>
+          <div class="employment">
+            <h3>DeepBrain Technology</h3>
+            <p>Software Development <br>Engineer Intern</p>
+            <p class="employment-date">May – September 2026</p>
+            <p class="secondary">StaySafeNow, Inc. <br>Tenafly, NJ · Hybrid</p>
+          </div>
+          <p class="section-note">Two projects from my internship, from analyzing a visible board to learning from an incomplete one.</p>
+        </div>
+
+        <div class="project-list" id="work">
+          <article class="project" id="chess-analysis" aria-labelledby="chess-title">
+            <div class="project-overview">
+              <button class="project-thumbnail chess-thumbnail" type="button" data-enlarge-chess aria-label="Enlarge real Chess app screenshot">
+                <img src="assets/chess/chess-poster.webp" width="1280" height="720" alt="Real Chess interface comparing a played move with the engine's Qe7 alternative" loading="lazy">
+                <span class="preview-label"><span aria-hidden="true">▷</span> Actual app interface</span>
+              </button>
+              <div class="project-summary">
+                <h3 id="chess-title">Chess analysis and coaching</h3>
+                <p>A web app that turns a game history into move analysis, explanations, and targeted practice. Review a mistake, compare a better move, then try the position again.</p>
+                <p class="stack">React · FastAPI · Stockfish WASM · OpenAI API</p>
+                <div class="project-links"><button id="show-chess-details" type="button">View walkthrough</button><a href="#chess-engineering">Engineering notes</a></div>
+              </div>
+            </div>
+            <details class="project-details" id="chess-details">
+              <summary>Walkthrough &amp; engineering notes <span aria-hidden="true">+</span></summary>
+              <div class="details-body">
+                <figure class="chess-media">
+                  <div class="capture-stage"><img id="chess-capture" src="assets/chess/06-alternative.png" alt="Chess app showing an engine-backed alternative move" width="1280" height="720" loading="lazy"></div>
+                  <div class="capture-controls" aria-label="Chess walkthrough stages">
+                    <div class="stage-buttons"><button type="button" data-frame="0" aria-pressed="false">Review</button><button type="button" data-frame="1" aria-pressed="true">Compare</button><button type="button" data-frame="2" aria-pressed="false">Practice</button></div>
+                    <div class="media-actions"><button id="capture-play" type="button" aria-pressed="false" aria-label="Play Chess walkthrough">Play walkthrough</button><button id="expand-demo" type="button">Enlarge</button></div>
+                  </div>
+                  <figcaption id="capture-caption">Local sample game: compare an engine-backed alternative. No live LLM request.</figcaption>
+                </figure>
+                <div class="implementation" id="chess-engineering">
+                  <h4>What I worked on</h4>
+                  <p><strong>A responsive analysis interface.</strong> I ran Stockfish in a Web Worker and added request cancellation and result versioning, so changing positions would not leave an old result on screen.</p>
+                  <p><strong>Feedback grounded in the game.</strong> I added structured-output validation, checks against engine evidence, and fallbacks for API failures. Explanations adapt to the player's rating and language; saved reviews reopen without another LLM call.</p>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <article class="project" id="fog-of-war" aria-labelledby="fow-title">
+            <div class="project-overview">
+              <a class="project-thumbnail fow-thumbnail" href="#fow-workflow" aria-label="Explore the illustrated Fog of War workflow"><img src="assets/fow-preview.svg" width="640" height="400" alt="Illustration of a partially visible chessboard and the dataset, training, and inference pipeline" loading="lazy"><span class="preview-label">Illustrated workflow</span></a>
+              <div class="project-summary">
+                <h3 id="fow-title">Fog of War chess AI</h3>
+                <p>An agent for chess with incomplete information. I prepared player-visible observations from <strong>1,554 games and 88,949 plies</strong>, then worked on model training, self-play, and browser integration.</p>
+                <p class="stack">Python · PyTorch · FastAPI · JavaScript</p>
+                <div class="project-links"><button id="show-fow-details" type="button">Explore pipeline</button><a href="#fow-engineering">Engineering notes</a></div>
+              </div>
+            </div>
+            <details class="project-details" id="fow-details">
+              <summary>Training pipeline &amp; engineering notes <span aria-hidden="true">+</span></summary>
+              <div class="details-body">
+                <div class="workflow-heading" id="fow-workflow"><h4>From observations to moves</h4><p>Illustrated workflow</p></div>
+                <div id="fow-demo"><p>Dataset → Model training → Self-play → Inference and browser bridge. The pipeline uses player-visible observations and game-level splits.</p></div>
+                <div class="implementation" id="fow-engineering">
+                  <h4>What I worked on</h4>
+                  <p><strong>Keeping hidden information hidden.</strong> I split data by game and masked opponent histories, so the model's input would not reveal information the player could not know.</p>
+                  <p><strong>Training through deployment.</strong> I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script keep observations, inference, and move execution in sync.</p>
+                </div>
+              </div>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="research-section section-grid wrap" id="research" aria-labelledby="research-title">
+      <div class="section-intro"><h2 id="research-title">Research</h2><p class="secondary">University at Albany, SUNY<br>August 2024 – May 2025</p></div>
+      <div class="research-copy">
+        <h3>Sponsorship and health credentials on Instagram</h3>
+        <p>I studied how supplement-promotion posts disclose sponsorship and health credentials. I developed and validated a codebook for <strong>417 posts</strong> and analyzed the results in Python.</p>
+        <p class="research-status">Our co-authored extended abstract was accepted for presentation at the <strong>112th NCA Annual Conference</strong>, November 2026.</p>
       </div>
     </section>
   </main>
 
   <dialog id="demo-dialog" class="demo-dialog" aria-labelledby="demo-dialog-title">
-    <div class="dialog-heading">
-      <h2 id="demo-dialog-title">Chess analysis and coaching</h2>
-      <button type="button" id="close-demo" aria-label="Close full-size demo">Close ×</button>
-    </div>
-    <img id="dialog-capture" src="assets/chess/04-review.png" alt="Actual Chess app capture" width="1280" height="720" loading="lazy">
-    <div class="dialog-controls">
-      <button type="button" id="dialog-previous">Previous stage</button>
-      <button type="button" id="dialog-play">Play walkthrough</button>
-      <button type="button" id="dialog-next">Next stage</button>
-    </div>
+    <div class="dialog-heading"><h2 id="demo-dialog-title">Chess analysis and coaching</h2><button type="button" id="close-demo" aria-label="Close full-size demo">Close ×</button></div>
+    <img id="dialog-capture" src="assets/chess/06-alternative.png" alt="Actual Chess app capture" width="1280" height="720" loading="lazy">
+    <div class="dialog-controls"><button type="button" id="dialog-previous">Previous stage</button><button type="button" id="dialog-play">Play walkthrough</button><button type="button" id="dialog-next">Next stage</button></div>
     <p id="dialog-caption">Local sample game. No live LLM request.</p>
   </dialog>
-  <footer class="site-footer wrap">
-    <a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a>
-    <a href="https://github.com/JiufuZh" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a class="back-top" href="#">Back to top</a>
-  </footer>
+  <footer class="site-footer wrap"><span>Jiufu Zhou</span><a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a><a href="#about">Back to top</a></footer>
 </body>
 </html>

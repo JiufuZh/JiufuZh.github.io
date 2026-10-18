@@ -1,24 +1,20 @@
 # Verification
 
-Checked October 17, 2026. The simpler personal-page revision passed local checks and is live.
+Reference-led revision checked October 17, 2026. Local validation is complete; publication verification is the remaining step.
 
-| Check | Result |
+| Check | Evidence / result |
 |---|---|
-| English content, employment, education, data counts | Pass. Reviewed against resume and user-confirmed project attribution. |
-| Private disclosure boundary | Pass. No private source, report metrics, phone, address or original resume in public files. |
-| Chess evidence | Pass. Actual local app captures; legal sample PGN, Stockfish analysis, candidate comparison and solved training position verified. No live LLM request. |
-| FOW evidence | Pass. Conceptual workflow labeled; no performance chart or unverified GRU claim. |
-| Local assets and section links | Pass. All referenced files and nonempty anchors resolve. |
-| Script syntax | Pass for both JavaScript files. |
-| Responsive layout | Pass at 320, 390, 768 and 1280 CSS-pixel widths; no horizontal overflow. Desktop, phone and tablet visually inspected. |
-| Chess controls | Pass. Stage selection, animation start/stop, full-size dialog, next/previous stages, Escape and close behavior. |
-| FOW controls | Pass. Four tabs, arrow/Home/End navigation. Keyboard focus pauses playback; fixed an autoplay/focus mismatch found by independent review. |
-| Browser console | Pass. No warnings or errors during interaction checks. |
-| Reduced motion | Pass. Emulated reduced motion: both demos static, smooth scrolling disabled. Emulation restored afterward. |
-| GitHub publication | Pass. GitHub Pages reported built for website commit `1218018`. Live HTTPS page renders with portrait, Chess capture and four FOW stages. |
+| Facts and disclosure | Independent review matched resume and user clarifications: employer, dates, education, GPAs, 1,554 games / 88,949 plies, 417 posts, NCA accepted status. No private source links, internal results, phone/address or raw resume. |
+| Structure and assets | All local assets, fragment links and ARIA label targets exist; no duplicate IDs. Original FOW SVG parses as XML and contains no external resources/scripts. |
+| Layout | Desktop, 768px tablet and 390px phone visually inspected. 320/390/768px widths have no horizontal page overflow. Thumbnail intrinsic-height issue fixed and visually rechecked. |
+| Chess | Inline and preview-to-dialog entry points work; stage selection, playback/pause, previous/next, Escape and focus return checked. Pause now retains the current screenshot rather than resetting an animated WebP. |
+| Playback timing | Agent's isolated clock/DOM checks verified paused remaining time, resume, detail/dialog close, page-hidden and motion-preference cleanup. This is a simulation of timer behavior, not a device test. |
+| FOW | ArrowRight and End select correct tabs. Collapse stops playback. Direct engineering/workflow links reveal parent details. |
+| Browser and scripts | Both JavaScript files pass syntax checks. Browser console reported no errors or warnings during local interaction checks. |
+| Motion | Static by default. Reduced-motion cleanup inspected and exercised in the isolated handler check. No fresh device-level reduced-motion emulation is claimed for this revision. Navigation scrolling is immediate. |
+| Direction | User supplied the reference site; a user-approved agent_simulation checkpoint checked consistency. No Jev API called; it is not a visual-quality certification. |
+| Publication | Pending remote commit/build and live-browser confirmation. |
 
-Screenshots are kept in ignored `.qa/`. Original research and reproduction details are kept in ignored `.research/`. Automated analysis does not establish user-perceived performance or WCAG conformance; no such certification is claimed.
+The reference site's layout was inspected in the browser. No personal content, images or code were copied from it. Three agents handled content, media behavior, and the FOW preview independently. Current facts and captions are synchronized in [CONTENT.md](CONTENT.md).
 
-## Personal-page revision
-
-Removed promotional headings, decorative chrome and repeated benefit columns. Reviewed new copy against the same source facts. Checked desktop and phone screenshots, 320/390/768px overflow, stage selection, Chess playback and full-size dialog, FOW keyboard navigation and focus-triggered pause. Both scripts pass syntax checks; the browser reports no errors or warnings. Existing media and disclosure boundaries are unchanged. GitHub Pages built `491dfbc`; the live page shows the revised name heading and project sections.
+Original revisions were previously published at `1218018` and `491dfbc`; the user rejected their visual direction. Their checks do not establish verification for this new design. Screenshots and private notes remain in ignored `.qa/` and `.research/`. No claim of WCAG certification, Safari/Android device testing, or measured user performance is made.
