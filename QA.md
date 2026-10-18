@@ -1,6 +1,6 @@
 # Verification
 
-Reference-led revision checked October 17, 2026. Local validation is complete; publication verification is the remaining step.
+Reference-led revision checked October 17, 2026. Local validation and GitHub publication verification are complete.
 
 | Check | Evidence / result |
 |---|---|
@@ -13,7 +13,7 @@ Reference-led revision checked October 17, 2026. Local validation is complete; p
 | Browser and scripts | Both JavaScript files pass syntax checks. Browser console reported no errors or warnings during local interaction checks. |
 | Motion | Static by default. Reduced-motion cleanup inspected and exercised in the isolated handler check. No fresh device-level reduced-motion emulation is claimed for this revision. Navigation scrolling is immediate. |
 | Direction | User supplied the reference site; a user-approved agent_simulation checkpoint checked consistency. No Jev API called; it is not a visual-quality certification. |
-| Publication | Pending remote commit/build and live-browser confirmation. |
+| Publication | GitHub Pages reported built for `3832529`. Live page shows the new layout; both project previews load and the Chess viewer opens. Final screenshot saved locally. |
 
 The reference site's layout was inspected in the browser. No personal content, images or code were copied from it. Three agents handled content, media behavior, and the FOW preview independently. Current facts and captions are synchronized in [CONTENT.md](CONTENT.md).
 

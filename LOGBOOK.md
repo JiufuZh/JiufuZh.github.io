@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 11/12 slices. Current: S12, GitHub publication. Blockers: none. Next: verify Pages build and live result.
+Completed: 12/12 slices. Current: delivered. Blockers: none. Next: user review of the reference-led homepage.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -9,10 +9,13 @@ Completed: 11/12 slices. Current: S12, GitHub publication. Blockers: none. Next:
 | S9 | Research skills and inspect user's reference | 已完成 | Read external portfolio skills; directly inspected reference in browser | [Design](DESIGN.md) |
 | S10 | Build reference-led personal homepage | 已完成 | Profile/about layout, project previews and fact review passed | [Homepage](index.html) |
 | S11 | Verify revised layout and controls | 已完成 | Desktop/mobile layout, assets, keyboard, media and disclosure checked | [QA](QA.md) |
-| S12 | Publish and verify live result | 进行中 | Remote commit, Pages build and live browser evidence required | [Live](https://jiufuzh.github.io/) |
+| S12 | Publish and verify live result | 已完成 | `3832529` built; live layout, previews and Chess viewer verified | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
 2026-10-17: Original site and simpler revision published. User rejected both visual directions, then supplied [Yuyao Wang's homepage](https://kristoff-starling.github.io/) as the concrete reference. Using its profile/about composition and sectioned academic layout, adapted to internship projects.
 
 2026-10-17: User selected agent simulation for Jev. Completed one direction checkpoint, clearly labeled agent_simulation; no Jev API or paid service called. Three agents reviewed content, project media, and FOW presentation in parallel.
+
+
+2026-10-17: Reference-led revision published. Desktop/mobile checks and true screenshot pause verified. Live Pages build and media confirmed; final screenshot retained in ignored .qa/.
