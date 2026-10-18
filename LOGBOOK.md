@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 16/16 slices. Current: natural fabric refinement delivered. Blockers: none. Next: user review.
+Completed: 19/20 slices. Current: S20, publish expanded demonstrations. Blockers: none. Next: verify the deployed page and GIF.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -14,6 +14,10 @@ Completed: 16/16 slices. Current: natural fabric refinement delivered. Blockers:
 | S14 | Publish repaired portrait | 已完成 | Pages built `1ba435c`; live lossless portrait loaded and visually checked | [Live](https://jiufuzh.github.io/) |
 | S15 | Restore more natural cloth detail | 已完成 | Original fine detail restored; visual review and exact face/neck equality pass | [Portrait](assets/jiufu-zhou-natural.webp) |
 | S16 | Publish texture refinement | 已完成 | Pages built `987915c`; live natural portrait loaded and visually checked | [Live](https://jiufuzh.github.io/) |
+| S17 | Plan visible project stories and verify evidence | 已完成 | Six stages mapped to real captures or supported illustrations; simulated direction check | [Content](CONTENT.md) |
+| S18 | Build detailed Chess and FOW walkthroughs | 已完成 | Six Chess captures + GIF; six FOW stages with 24 visual frames; content audit passes | [Homepage](index.html) |
+| S19 | Verify desktop/mobile, content and controls | 已完成 | 24 FOW frames, six Chess steps, 320–1440px layouts, keyboard/playback/reduced motion pass | [QA](QA.md) |
+| S20 | Publish and check live demonstrations | 进行中 | Remote commit and deployed interactions | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -25,3 +29,5 @@ Completed: 16/16 slices. Current: natural fabric refinement delivered. Blockers:
 2026-10-17: Reference-led revision published. Desktop/mobile checks and true screenshot pause verified. Live Pages build and media confirmed; final screenshot retained in ignored .qa/.
 
 2026-10-18: Restored original fabric detail within the apparel mask. Face and neck pixels remain unchanged. Published and verified the natural-texture portrait.
+
+2026-10-18: User accepted the homepage direction but requested substantially clearer, step-by-step project demonstrations, preferably animated. Keep About unchanged; expand the internship projects into visible walkthroughs.

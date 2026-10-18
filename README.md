@@ -18,12 +18,12 @@ Open http://127.0.0.1:4173/ in a browser.
 
 - `index.html`: page content and structure.
 - `styles.css`: responsive layout and presentation.
-- `main.js`: pausable screenshot walkthrough, full-size viewer, expandable projects and direct section links.
-- `fow-demo.js` and `fow-demo.css`: illustrated training/inference workflow.
+- `main.js`: six-step screenshot walkthrough, full-size viewer, engineering notes and direct section links.
+- `fow-demo.js` and `fow-demo.css`: six-stage animated data, training and browser-inference walkthrough.
 - `assets/`: portrait, favicon and approved project UI captures.
 - [CONTENT.md](CONTENT.md): verified biographical and project facts.
 
-The Chess walkthrough plays a sequence of actual local UI captures using a sample game and bundled Stockfish. Pause retains the current screenshot and remaining time. It does not show a live LLM request. The FOW visual is a conceptual walkthrough, not a recording of training or a performance benchmark. Both demos are static initially, with optional playback and pause controls.
+Both projects show their main walkthroughs directly on the page. The Chess walkthrough plays six actual local UI captures using a sample game and bundled Stockfish; a captioned GIF is available to download. Pause retains the current screenshot. It does not show a live LLM request. The FOW walkthrough illustrates six stages from game records to browser moves, with several visual frames per stage. Its positions and data flow are examples, not a recording of training or a performance benchmark. Both demos start paused, provide step controls, and stop playback when hidden or offscreen. Reduced-motion users can inspect each step without automatic animation.
 
 Private repositories, internal reports, original resume files, credentials and research notes are not part of this site. Keep `.research/`, `.qa/`, environment files and dependencies ignored by Git.
 

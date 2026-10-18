@@ -15,3 +15,9 @@ The distinctive content is the contrast between full-information chess explanati
 Applied local frontend-design and the researched [interactive-portfolio guide](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/interactive-portfolio/SKILL.md). Content review also used [personal-homepage-skill](https://github.com/shengjidaguai-china/personal-homepage-skill/blob/main/SKILL.md). External skills were read; not installed or executed. Preserve the facts and disclosure boundary in [CONTENT.md](CONTENT.md) and [BRIEF.md](BRIEF.md).
 
 User-approved agent simulation checked direction only. It did not call the Jev API and does not establish quality. Actual screenshots and interaction checks are required before publication.
+
+## Project walkthrough refinement, October 18
+
+Keep the accepted colors, type and About layout. Use the full content width for the two projects, with internship context in a compact heading above them. Each project has six ordered steps beside a large visual; the selected step explains the input, action and result. On mobile, steps form a compact two-column selector above the visual. Playback and previous/next controls stay visible. Engineering notes remain optional, while the main story is expanded by default.
+
+The sequence itself supplies the distinctive element: a real Chess game moves from import through a mistake to solved practice; a FOW observation moves through data preparation, learning and browser inference. Use numbered steps because these are ordered processes. No unrelated graphics, marketing cards, fabricated training charts or terminal logs. Compare this plan against the user's request using the already-authorized agent simulation, then verify the actual implementation in the browser.

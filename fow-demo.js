@@ -2,180 +2,351 @@
   'use strict';
 
   let instanceCount = 0;
-  const stages = [
+  const STEPS = [
     {
-      name: 'Dataset',
-      title: 'Preparing game records',
-      description: 'I replayed 1,554 games (88,949 plies) into player-view observations and move histories, with opponent moves masked.',
-      alt: 'Illustration of a partially visible chessboard becoming player-view training samples.'
+      name: 'Replay games', note: 'Game records become positions.',
+      title: 'Replay a game one move at a time',
+      description: 'I prepared training data from 1,554 recorded games and 88,949 plies. Replaying each move reconstructs the position before the next decision.',
+      input: 'Recorded game histories', action: 'Replay moves in sequence', output: 'Positions paired with the move that followed',
+      phases: ['Start with a recorded game', 'Replay White’s first move', 'Replay the opponent’s reply', 'Capture the next decision']
     },
     {
-      name: 'Train',
-      title: 'Training the policy and value model',
-      description: 'The model combines board observations and move history to predict moves and estimate the position’s value.',
-      alt: 'Illustration of board and history encoders joining a policy and value model.'
+      name: 'Mask the view', note: 'Separate the record from the input.',
+      title: 'Keep only what the player can observe',
+      description: 'The game record contains both sides of the board. The model input uses the player’s visible position, and opponent moves are replaced with hidden-history tokens.',
+      input: 'A replayed position and its history', action: 'Keep visible information; mask opponent moves', output: 'A player-view board and masked history',
+      phases: ['The record contains the full position', 'Hide squares outside the player’s view', 'Mask the opponent’s move history', 'Keep the same information boundary at inference']
     },
     {
-      name: 'Self-play',
-      title: 'Generating self-play games',
-      description: 'Self-play produces game trajectories. Their outcomes provide targets for policy and value updates.',
-      alt: 'Illustration of two policies playing a game and returning the outcome to the learning loop.'
+      name: 'Build examples', note: 'Keep each game in one split.',
+      title: 'Build examples without mixing a game across splits',
+      description: 'Each decision becomes a training example. I split the data by complete game, keeping positions from the same game together during training and evaluation.',
+      input: 'Player-view positions and game records', action: 'Pair inputs with targets; group by game', output: 'Separate training, validation, and test examples',
+      phases: ['Pair an observation with its recorded move', 'Group examples by their source game', 'Assign complete games to separate splits', 'Keep every example from a game together']
     },
     {
-      name: 'Serve',
-      title: 'Connecting inference to the browser',
-      description: 'A browser script sends the player’s view to a local FastAPI service and receives a suggested move.',
-      alt: 'Illustration of a browser chessboard exchanging a player view and suggested move with local inference.'
+      name: 'Train the model', note: 'Learn a policy and a value estimate.',
+      title: 'Connect board observations with move history',
+      description: 'I trained policy-and-value models in PyTorch. The policy learns which move to choose; the value model learns from game outcomes.',
+      input: 'Visible board, masked history, recorded targets', action: 'Predict, compare with targets, and update', output: 'A trained policy-and-value model',
+      phases: ['Read the board and masked history', 'Produce policy and value outputs', 'Compare outputs with recorded targets', 'Use the training signal to update the model']
+    },
+    {
+      name: 'Self-play & save', note: 'Generate games and resume training.',
+      title: 'Use self-play and save resumable checkpoints',
+      description: 'I worked on self-play updates and checkpoint resumption. Generated game trajectories feed further learning, while saved training state allows a run to continue.',
+      input: 'A policy-and-value model', action: 'Generate play, update the model, save state', output: 'A checkpoint that can resume training',
+      phases: ['Start self-play from the model', 'Collect a sequence of decisions', 'Use game outcomes and save training state', 'Resume training from the saved checkpoint']
+    },
+    {
+      name: 'Serve & automate', note: 'Connect inference to the browser.',
+      title: 'Return a move to the browser',
+      description: 'A JavaScript browser bridge sends the player’s view to a FastAPI inference service. The script receives a suggested move and keeps the board and observations in sync.',
+      input: 'Current player view and loaded model', action: 'Request inference; return and execute a move', output: 'An updated board and the next observation',
+      phases: ['Load the model and observe the test board', 'Send the player view to local inference', 'Return a suggested move to the script', 'Execute the move and refresh the observation']
     }
   ];
 
-  function board(x, y, size, reverse) {
-    const unit = size / 8;
-    const pieces = { '6,0': '♙', '6,1': '♙', '6,2': '♙', '6,3': '♙', '6,5': '♙', '6,6': '♙', '6,7': '♙', '7,0': '♖', '7,1': '♘', '7,2': '♗', '7,3': '♕', '7,4': '♔', '7,5': '♗', '7,7': '♖', '5,5': '♘', '4,4': '♙' };
+  const MOVES = [
+    { from: 'e2', to: 'e4', label: 'e2 → e4', side: 'White' },
+    { from: 'e7', to: 'e5', label: 'e7 → e5', side: 'Black' },
+    { from: 'g1', to: 'f3', label: 'g1 → f3', side: 'White' }
+  ];
+  const GLYPHS = { p: '♟', n: '♞', b: '♝', r: '♜', q: '♛', k: '♚' };
+
+  function position(ply) {
+    const result = {};
+    'abcdefgh'.split('').forEach(function (file, i) {
+      result[file + '1'] = 'RNBQKBNR'[i];
+      result[file + '2'] = 'P';
+      result[file + '7'] = 'p';
+      result[file + '8'] = 'rnbqkbnr'[i];
+    });
+    MOVES.slice(0, ply).forEach(function (move) {
+      result[move.to] = result[move.from];
+      delete result[move.from];
+    });
+    return result;
+  }
+
+  // Visibility for these illustrative opening positions, using ordinary
+  // piece geometry. This is a visual explanation, not a game engine.
+  function visibleSquares(board, white) {
+    const visible = new Set();
+    const own = function (piece) { return !!piece && ((piece === piece.toUpperCase()) === white); };
+    const square = function (x, y) { return x >= 0 && x < 8 && y >= 1 && y <= 8 ? 'abcdefgh'[x] + y : null; };
+    Object.keys(board).forEach(function (from) {
+      const piece = board[from];
+      if (!own(piece)) return;
+      visible.add(from);
+      const x = from.charCodeAt(0) - 97;
+      const y = Number(from[1]);
+      const step = function (dx, dy) {
+        const to = square(x + dx, y + dy);
+        if (to && !own(board[to])) visible.add(to);
+      };
+      const ray = function (dx, dy) {
+        for (let n = 1; n < 8; n += 1) {
+          const to = square(x + dx * n, y + dy * n);
+          if (!to || own(board[to])) break;
+          visible.add(to);
+          if (board[to]) break;
+        }
+      };
+      if (piece.toLowerCase() === 'p') {
+        const direction = white ? 1 : -1;
+        const to = square(x, y + direction);
+        if (to && !board[to]) {
+          visible.add(to);
+          const two = square(x, y + direction * 2);
+          if (y === (white ? 2 : 7) && two && !board[two]) visible.add(two);
+        }
+        [-1, 1].forEach(function (dx) {
+          const capture = square(x + dx, y + direction);
+          if (capture && board[capture] && !own(board[capture])) visible.add(capture);
+        });
+      } else if (piece.toLowerCase() === 'n') {
+        [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]].forEach(function (d) { step(d[0], d[1]); });
+      } else if (piece.toLowerCase() === 'k') {
+        [-1, 0, 1].forEach(function (dx) { [-1, 0, 1].forEach(function (dy) { if (dx || dy) step(dx, dy); }); });
+      } else {
+        const diagonals = [[1, 1], [1, -1], [-1, 1], [-1, -1]];
+        const straights = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+        const directions = piece.toLowerCase() === 'b' ? diagonals : piece.toLowerCase() === 'r' ? straights : diagonals.concat(straights);
+        directions.forEach(function (d) { ray(d[0], d[1]); });
+      }
+    });
+    return visible;
+  }
+
+  function boardSVG(ply, masked, highlight, label, white) {
+    white = white !== false;
+    const state = position(ply);
+    const visible = visibleSquares(state, white);
     let cells = '';
     for (let row = 0; row < 8; row += 1) {
       for (let col = 0; col < 8; col += 1) {
-        const visible = row >= 5 || (row === 4 && col >= 2 && col <= 6) || (row === 3 && col === 5);
-        const fill = visible ? ((row + col) % 2 ? '#C6D6ED' : '#F6F8FC') : ((row + col) % 2 ? '#253A57' : '#304864');
-        const px = x + col * unit;
-        const py = y + (reverse ? 7 - row : row) * unit;
-        cells += `<rect x="${px}" y="${py}" width="${unit + .2}" height="${unit + .2}" fill="${fill}"/>`;
-        const piece = pieces[`${row},${col}`];
-        if (piece) cells += `<text x="${px + unit / 2}" y="${py + unit * .77}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${unit * .88}" fill="#24292f">${piece}</text>`;
+        const square = 'abcdefgh'[col] + (8 - row);
+        const x = 24 + col * 34;
+        const y = 10 + row * 34;
+        const hidden = masked && !visible.has(square);
+        const fill = hidden ? ((row + col) % 2 ? '#2f4953' : '#3a5660') : ((row + col) % 2 ? '#b9ccd5' : '#edf2f3');
+        cells += '<rect x="' + x + '" y="' + y + '" width="34" height="34" fill="' + fill + '"/>';
+        if (!hidden && highlight && (highlight.from === square || highlight.to === square)) {
+          cells += '<rect x="' + (x + 1) + '" y="' + (y + 1) + '" width="32" height="32" fill="#efc66b" fill-opacity=".6" stroke="#a76c17" stroke-width="1.5"/>';
+        }
+        const piece = state[square];
+        if (piece && !hidden) {
+          const isWhite = piece === piece.toUpperCase();
+          cells += '<text x="' + (x + 17) + '" y="' + (y + 27) + '" text-anchor="middle" font-family="Segoe UI Symbol,DejaVu Sans,serif" font-size="29" fill="' + (isWhite ? '#fff' : '#243344') + '" stroke="' + (isWhite ? '#243344' : '#edf2f3') + '" stroke-width="' + (isWhite ? '.8' : '.35') + '" paint-order="stroke fill">' + GLYPHS[piece.toLowerCase()] + '</text>';
+        }
+        if (hidden) cells += '<circle cx="' + (x + 17) + '" cy="' + (y + 17) + '" r="1.2" fill="#9ab2bb" opacity=".28"/>';
       }
     }
-    return `<g>${cells}<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="none" stroke="#cbd5df" stroke-width="1"/></g>`;
-  }
-
-  function box(x, y, width, height, label, secondary) {
-    return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="8" fill="#FFFFFF" stroke="#cbd5df"/><text x="${x + width / 2}" y="${y + (secondary ? height * .42 : height / 2 + 6)}" text-anchor="middle" fill="#24292f" font-size="18" font-weight="600">${label}</text>${secondary ? `<text x="${x + width / 2}" y="${y + height * .72}" text-anchor="middle" fill="#57606a" font-size="15">${secondary}</text>` : ''}</g>`;
-  }
-
-  function illustration(index, id) {
-    const arrow = `${id}-arrow`;
-    const path = (d, extra) => `<path d="${d}" fill="none" stroke="#245b9a" stroke-width="2" marker-end="url(#${arrow})" ${extra || ''}/>`;
-    let content = '';
-    if (index === 0) {
-      content = board(40, 44, 200, false) +
-        '<text x="140" y="278" text-anchor="middle" fill="#57606a" font-size="18">Player view</text>' +
-        path('M260 144 H318') + box(340, 58, 252, 72, 'Game records', 'Replay each position') +
-        path('M466 144 V172') + box(340, 190, 252, 72, 'Training samples', 'Visible board + history');
-    } else if (index === 1) {
-      content = board(30, 77, 160, false) +
-        path('M206 154 H226 V94 H248') + path('M226 154 V220 H248') +
-        box(264, 62, 154, 64, 'Board encoder') + box(264, 188, 154, 64, 'History encoder') +
-        path('M430 94 H450 V155 H473') + path('M430 220 H450 V155') +
-        box(488, 115, 132, 80, 'Policy', '+ value') +
-        '<text x="110" y="278" text-anchor="middle" fill="#57606a" font-size="18">Model input</text>';
-    } else if (index === 2) {
-      content = board(38, 44, 164, false) + board(438, 44, 164, true) +
-        '<text x="120" y="241" text-anchor="middle" fill="#24292f" font-size="18">Policy</text>' +
-        '<text x="520" y="241" text-anchor="middle" fill="#24292f" font-size="18">Opponent</text>' +
-        path('M225 90 H413') + path('M414 164 H226') +
-        '<text x="320" y="132" text-anchor="middle" fill="#57606a" font-size="18">Game rollout</text>' +
-        path('M120 256 V282 H240') + path('M520 256 V282 H400') +
-        box(254, 256, 132, 52, 'Outcome');
-    } else {
-      content = '<rect x="32" y="32" width="204" height="250" rx="8" fill="#FFFFFF" stroke="#cbd5df"/><path d="M32 65 H236" stroke="#cbd5df"/><circle cx="48" cy="48" r="3" fill="#cbd5df"/><circle cx="60" cy="48" r="3" fill="#cbd5df"/><circle cx="72" cy="48" r="3" fill="#cbd5df"/>' +
-        board(50, 82, 168, false) +
-        '<text x="134" y="311" text-anchor="middle" fill="#24292f" font-size="18">Browser bridge</text>' +
-        path('M253 111 H374') + path('M374 221 H253') +
-        '<text x="313" y="92" text-anchor="middle" fill="#57606a" font-size="16">Player view</text>' +
-        '<text x="313" y="248" text-anchor="middle" fill="#57606a" font-size="16">Suggested move</text>' +
-        box(395, 113, 215, 108, 'Local inference', 'Trained model');
+    let coordinates = '';
+    for (let i = 0; i < 8; i += 1) {
+      coordinates += '<text x="' + (41 + i * 34) + '" y="300" text-anchor="middle">' + 'abcdefgh'[i] + '</text><text x="12" y="' + (32 + i * 34) + '" text-anchor="middle">' + (8 - i) + '</text>';
     }
-    return `<svg viewBox="0 0 640 336" role="img" aria-labelledby="${id}-svg-title" xmlns="http://www.w3.org/2000/svg"><title id="${id}-svg-title">${stages[index].alt}</title><defs><marker id="${arrow}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#245b9a" stroke-width="1.5"/></marker></defs>${content}</svg>`;
+    return '<svg class="fow-board" viewBox="0 0 312 312" role="img" aria-label="' + label + '" xmlns="http://www.w3.org/2000/svg">' + cells + '<g fill="#5c6877" font-family="Arial,sans-serif" font-size="12">' + coordinates + '</g></svg>';
   }
+
+  function boardFigure(title, ply, masked, highlight, subtitle, white) {
+    return '<figure class="fow-board-figure"><figcaption>' + title + '</figcaption>' + boardSVG(ply, masked, highlight, title + ': illustrative chess position', white) + '<p class="fow-board-note">' + subtitle + '</p></figure>';
+  }
+
+  function token(text, hidden, active) {
+    return '<span class="fow-token' + (hidden ? ' is-hidden' : '') + (active ? ' is-active' : '') + '">' + text + '</span>';
+  }
+
+  function history(masked, active) {
+    return '<div class="fow-token-line">' + token('start', false, active === 0) + token('e2 → e4', false, active === 1) + token(masked ? 'hidden' : 'e7 → e5', masked, active === 2) + token('g1 → f3', false, active === 3) + '</div>';
+  }
+
+  function flowItem(label, detail, active) {
+    return '<div class="fow-flow-item' + (active ? ' is-active' : '') + '"><strong>' + label + '</strong><span>' + detail + '</span></div>';
+  }
+
+  function replayScene(frame) {
+    return '<div class="fow-scene fow-scene--replay"><div class="fow-records"><h5>Recorded games</h5><p class="fow-scale"><strong>1,554 games</strong><span>88,949 plies</span></p><div class="fow-record-file"><span class="fow-file-label">Example move sequence</span>' + MOVES.map(function (move, i) {
+      return '<div class="fow-move-row' + (frame === i + 1 ? ' is-active' : '') + (frame > i ? ' is-read' : '') + '"><span>' + move.side + '</span><strong>' + move.label + '</strong><span class="fow-move-state">' + (frame > i ? 'replayed' : 'queued') + '</span></div>';
+    }).join('') + '</div><p class="fow-scene-note">The board advances with the highlighted move.</p></div>' + boardFigure('Reconstructed position', frame, false, frame ? MOVES[frame - 1] : null, frame ? 'After ' + MOVES[frame - 1].label : 'Before the first move') + '</div>';
+  }
+
+  function maskScene(frame) {
+    return '<div class="fow-scene fow-scene--mask">' + boardFigure('Recorded position', 3, false, null, 'Available during offline replay') + boardFigure('Model input', 3, frame >= 1, null, frame >= 1 ? 'White’s visible squares; other squares stay hidden' : 'Next: remove hidden information') + '<div class="fow-history-strip"><h5>White’s move history</h5>' + history(frame >= 2, frame === 2 ? 2 : -1) + '<p>' + (frame >= 2 ? 'The opponent’s move becomes a hidden token.' : 'Recorded history before masking.') + '</p></div></div>';
+  }
+
+  function splitScene(frame) {
+    const groups = [{ letter: 'A', split: 'Train', tone: 'a' }, { letter: 'B', split: 'Validation', tone: 'b' }, { letter: 'C', split: 'Test', tone: 'c' }];
+    return '<div class="fow-scene fow-scene--split"><div class="fow-example"><h5>One decision example</h5><div class="fow-example-board">' + boardSVG(2, true, null, 'Player-visible example before the next White move') + '</div><dl><div><dt>Observation</dt><dd>Visible board</dd></div><div><dt>History</dt><dd>e2 → e4 · hidden</dd></div><div><dt>Target</dt><dd>Recorded move: g1 → f3</dd></div></dl></div><div class="fow-split-panel"><h5>' + (frame < 2 ? 'Group by source game' : 'Split by complete game') + '</h5><div class="fow-game-groups">' + groups.map(function (group, i) {
+      return '<div class="fow-game-group fow-group-' + group.tone + (frame >= 2 ? ' is-assigned' : '') + (frame === 1 && i === 0 ? ' is-active' : '') + '"><div class="fow-group-name">Game ' + group.letter + '</div><div class="fow-example-chips"><span>Position</span><span>Position</span><span>Position</span></div><strong class="fow-split-destination">' + (frame >= 2 ? group.split : 'kept together') + '</strong></div>';
+    }).join('') + '</div><p class="fow-scene-note">' + (frame === 3 ? 'Every example from the same game stays in one split.' : 'Illustrative groups; no split sizes are shown.') + '</p></div></div>';
+  }
+
+  function trainScene(frame) {
+    return '<div class="fow-scene fow-scene--train"><div class="fow-training-inputs"><h5>Inputs</h5><div class="fow-mini-board">' + boardSVG(2, true, null, 'Visible board passed to the training model') + '</div><span class="fow-mini-label">Visible board</span><div class="fow-token-line">' + token('e2 → e4', false, frame === 0) + token('hidden', true, frame === 0) + '</div><span class="fow-mini-label">Masked history</span></div><div class="fow-training-center"><span class="fow-flow-arrow" aria-hidden="true">→</span><div class="fow-model-block' + (frame === 0 || frame === 3 ? ' is-active' : '') + '"><span>PyTorch</span><strong>Policy + value model</strong><div class="fow-model-nodes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><small>' + (frame === 3 ? 'Model updated' : 'Board + history') + '</small></div><div class="fow-update-path' + (frame >= 2 ? ' is-active' : '') + '"><span aria-hidden="true">↶</span> Training signal</div></div><div class="fow-training-outputs"><h5>Outputs</h5>' + flowItem('Policy', frame >= 1 ? 'Candidate move choices' : 'Which move to choose', frame === 1) + '<div class="fow-candidate-moves' + (frame >= 1 ? ' is-visible' : '') + '">' + token('g1 → f3', false, frame >= 2) + token('d2 → d4', false, false) + '</div>' + flowItem('Value', 'Game outcome estimate', frame === 1) + '<div class="fow-targets' + (frame >= 2 ? ' is-visible' : '') + '"><strong>Recorded targets</strong><span>Played move + game outcome</span></div></div><p class="fow-scene-note fow-training-disclosure">Example outputs illustrate the learning process. No measured scores or training curves are shown.</p></div>';
+  }
+
+  function selfPlayScene(frame) {
+    const ply = frame === 0 ? 0 : 3;
+    const visual = frame < 2
+      ? boardFigure(frame === 0 ? 'Self-play starts' : 'A generated game excerpt', ply, true, frame === 1 ? MOVES[2] : null, frame === 0 ? 'Each side acts from its own view' : 'Decisions accumulate into a trajectory')
+      : '<div class="fow-checkpoint-visual"><div class="fow-checkpoint-icon" aria-hidden="true"><span></span><span></span><span></span></div><h5>' + (frame === 2 ? 'Checkpoint saved' : 'Checkpoint restored') + '</h5><div class="fow-checkpoint-fields"><span>Model weights</span><span>Training state</span></div><p>' + (frame === 2 ? 'Keep the state needed to continue.' : 'Continue training from the saved state.') + '</p></div>';
+    return '<div class="fow-scene fow-scene--selfplay">' + visual + '<div class="fow-selfplay-flow"><h5>Learning and continuity</h5>' + flowItem('Play', 'Model decisions produce game trajectories', frame === 0 || frame === 1) + '<span class="fow-vertical-arrow" aria-hidden="true">↓</span>' + flowItem('Update', 'Game outcomes inform policy and value updates', frame === 2) + '<span class="fow-vertical-arrow" aria-hidden="true">↓</span>' + flowItem('Save / resume', 'Restore a checkpoint to continue training', frame >= 2) + '<div class="fow-resume-line' + (frame === 3 ? ' is-active' : '') + '"><span aria-hidden="true">↶</span> Resume model training</div></div></div>';
+  }
+
+  function serveScene(frame) {
+    return '<div class="fow-scene fow-scene--serve"><div class="fow-browser"><div class="fow-browser-bar"><span class="fow-browser-dot" aria-hidden="true"></span>Permitted test board</div>' + boardSVG(frame === 3 ? 3 : 2, true, frame >= 2 ? MOVES[2] : null, frame === 3 ? 'Browser board after the illustrative knight move' : 'Browser player view before the illustrative knight move') + '<p class="fow-board-note">' + (frame === 3 ? 'Knight moved; observation refreshed' : frame === 2 ? 'Suggested move: g1 → f3' : 'Current player-visible position') + '</p></div><div class="fow-bridge-flow"><div class="fow-checkpoint-tag"><span aria-hidden="true">✓</span> Trained checkpoint loaded</div>' + flowItem('Browser script', frame === 0 ? 'Observe the current board' : frame === 3 ? 'Execute move and observe again' : 'Send player-view information', frame === 0 || frame === 3) + '<div class="fow-request' + (frame === 1 ? ' is-active' : '') + '"><span class="fow-vertical-arrow" aria-hidden="true">↓</span><div><strong>Inference request</strong><span>Visible squares · own moves · candidate moves</span></div></div>' + flowItem('FastAPI service', 'Run local model inference', frame === 1) + '<div class="fow-response' + (frame >= 2 ? ' is-active' : '') + '"><span aria-hidden="true">↶</span><div><strong>' + (frame >= 2 ? 'g1 → f3' : 'Suggested move') + '</strong><span>' + (frame >= 2 ? 'Return the move to the browser script' : 'Awaiting the illustrated response') + '</span></div></div></div></div>';
+  }
+
+  const SCENES = [replayScene, maskScene, splitScene, trainScene, selfPlayScene, serveScene];
 
   window.renderFowDemo = function renderFowDemo(target) {
-    if (!target || !(target instanceof Element)) return null;
+    if (!(target instanceof Element)) return null;
     if (typeof target.fowDemoCleanup === 'function') target.fowDemoCleanup();
-    const id = `fow-workflow-${++instanceCount}`;
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let current = 0;
+    const id = 'fow-walkthrough-' + (++instanceCount);
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let step = 0;
+    let frame = 0;
     let timer = null;
     let destroyed = false;
-    target.classList.add('fow-demo');
-    target.innerHTML = `<div class="fow-demo__controls"><div class="fow-demo__tabs" role="tablist" aria-label="Fog-of-War AI workflow stages">${stages.map((stage, index) => `<button class="fow-demo__tab" type="button" role="tab" id="${id}-tab-${index}" aria-controls="${id}-panel" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" data-stage="${index}">${stage.name}</button>`).join('')}</div><button class="fow-demo__play" type="button" aria-pressed="false" aria-label="Play walkthrough"><span aria-hidden="true">▶</span> <span data-play-label>Play</span></button></div><div class="fow-demo__panel" role="tabpanel" id="${id}-panel" aria-labelledby="${id}-tab-0" tabindex="0"><div class="fow-demo__figure"></div><div class="fow-demo__copy"><h4></h4><p></p></div></div><p class="fow-demo__caption">Illustrated workflow</p><span class="fow-demo__sr" role="status" aria-live="polite"></span>`;
+    let inView = true;
+    target.classList.add('fow-demo', 'walkthrough');
+    target.innerHTML = '<div class="walkthrough-layout"><ol class="walkthrough-steps fow-step-list" role="tablist" aria-label="Fog of War workflow steps" aria-orientation="vertical">' + STEPS.map(function (item, index) {
+      return '<li role="presentation"><button type="button" class="walkthrough-step fow-step" role="tab" id="' + id + '-step-' + index + '" aria-controls="' + id + '-panel" aria-selected="' + (index === 0) + '"' + (index === 0 ? ' aria-current="step"' : '') + ' tabindex="' + (index === 0 ? '0' : '-1') + '" data-fow-step="' + index + '"><span class="step-number" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</span><span><span class="step-title">' + item.name + '</span><span class="step-note">' + item.note + '</span></span></button></li>';
+    }).join('') + '</ol><div class="walkthrough-main"><div class="walkthrough-toolbar fow-controls"><span class="fow-kind">Illustrated workflow</span><div class="fow-control-buttons"><button type="button" class="fow-frame-control" data-fow-action="previous" aria-label="Previous illustration frame">‹<span> Previous</span></button><button type="button" class="fow-demo__play" data-fow-action="play" aria-pressed="false" aria-label="Play Fog of War walkthrough"><span data-fow-play-icon aria-hidden="true">▶</span> <span data-fow-play-label>Play walkthrough</span></button><button type="button" class="fow-frame-control" data-fow-action="next" aria-label="Next illustration frame"><span>Next </span>›</button></div></div><section class="fow-tab-panel" id="' + id + '-panel" role="tabpanel" aria-labelledby="' + id + '-step-0" tabindex="0"><div class="fow-frame-heading"><span class="fow-phase-label"></span><span class="fow-frame-count" aria-hidden="true"></span></div><div class="fow-visual"></div><div class="fow-phase-progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="step-copy fow-step-copy"><h4></h4><p></p></div><dl class="step-io fow-step-io"><div><dt>Input</dt><dd data-fow-io="input"></dd></div><div><dt>Action</dt><dd data-fow-io="action"></dd></div><div><dt>Output</dt><dd data-fow-io="output"></dd></div></dl></section></div></div><p class="walkthrough-footnote fow-footnote">Illustrated using example positions and game groups. This is a visual explanation, not a recording of training or live model output.</p><span class="fow-sr-only" role="status" aria-live="polite"></span>';
 
     const tabs = Array.from(target.querySelectorAll('[role="tab"]'));
     const panel = target.querySelector('[role="tabpanel"]');
     const play = target.querySelector('.fow-demo__play');
+    const visual = target.querySelector('.fow-visual');
     const status = target.querySelector('[role="status"]');
-    function update(index, announce) {
-      if (destroyed) return;
-      current = ((index % stages.length) + stages.length) % stages.length;
-      const stage = stages[current];
-      tabs.forEach((tab, i) => {
-        tab.setAttribute('aria-selected', String(i === current));
-        tab.tabIndex = i === current ? 0 : -1;
-      });
-      panel.setAttribute('aria-labelledby', `${id}-tab-${current}`);
-      target.querySelector('.fow-demo__figure').innerHTML = illustration(current, id);
-      target.querySelector('.fow-demo__copy h4').textContent = stage.title;
-      target.querySelector('.fow-demo__copy p').textContent = stage.description;
-      if (announce) status.textContent = `${stage.name}. ${stage.title}`;
+    const previous = target.querySelector('[data-fow-action="previous"]');
+    const next = target.querySelector('[data-fow-action="next"]');
+
+    function updateControls() {
+      const atEnd = step === STEPS.length - 1 && frame === 3;
+      const playing = timer !== null;
+      previous.disabled = step === 0 && frame === 0;
+      next.disabled = atEnd;
+      play.disabled = motion.matches;
+      play.setAttribute('aria-pressed', String(playing));
+      play.setAttribute('aria-label', motion.matches ? 'Reduced motion: use the Previous and Next frame controls' : (playing ? 'Pause' : atEnd ? 'Replay' : 'Play') + ' Fog of War walkthrough');
+      play.querySelector('[data-fow-play-icon]').textContent = motion.matches ? '' : playing ? 'Ⅱ' : '▶';
+      play.querySelector('[data-fow-play-label]').textContent = motion.matches ? 'Reduced motion: use frames' : playing ? 'Pause walkthrough' : atEnd ? 'Replay walkthrough' : 'Play walkthrough';
+      target.classList.toggle('is-playing', playing);
     }
+
+    function render(announce) {
+      if (destroyed) return;
+      const item = STEPS[step];
+      tabs.forEach(function (tab, index) {
+        tab.setAttribute('aria-selected', String(index === step));
+        if (index === step) tab.setAttribute('aria-current', 'step'); else tab.removeAttribute('aria-current');
+        tab.tabIndex = index === step ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', id + '-step-' + step);
+      visual.innerHTML = SCENES[step](frame);
+      target.querySelector('.fow-phase-label').textContent = item.phases[frame];
+      target.querySelector('.fow-frame-count').textContent = 'Frame ' + (frame + 1) + ' / 4';
+      target.querySelector('.fow-step-copy h4').textContent = item.title;
+      target.querySelector('.fow-step-copy p').textContent = item.description;
+      ['input', 'action', 'output'].forEach(function (key) { target.querySelector('[data-fow-io="' + key + '"]').textContent = item[key]; });
+      target.querySelectorAll('.fow-phase-progress i').forEach(function (dot, index) { dot.classList.toggle('is-current', index === frame); dot.classList.toggle('is-complete', index < frame); });
+      updateControls();
+      if (announce) status.textContent = item.name + '. ' + item.phases[frame] + '. ' + item.output + '.';
+    }
+
     function pause() {
       window.clearInterval(timer);
       timer = null;
-      play.setAttribute('aria-pressed', 'false');
-      play.setAttribute('aria-label', 'Play walkthrough');
-      play.querySelector('[aria-hidden]').textContent = '▶';
-      play.querySelector('[data-play-label]').textContent = 'Play';
+      updateControls();
     }
+
+    function advance(direction, announce) {
+      const total = STEPS.length * 4;
+      const nextFrame = Math.min(total - 1, Math.max(0, step * 4 + frame + direction));
+      step = Math.floor(nextFrame / 4);
+      frame = nextFrame % 4;
+      render(announce);
+      if (nextFrame === total - 1) pause();
+    }
+
     function start() {
-      if (timer || destroyed) return;
-      play.setAttribute('aria-pressed', 'true');
-      play.setAttribute('aria-label', 'Pause walkthrough');
-      play.querySelector('[aria-hidden]').textContent = 'Ⅱ';
-      play.querySelector('[data-play-label]').textContent = 'Pause';
-      timer = window.setInterval(() => update(current + 1, false), 4500);
+      if (timer !== null || destroyed || document.hidden || !inView || motion.matches) return;
+      if (step === STEPS.length - 1 && frame === 3) { step = 0; frame = 0; render(false); }
+      timer = window.setInterval(function () { advance(1, false); }, 1900);
+      updateControls();
     }
+
+    function setStep(index, announce) {
+      const parsed = Number(index);
+      if (!Number.isFinite(parsed)) return;
+      pause();
+      step = ((Math.trunc(parsed) % STEPS.length) + STEPS.length) % STEPS.length;
+      frame = 0;
+      render(announce !== false);
+    }
+
     function onClick(event) {
-      const tab = event.target.closest('[data-stage]');
-      if (tab && target.contains(tab)) {
-        pause();
-        update(Number(tab.dataset.stage), true);
-      } else if (play.contains(event.target)) {
-        if (timer) pause(); else start();
-      }
+      const control = event.target.closest('button');
+      if (!control || !target.contains(control)) return;
+      if (control.hasAttribute('data-fow-step')) return setStep(control.dataset.fowStep);
+      const action = control.dataset.fowAction;
+      if (action === 'play') { if (timer !== null) pause(); else start(); }
+      if (action === 'previous' || action === 'next') { pause(); advance(action === 'next' ? 1 : -1, true); }
     }
+
     function onKeydown(event) {
-      if (!event.target.matches('[role="tab"]')) return;
-      let index = Number(event.target.dataset.stage);
-      if (event.key === 'ArrowRight') index += 1;
-      else if (event.key === 'ArrowLeft') index -= 1;
+      if (!event.target.matches('[data-fow-step]')) return;
+      let index = Number(event.target.dataset.fowStep);
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') index += 1;
+      else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') index -= 1;
       else if (event.key === 'Home') index = 0;
-      else if (event.key === 'End') index = stages.length - 1;
+      else if (event.key === 'End') index = STEPS.length - 1;
       else return;
       event.preventDefault();
-      pause();
-      update(index, true);
-      tabs[current].focus();
+      setStep(index);
+      tabs[step].focus();
+    }
+
+    function onFocus(event) {
+      if (event.target.closest('[role="tablist"], [role="tabpanel"]')) pause();
     }
     function onVisibility() { if (document.hidden) pause(); }
-    function onMotionChange() { if (motionQuery.matches) pause(); }
-    function onFocus(event) { if (event.target.closest('[role="tablist"], [role="tabpanel"]')) pause(); }
+    function onMotion() { if (motion.matches) pause(); else updateControls(); }
+
     target.addEventListener('click', onClick);
     target.addEventListener('keydown', onKeydown);
     target.addEventListener('focusin', onFocus);
     document.addEventListener('visibilitychange', onVisibility);
-    motionQuery.addEventListener('change', onMotionChange);
-    update(0, false);
+    motion.addEventListener('change', onMotion);
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (!inView) pause();
+    }, { threshold: 0 }) : null;
+    if (observer) observer.observe(visual);
+    render(false);
+
     const api = {
-      setStage(index) { pause(); update(index, true); },
-      destroy() {
+      setStage: setStep,
+      pause: pause,
+      play: start,
+      nextFrame: function () { pause(); advance(1, true); },
+      getState: function () { return { step: step, frame: frame, playing: timer !== null, inView: inView }; },
+      destroy: function () {
         pause();
         destroyed = true;
         target.removeEventListener('click', onClick);
         target.removeEventListener('keydown', onKeydown);
         target.removeEventListener('focusin', onFocus);
         document.removeEventListener('visibilitychange', onVisibility);
-        motionQuery.removeEventListener('change', onMotionChange);
+        motion.removeEventListener('change', onMotion);
+        if (observer) observer.disconnect();
       }
     };
     target.fowDemoCleanup = api.destroy;
+    target.fowDemoApi = api;
     return api;
   };
 }());

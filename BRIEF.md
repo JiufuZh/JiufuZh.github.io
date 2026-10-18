@@ -21,3 +21,7 @@ The page is entirely English; internships precede case studies; both projects ha
 The user rejected both the marketing-like first version and the subsequent plain page. The latest explicit direction is a homepage similar to [Yuyao Wang's](https://kristoff-starling.github.io/): indigo navigation, a profile column, a biography/education column, and sectioned selected work. The user-supplied reference supersedes the earlier visual direction and the tentative OS idea.
 
 Translate the reference's publications list into two internship project entries with visible previews, expandable real/illustrated demonstrations, and engineering contributions. Keep the page English and the previously approved facts and public scope. No further interview is needed for this explicit revision. See [DESIGN.md](DESIGN.md) for implementation decisions.
+
+## October 18 project walkthroughs
+
+The user accepts the overall homepage but wants much clearer project content, presented step by step with animation where possible. Keep the accepted profile and biography. Give both projects a visible, full-width walkthrough with ordered steps, tangible visuals, short input/action/output explanations, and working playback. Chess uses actual captures plus a downloadable GIF; FOW uses a clearly labeled illustrated pipeline. Main project demonstrations should no longer require opening an accordion. Retain the existing disclosure boundary.

@@ -1,6 +1,6 @@
 # Homepage content
 
-This is the authority for public facts and wording in [index.html](index.html). Last reviewed: October 17, 2026. The resume establishes personal facts; the user's clarification establishes both projects as internship work.
+This is the authority for public facts and wording in [index.html](index.html). Last reviewed: October 18, 2026. The resume establishes personal facts; the user's clarification establishes both projects as internship work.
 
 ## Profile and introduction
 
@@ -27,25 +27,25 @@ Both projects below belong to this internship. The shared introduction reads: �
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
-A web app that turns a game history into move analysis, explanations, and targeted practice. Review a mistake, compare a better move, then try the position again.
+I worked on the analysis interface and feedback pipeline for a chess coaching app. It connects Stockfish reviews to explanations, candidate moves, and practice on the same position.
 
 **A responsive analysis interface.** I ran Stockfish in a Web Worker and added request cancellation and result versioning, so changing positions would not leave an old result on screen.
 
 **Feedback grounded in the game.** I added structured-output validation, checks against engine evidence, and fallbacks for API failures. Explanations adapt to the player's rating and language; saved reviews reopen without another LLM call.
 
-Preview: real app capture showing the engine-backed Qe7 alternative. Walkthrough: Import, Review, Coaching, Compare, Practice, Solved. The three direct stage controls are Review, Compare, Practice. The pausable sequence uses genuine local screenshots and a sample game. Every enlarged/inline stage retains “Local app capture; no live LLM request.” This is a screenshot walkthrough, not a recording of live model requests.
+Visible six-step walkthrough: Import PGN → Find a critical move → Read a grounded explanation → Compare the alternative → Practice the position → Confirm the solution. The sample game reaches 3…Nf6; the engine-backed alternative is Qe7, and practice ends with Qxf7#. Each step has an actual local screenshot and a short input/action/output explanation. Optional playback and a downloadable GIF use the same real captures. Keep the local-engine/no-live-LLM context visible. This is a screenshot walkthrough, not a recording of live model requests.
 
 ## Fog of War chess AI
 
 Python, PyTorch, FastAPI, JavaScript.
 
-An agent for chess with incomplete information. I prepared player-visible observations from **1,554 games and 88,949 plies**, then worked on model training, self-play, and browser integration.
+I prepared training data and trained policy-and-value models for chess with a partially visible board. My work also covered self-play, resumable training, and browser integration. The first walkthrough step shows the approved scale: **1,554 games and 88,949 plies**.
 
 **Keeping hidden information hidden.** I split data by game and masked opponent histories, so the model's input would not reveal information the player could not know.
 
 **Training through deployment.** I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script keep observations, inference, and move execution in sync.
 
-Preview: original vector schematic of a partially visible board and Dataset/Train/Serve. Expanded illustration has Dataset, Train, Self-play, Serve stages. Keep “Illustrated workflow” visible. This is neither a training recording nor a model-performance benchmark. “Browser script” does not mean LLM-generated scripts.
+Visible six-step illustration: Replay games → Mask hidden information → Build examples and split by game → Train policy and value → Self-play and checkpoints → Serve through a browser bridge. Within each stage, example boards, samples or data flow change to show the transformation. The final step shows a browser script sending observations to local inference and applying a returned move. Keep “Illustrated workflow” and the example-position context visible. This is neither a training recording nor a model-performance benchmark. Data-processing scripts and the browser userscript do not imply LLM-generated scripts.
 
 ## Research
 

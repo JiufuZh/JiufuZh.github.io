@@ -12,10 +12,10 @@
   <link rel="canonical" href="https://jiufuzh.github.io/">
   <title>Jiufu Zhou</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="fow-demo.css">
-  <script src="fow-demo.js" defer></script>
-  <script src="main.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261018-steps2">
+  <link rel="stylesheet" href="fow-demo.css?v=20261018-steps2">
+  <script src="fow-demo.js?v=20261018-steps2" defer></script>
+  <script src="main.js?v=20261018-steps2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -86,58 +86,74 @@
 
         <div class="project-list" id="work">
           <article class="project" id="chess-analysis" aria-labelledby="chess-title">
-            <div class="project-overview">
-              <button class="project-thumbnail chess-thumbnail" type="button" data-enlarge-chess aria-label="Enlarge real Chess app screenshot">
-                <img src="assets/chess/chess-poster.webp" width="1280" height="720" alt="Real Chess interface comparing a played move with the engine's Qe7 alternative" loading="lazy">
-                <span class="preview-label"><span aria-hidden="true">▷</span> Actual app interface</span>
-              </button>
-              <div class="project-summary">
-                <h3 id="chess-title">Chess analysis and coaching</h3>
-                <p>A web app that turns a game history into move analysis, explanations, and targeted practice. Review a mistake, compare a better move, then try the position again.</p>
-                <p class="stack">React · FastAPI · Stockfish WASM · OpenAI API</p>
-                <div class="project-links"><button id="show-chess-details" type="button">View walkthrough</button><a href="#chess-engineering">Engineering notes</a></div>
-              </div>
+            <div class="project-summary">
+              <div class="project-heading"><h3 id="chess-title">Chess analysis and coaching</h3><span class="project-type">Interactive web application</span></div>
+              <p>I worked on the analysis interface and feedback pipeline for a chess coaching app. It connects Stockfish reviews to explanations, candidate moves, and practice on the same position.</p>
+              <p class="stack">React · FastAPI · Stockfish WASM · OpenAI API</p>
             </div>
-            <details class="project-details" id="chess-details">
-              <summary>Walkthrough &amp; engineering notes <span aria-hidden="true">+</span></summary>
-              <div class="details-body">
-                <figure class="chess-media">
-                  <div class="capture-stage"><img id="chess-capture" src="assets/chess/06-alternative.png" alt="Chess app showing an engine-backed alternative move" width="1280" height="720" loading="lazy"></div>
-                  <div class="capture-controls" aria-label="Chess walkthrough stages">
-                    <div class="stage-buttons"><button type="button" data-frame="0" aria-pressed="false">Review</button><button type="button" data-frame="1" aria-pressed="true">Compare</button><button type="button" data-frame="2" aria-pressed="false">Practice</button></div>
-                    <div class="media-actions"><button id="capture-play" type="button" aria-pressed="false" aria-label="Play Chess walkthrough">Play walkthrough</button><button id="expand-demo" type="button">Enlarge</button></div>
+
+            <section class="walkthrough chess-walkthrough" data-chess-walkthrough aria-labelledby="chess-walkthrough-title">
+              <div class="walkthrough-toolbar">
+                <div><h4 id="chess-walkthrough-title">Watch the walkthrough</h4><p>One sample game, from import to a solved exercise.</p></div>
+                <div class="walkthrough-actions"><button id="capture-play" type="button" aria-pressed="false" aria-label="Play Chess walkthrough">Play walkthrough</button><a href="assets/chess/chess-walkthrough.gif" download>Download GIF ↗</a></div>
+              </div>
+              <div class="walkthrough-layout">
+                <ol class="walkthrough-steps" aria-label="Chess walkthrough steps">
+                  <li><button class="walkthrough-step" type="button" data-chess-step="0" data-active="true" aria-current="step" aria-controls="chess-step-panel"><span class="step-number">01</span><span><span class="step-title">Import a game</span><span class="step-note">Start with a PGN move history</span></span></button></li>
+                  <li><button class="walkthrough-step" type="button" data-chess-step="1" data-active="false" aria-controls="chess-step-panel"><span class="step-number">02</span><span><span class="step-title">Find the turning point</span><span class="step-note">Select an engine-reviewed mistake</span></span></button></li>
+                  <li><button class="walkthrough-step" type="button" data-chess-step="2" data-active="false" aria-controls="chess-step-panel"><span class="step-number">03</span><span><span class="step-title">Understand why it fails</span><span class="step-note">Connect the move to its consequence</span></span></button></li>
+                  <li><button class="walkthrough-step" type="button" data-chess-step="3" data-active="false" aria-controls="chess-step-panel"><span class="step-number">04</span><span><span class="step-title">Compare a candidate</span><span class="step-note">Inspect the Qe7 board overlay</span></span></button></li>
+                  <li><button class="walkthrough-step" type="button" data-chess-step="4" data-active="false" aria-controls="chess-step-panel"><span class="step-number">05</span><span><span class="step-title">Try it yourself</span><span class="step-note">Practice with the answer hidden</span></span></button></li>
+                  <li><button class="walkthrough-step" type="button" data-chess-step="5" data-active="false" aria-controls="chess-step-panel"><span class="step-number">06</span><span><span class="step-title">Check the result</span><span class="step-note">Play the mating move and get feedback</span></span></button></li>
+                </ol>
+                <div class="walkthrough-main" id="chess-step-panel">
+                  <figure class="chess-media">
+                    <div class="capture-stage"><img id="chess-capture" src="assets/chess/01-import.png" alt="Real Chess app import panel containing the Scholar's Mate demonstration PGN" width="1280" height="720" loading="lazy"></div>
+                    <figcaption id="capture-caption">The demonstration starts with a short Scholar's Mate game in the import panel.</figcaption>
+                  </figure>
+                  <div class="walkthrough-toolbar step-toolbar">
+                    <span id="chess-step-count">Step 1 of 6</span>
+                    <div class="walkthrough-actions"><button id="capture-previous" type="button" disabled aria-label="Previous Chess walkthrough step">← Previous</button><button id="capture-next" type="button" aria-label="Next Chess walkthrough step">Next →</button><button id="expand-demo" type="button">Enlarge</button></div>
                   </div>
-                  <figcaption id="capture-caption">Local sample game: compare an engine-backed alternative. No live LLM request.</figcaption>
-                </figure>
-                <div class="implementation" id="chess-engineering">
-                  <h4>What I worked on</h4>
-                  <p><strong>A responsive analysis interface.</strong> I ran Stockfish in a Web Worker and added request cancellation and result versioning, so changing positions would not leave an old result on screen.</p>
-                  <p><strong>Feedback grounded in the game.</strong> I added structured-output validation, checks against engine evidence, and fallbacks for API failures. Explanations adapt to the player's rating and language; saved reviews reopen without another LLM call.</p>
+                  <div class="step-copy">
+                    <h5 id="chess-step-title">Import a game</h5>
+                    <p id="chess-step-description">Paste a PGN game or upload a .pgn file. The app reconstructs the board and move history so each position can be reviewed.</p>
+                    <dl class="step-io"><div><dt>Input</dt><dd id="chess-step-input">PGN move history from a completed game</dd></div><div><dt>Output</dt><dd id="chess-step-output">A game ready for move-by-move review</dd></div></dl>
+                  </div>
                 </div>
+              </div>
+              <p class="walkthrough-footnote">Six actual screenshots from the working English app, captured locally with Stockfish. The walkthrough uses local engine-backed coaching; no live LLM request was made. The downloadable GIF is a screenshot sequence.</p>
+              <p class="walkthrough-status" id="chess-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            </section>
+
+            <details class="project-details" id="chess-details">
+              <summary>Engineering notes <span aria-hidden="true">+</span></summary>
+              <div class="implementation details-body" id="chess-engineering">
+                <h4>What I worked on</h4>
+                <p><strong>A responsive analysis interface.</strong> I ran Stockfish in a Web Worker and added request cancellation and result versioning, so changing positions would not leave an old result on screen.</p>
+                <p><strong>Feedback grounded in the game.</strong> I added structured-output validation, checks against engine evidence, and fallbacks for API failures. Explanations adapt to the player's rating and language; saved reviews reopen without another LLM call.</p>
               </div>
             </details>
           </article>
 
           <article class="project" id="fog-of-war" aria-labelledby="fow-title">
-            <div class="project-overview">
-              <a class="project-thumbnail fow-thumbnail" href="#fow-workflow" aria-label="Explore the illustrated Fog of War workflow"><img src="assets/fow-preview.svg" width="640" height="400" alt="Illustration of a partially visible chessboard and the dataset, training, and inference pipeline" loading="lazy"><span class="preview-label">Illustrated workflow</span></a>
-              <div class="project-summary">
-                <h3 id="fow-title">Fog of War chess AI</h3>
-                <p>An agent for chess with incomplete information. I prepared player-visible observations from <strong>1,554 games and 88,949 plies</strong>, then worked on model training, self-play, and browser integration.</p>
-                <p class="stack">Python · PyTorch · FastAPI · JavaScript</p>
-                <div class="project-links"><button id="show-fow-details" type="button">Explore pipeline</button><a href="#fow-engineering">Engineering notes</a></div>
+            <div class="project-summary">
+              <h3 id="fow-title">Fog of War chess AI</h3>
+              <p>I prepared training data and trained policy-and-value models for chess with a partially visible board. My work also covered self-play, resumable training, and browser integration.</p>
+              <p class="stack">Python · PyTorch · FastAPI · JavaScript</p>
+              <span class="project-type">Internship project · illustrated training and inference workflow</span>
+            </div>
+            <div id="fow-workflow">
+              <div id="fow-demo">
+                <p>From recorded games to a browser move: replay 1,554 games and 88,949 plies, construct player-visible observations, split examples by complete game, train a policy-and-value model, save resumable self-play checkpoints, and connect local inference to a browser script.</p>
               </div>
             </div>
             <details class="project-details" id="fow-details">
-              <summary>Training pipeline &amp; engineering notes <span aria-hidden="true">+</span></summary>
-              <div class="details-body">
-                <div class="workflow-heading" id="fow-workflow"><h4>From observations to moves</h4><p>Illustrated workflow</p></div>
-                <div id="fow-demo"><p>Dataset → Model training → Self-play → Inference and browser bridge. The pipeline uses player-visible observations and game-level splits.</p></div>
-                <div class="implementation" id="fow-engineering">
-                  <h4>What I worked on</h4>
-                  <p><strong>Keeping hidden information hidden.</strong> I split data by game and masked opponent histories, so the model's input would not reveal information the player could not know.</p>
-                  <p><strong>Training through deployment.</strong> I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script keep observations, inference, and move execution in sync.</p>
-                </div>
+              <summary>Engineering notes <span aria-hidden="true">+</span></summary>
+              <div class="implementation details-body" id="fow-engineering">
+                <h4>What I worked on</h4>
+                <p><strong>Keeping hidden information out of the input.</strong> I constructed player-visible observations and masked opponent histories. Splitting by complete game keeps positions from the same game together during training and evaluation.</p>
+                <p><strong>Connecting training to use.</strong> I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. The FastAPI service and JavaScript browser script carry observations into inference and return the selected move to the board.</p>
               </div>
             </details>
           </article>
