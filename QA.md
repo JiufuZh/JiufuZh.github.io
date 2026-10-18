@@ -15,6 +15,6 @@ This revision replaces the FOW illustrations with actual local execution capture
 | Controller | Eight isolated tests pass remaining-duration pause/resume, final stop/replay, bounds, clip switching, reduced motion, visibility, modal controls and focus restoration. These tests are not real-device checks. |
 | Structure / console | Asset, fragment and ARIA targets exist; no duplicate IDs. JavaScript syntax and diff whitespace checks pass. Browser console has no warnings/errors during final interactions. |
 | Direction | User-approved agent simulation checked the real-media/plain-chapter direction; no Jev API or paid service was called. About and portrait remain unchanged. |
-| Publication | Local checks complete; GitHub Pages verification pending. |
+| Publication | GitHub Pages built `de1bfe8`. Live browser verified both clip switches, final training capture and actual browser move. Both GIFs return HTTP 200 as image/gif with the expected sizes. Live screenshot saved locally. |
 
 Private evidence and screenshots stay in ignored `.research/` and `.qa/`. No Safari/Android device or formal accessibility certification is claimed.

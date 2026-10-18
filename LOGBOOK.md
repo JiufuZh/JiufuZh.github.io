@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 24/25 slices. Current: S25, publish and check live media. Blockers: none. Next: verify Pages build and live recordings.
+Completed: 25/25 slices. Current: delivered. Blockers: none. Next: user review of the live recordings.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -22,7 +22,7 @@ Completed: 24/25 slices. Current: S25, publish and check live media. Blockers: n
 | S22 | Capture training and browser execution | 已完成 | Epoch 1→2 resume and same-checkpoint e2→e4 verified; 9 captures, two GIFs inspected | [Assets](assets/) |
 | S23 | Simplify project presentation | 已完成 | Plain chapters/media and visible notes; controller checks and desktop view pass | [Homepage](index.html) |
 | S24 | Verify media, interactions and disclosure | 已完成 | Independent evidence/media review, 15 chapter mappings, 320–1440px, playback and reduced motion pass | [QA](QA.md) |
-| S25 | Publish real-media revision | 进行中 | Remote commit, Pages build and live playback | [Live](https://jiufuzh.github.io/) |
+| S25 | Publish real-media revision | 已完成 | Pages built de1bfe8; live clip/image changes and both GIF200/byte counts verified | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -38,3 +38,5 @@ Completed: 24/25 slices. Current: S25, publish and check live media. Blockers: n
 2026-10-18: User accepted the homepage direction but requested substantially clearer, step-by-step project demonstrations, preferably animated. Keep About unchanged; expand the internship projects into visible walkthroughs.
 
 2026-10-18: User requests actual FOW training/browser-script GIFs and less template-like project presentation. Inspect and record real local runs; clearly distinguish demo conditions from historical training. Keep existing private-data boundaries.
+
+2026-10-18: Real CPU training and resume captured, then the same checkpoint drove the original browser bridge to e2→e4. Two GIFs published; project panels simplified. Capture adapters, checkpoints and audit evidence remain private.
