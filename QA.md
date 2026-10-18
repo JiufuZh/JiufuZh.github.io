@@ -1,6 +1,6 @@
 # Verification
 
-Checked October 17, 2026. Local verification is complete. GitHub publication is in progress.
+Checked October 17, 2026. Local and live verification are complete.
 
 | Check | Result |
 |---|---|
@@ -15,6 +15,6 @@ Checked October 17, 2026. Local verification is complete. GitHub publication is 
 | FOW controls | Pass. Four tabs, arrow/Home/End navigation. Keyboard focus pauses playback; fixed an autoplay/focus mismatch found by independent review. |
 | Browser console | Pass. No warnings or errors during interaction checks. |
 | Reduced motion | Pass. Emulated reduced motion: both demos static, smooth scrolling disabled. Emulation restored afterward. |
-| GitHub publication | In progress under the original request to upload to GitHub. |
+| GitHub publication | Pass. GitHub Pages reported built for website commit `1218018`. Live HTTPS page renders with portrait, Chess capture and four FOW stages. |
 
 Screenshots are kept in ignored `.qa/`. Original research and reproduction details are kept in ignored `.research/`. Automated analysis does not establish user-perceived performance or WCAG conformance; no such certification is claimed.

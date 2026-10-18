@@ -2,6 +2,8 @@
 
 An English portfolio focused on software engineering, applied AI, and two projects from a DeepBrain Technology internship.
 
+**Live site:** [jiufuzh.github.io](https://jiufuzh.github.io/)
+
 ## Run locally
 
 No installation or build step is required. From this folder:
@@ -29,4 +31,4 @@ Private repositories, internal reports, original resume files, credentials and r
 
 This static site can be served directly from the repository root on the `main` branch. `.nojekyll` keeps it buildless. Use the GitHub Pages settings to select `main` and `/ (root)`.
 
-Publication status is tracked in [LOGBOOK.md](LOGBOOK.md). No analytics, contact-form backend, external fonts, or paid service is required.
+The site is published from `main` at the repository root. Verification is recorded in [QA.md](QA.md), with progress in [LOGBOOK.md](LOGBOOK.md). No analytics, contact-form backend, external fonts, or paid service is required.
