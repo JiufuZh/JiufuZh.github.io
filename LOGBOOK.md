@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 12/12 slices. Current: delivered. Blockers: none. Next: user review of the reference-led homepage.
+Completed: 13/14 slices. Current: S14, publish repaired portrait. Blockers: none. Next: verify deployed image and homepage.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -10,6 +10,8 @@ Completed: 12/12 slices. Current: delivered. Blockers: none. Next: user review o
 | S10 | Build reference-led personal homepage | 已完成 | Profile/about layout, project previews and fact review passed | [Homepage](index.html) |
 | S11 | Verify revised layout and controls | 已完成 | Desktop/mobile layout, assets, keyboard, media and disclosure checked | [QA](QA.md) |
 | S12 | Publish and verify live result | 已完成 | `3832529` built; live layout, previews and Chess viewer verified | [Live](https://jiufuzh.github.io/) |
+| S13 | Repair clothing moire in portrait | 已完成 | Local filtering; face/skin/outside-mask RGB equality verified; rendered sizes inspected | [Portrait](assets/jiufu-zhou-retouched.webp) |
+| S14 | Publish repaired portrait | 进行中 | Verify deployed image and homepage | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 

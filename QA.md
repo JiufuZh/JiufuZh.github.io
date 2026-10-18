@@ -18,3 +18,7 @@ Reference-led revision checked October 17, 2026. Local validation and GitHub pub
 The reference site's layout was inspected in the browser. No personal content, images or code were copied from it. Three agents handled content, media behavior, and the FOW preview independently. Current facts and captions are synchronized in [CONTENT.md](CONTENT.md).
 
 Original revisions were previously published at `1218018` and `491dfbc`; the user rejected their visual direction. Their checks do not establish verification for this new design. Screenshots and private notes remain in ignored `.qa/` and `.research/`. No claim of WCAG certification, Safari/Android device testing, or measured user performance is made.
+
+## Portrait moire repair
+
+User approved non-generative local processing. Applied an inward-feathered apparel mask with mild texture filtering and local suppression of broad shoulder interference. Selected the lighter variant after full-size, 230/210/170px and 2x-density rendered comparisons. Independent review favored it over stronger blur. The final lossless WebP remains 779x1134; all pixels above y660, skin/neck pixels, and every pixel outside the apparel mask match the decoded original exactly. The original JPG's SHA-256 is unchanged. Local browser confirms the new asset loads at the same crop and size. Publication verification pending.
