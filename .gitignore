@@ -1,0 +1,8 @@
+.research/
+node_modules/
+.playwright/
+.qa/
+*.log
+.env
+.env.*
+!.env.example
