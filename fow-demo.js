@@ -5,30 +5,26 @@
   const stages = [
     {
       name: 'Dataset',
-      title: 'Learn from a partial view.',
-      description: 'Turn recorded games into player-view observations and move histories. Hidden information stays outside the model input.',
-      details: ['1,554 recorded games', '88,949 plies'],
+      title: 'Preparing game records',
+      description: 'I replayed 1,554 games (88,949 plies) into player-view observations and move histories, with opponent moves masked.',
       alt: 'Illustration of a partially visible chessboard becoming player-view training samples.'
     },
     {
       name: 'Train',
-      title: 'Connect the board with its history.',
-      description: 'Combine board and history representations to train a policy and value model for decisions under uncertainty.',
-      details: ['Board observations', 'Move history'],
+      title: 'Training the policy and value model',
+      description: 'The model combines board observations and move history to predict moves and estimate the position’s value.',
       alt: 'Illustration of board and history encoders joining a policy and value model.'
     },
     {
       name: 'Self-play',
-      title: 'Close the learning loop.',
-      description: 'Generate game trajectories through self-play, then use their outcomes for policy and value updates.',
-      details: ['Game rollouts', 'Policy and value updates'],
+      title: 'Generating self-play games',
+      description: 'Self-play produces game trajectories. Their outcomes provide targets for policy and value updates.',
       alt: 'Illustration of two policies playing a game and returning the outcome to the learning loop.'
     },
     {
       name: 'Serve',
-      title: 'Bring the model to the board.',
-      description: 'Connect local inference to a browser bridge script. The player view goes in; a suggested move comes back.',
-      details: ['Local inference', 'Browser bridge script'],
+      title: 'Connecting inference to the browser',
+      description: 'A browser script sends the player’s view to a local FastAPI service and receives a suggested move.',
       alt: 'Illustration of a browser chessboard exchanging a player view and suggested move with local inference.'
     }
   ];
@@ -45,23 +41,23 @@
         const py = y + (reverse ? 7 - row : row) * unit;
         cells += `<rect x="${px}" y="${py}" width="${unit + .2}" height="${unit + .2}" fill="${fill}"/>`;
         const piece = pieces[`${row},${col}`];
-        if (piece) cells += `<text x="${px + unit / 2}" y="${py + unit * .77}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${unit * .88}" fill="#192B45">${piece}</text>`;
+        if (piece) cells += `<text x="${px + unit / 2}" y="${py + unit * .77}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${unit * .88}" fill="#24292f">${piece}</text>`;
       }
     }
-    return `<g>${cells}<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="none" stroke="#B8CAE2" stroke-width="1"/></g>`;
+    return `<g>${cells}<rect x="${x}" y="${y}" width="${size}" height="${size}" fill="none" stroke="#cbd5df" stroke-width="1"/></g>`;
   }
 
   function box(x, y, width, height, label, secondary) {
-    return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="8" fill="#FFFFFF" stroke="#B8CAE2"/><text x="${x + width / 2}" y="${y + (secondary ? height * .42 : height / 2 + 6)}" text-anchor="middle" fill="#192B45" font-size="18" font-weight="600">${label}</text>${secondary ? `<text x="${x + width / 2}" y="${y + height * .72}" text-anchor="middle" fill="#637389" font-size="15">${secondary}</text>` : ''}</g>`;
+    return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="8" fill="#FFFFFF" stroke="#cbd5df"/><text x="${x + width / 2}" y="${y + (secondary ? height * .42 : height / 2 + 6)}" text-anchor="middle" fill="#24292f" font-size="18" font-weight="600">${label}</text>${secondary ? `<text x="${x + width / 2}" y="${y + height * .72}" text-anchor="middle" fill="#57606a" font-size="15">${secondary}</text>` : ''}</g>`;
   }
 
   function illustration(index, id) {
     const arrow = `${id}-arrow`;
-    const path = (d, extra) => `<path d="${d}" fill="none" stroke="#2859C5" stroke-width="2" marker-end="url(#${arrow})" ${extra || ''}/>`;
+    const path = (d, extra) => `<path d="${d}" fill="none" stroke="#245b9a" stroke-width="2" marker-end="url(#${arrow})" ${extra || ''}/>`;
     let content = '';
     if (index === 0) {
       content = board(40, 44, 200, false) +
-        '<text x="140" y="278" text-anchor="middle" fill="#637389" font-size="18">Player view</text>' +
+        '<text x="140" y="278" text-anchor="middle" fill="#57606a" font-size="18">Player view</text>' +
         path('M260 144 H318') + box(340, 58, 252, 72, 'Game records', 'Replay each position') +
         path('M466 144 V172') + box(340, 190, 252, 72, 'Training samples', 'Visible board + history');
     } else if (index === 1) {
@@ -70,25 +66,25 @@
         box(264, 62, 154, 64, 'Board encoder') + box(264, 188, 154, 64, 'History encoder') +
         path('M430 94 H450 V155 H473') + path('M430 220 H450 V155') +
         box(488, 115, 132, 80, 'Policy', '+ value') +
-        '<text x="110" y="278" text-anchor="middle" fill="#637389" font-size="18">Model input</text>';
+        '<text x="110" y="278" text-anchor="middle" fill="#57606a" font-size="18">Model input</text>';
     } else if (index === 2) {
       content = board(38, 44, 164, false) + board(438, 44, 164, true) +
-        '<text x="120" y="241" text-anchor="middle" fill="#192B45" font-size="18">Policy</text>' +
-        '<text x="520" y="241" text-anchor="middle" fill="#192B45" font-size="18">Opponent</text>' +
+        '<text x="120" y="241" text-anchor="middle" fill="#24292f" font-size="18">Policy</text>' +
+        '<text x="520" y="241" text-anchor="middle" fill="#24292f" font-size="18">Opponent</text>' +
         path('M225 90 H413') + path('M414 164 H226') +
-        '<text x="320" y="132" text-anchor="middle" fill="#637389" font-size="18">Game rollout</text>' +
+        '<text x="320" y="132" text-anchor="middle" fill="#57606a" font-size="18">Game rollout</text>' +
         path('M120 256 V282 H240') + path('M520 256 V282 H400') +
         box(254, 256, 132, 52, 'Outcome');
     } else {
-      content = '<rect x="32" y="32" width="204" height="250" rx="8" fill="#FFFFFF" stroke="#B8CAE2"/><path d="M32 65 H236" stroke="#B8CAE2"/><circle cx="48" cy="48" r="3" fill="#B8CAE2"/><circle cx="60" cy="48" r="3" fill="#B8CAE2"/><circle cx="72" cy="48" r="3" fill="#B8CAE2"/>' +
+      content = '<rect x="32" y="32" width="204" height="250" rx="8" fill="#FFFFFF" stroke="#cbd5df"/><path d="M32 65 H236" stroke="#cbd5df"/><circle cx="48" cy="48" r="3" fill="#cbd5df"/><circle cx="60" cy="48" r="3" fill="#cbd5df"/><circle cx="72" cy="48" r="3" fill="#cbd5df"/>' +
         board(50, 82, 168, false) +
-        '<text x="134" y="311" text-anchor="middle" fill="#192B45" font-size="18">Browser bridge</text>' +
+        '<text x="134" y="311" text-anchor="middle" fill="#24292f" font-size="18">Browser bridge</text>' +
         path('M253 111 H374') + path('M374 221 H253') +
-        '<text x="313" y="92" text-anchor="middle" fill="#637389" font-size="16">Player view</text>' +
-        '<text x="313" y="248" text-anchor="middle" fill="#637389" font-size="16">Suggested move</text>' +
+        '<text x="313" y="92" text-anchor="middle" fill="#57606a" font-size="16">Player view</text>' +
+        '<text x="313" y="248" text-anchor="middle" fill="#57606a" font-size="16">Suggested move</text>' +
         box(395, 113, 215, 108, 'Local inference', 'Trained model');
     }
-    return `<svg viewBox="0 0 640 336" role="img" aria-labelledby="${id}-svg-title" xmlns="http://www.w3.org/2000/svg"><title id="${id}-svg-title">${stages[index].alt}</title><defs><marker id="${arrow}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#2859C5" stroke-width="1.5"/></marker></defs>${content}</svg>`;
+    return `<svg viewBox="0 0 640 336" role="img" aria-labelledby="${id}-svg-title" xmlns="http://www.w3.org/2000/svg"><title id="${id}-svg-title">${stages[index].alt}</title><defs><marker id="${arrow}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#245b9a" stroke-width="1.5"/></marker></defs>${content}</svg>`;
   }
 
   window.renderFowDemo = function renderFowDemo(target) {
@@ -100,7 +96,7 @@
     let timer = null;
     let destroyed = false;
     target.classList.add('fow-demo');
-    target.innerHTML = `<div class="fow-demo__toolbar"><span class="fow-demo__label">Illustrated workflow</span><button class="fow-demo__play" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> <span data-play-label>Play walkthrough</span></button></div><div class="fow-demo__tabs" role="tablist" aria-label="Fog-of-War AI workflow stages">${stages.map((stage, index) => `<button class="fow-demo__tab" type="button" role="tab" id="${id}-tab-${index}" aria-controls="${id}-panel" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" data-stage="${index}"><span class="fow-demo__step" aria-hidden="true">${index + 1}</span>${stage.name}</button>`).join('')}</div><div class="fow-demo__panel" role="tabpanel" id="${id}-panel" aria-labelledby="${id}-tab-0" tabindex="0"><div class="fow-demo__figure"></div><div class="fow-demo__copy"><h4></h4><p></p><ul class="fow-demo__details"></ul></div></div><div class="fow-demo__footer"><span>Conceptual illustration of the engineering workflow.</span><span class="fow-demo__count" aria-hidden="true">1 / 4</span></div><span class="fow-demo__sr" role="status" aria-live="polite"></span>`;
+    target.innerHTML = `<div class="fow-demo__controls"><div class="fow-demo__tabs" role="tablist" aria-label="Fog-of-War AI workflow stages">${stages.map((stage, index) => `<button class="fow-demo__tab" type="button" role="tab" id="${id}-tab-${index}" aria-controls="${id}-panel" aria-selected="${index === 0}" tabindex="${index === 0 ? '0' : '-1'}" data-stage="${index}">${stage.name}</button>`).join('')}</div><button class="fow-demo__play" type="button" aria-pressed="false" aria-label="Play walkthrough"><span aria-hidden="true">▶</span> <span data-play-label>Play</span></button></div><div class="fow-demo__panel" role="tabpanel" id="${id}-panel" aria-labelledby="${id}-tab-0" tabindex="0"><div class="fow-demo__figure"></div><div class="fow-demo__copy"><h4></h4><p></p></div></div><p class="fow-demo__caption">Illustrated workflow</p><span class="fow-demo__sr" role="status" aria-live="polite"></span>`;
 
     const tabs = Array.from(target.querySelectorAll('[role="tab"]'));
     const panel = target.querySelector('[role="tabpanel"]');
@@ -118,22 +114,22 @@
       target.querySelector('.fow-demo__figure').innerHTML = illustration(current, id);
       target.querySelector('.fow-demo__copy h4').textContent = stage.title;
       target.querySelector('.fow-demo__copy p').textContent = stage.description;
-      target.querySelector('.fow-demo__details').innerHTML = stage.details.map(item => `<li>${item}</li>`).join('');
-      target.querySelector('.fow-demo__count').textContent = `${current + 1} / ${stages.length}`;
       if (announce) status.textContent = `${stage.name}. ${stage.title}`;
     }
     function pause() {
       window.clearInterval(timer);
       timer = null;
       play.setAttribute('aria-pressed', 'false');
+      play.setAttribute('aria-label', 'Play walkthrough');
       play.querySelector('[aria-hidden]').textContent = '▶';
-      play.querySelector('[data-play-label]').textContent = 'Play walkthrough';
+      play.querySelector('[data-play-label]').textContent = 'Play';
     }
     function start() {
       if (timer || destroyed) return;
       play.setAttribute('aria-pressed', 'true');
+      play.setAttribute('aria-label', 'Pause walkthrough');
       play.querySelector('[aria-hidden]').textContent = 'Ⅱ';
-      play.querySelector('[data-play-label]').textContent = 'Pause walkthrough';
+      play.querySelector('[data-play-label]').textContent = 'Pause';
       timer = window.setInterval(() => update(current + 1, false), 4500);
     }
     function onClick(event) {

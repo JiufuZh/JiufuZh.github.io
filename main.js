@@ -36,7 +36,7 @@
   function stopPlayback() {
     if (timer !== null) showFrame(frame);
     timer = null;
-    play.innerHTML = 'Play <span aria-hidden="true">▷</span>';
+    play.textContent = 'Play walkthrough';
     play.setAttribute('aria-pressed', 'false');
     play.setAttribute('aria-label', 'Play Chess walkthrough');
     syncDialog();
@@ -52,7 +52,7 @@
     caption.textContent = 'Local UI captures with a sample game: import, analyze, compare, practice. No live LLM request.';
     buttons.forEach(button => button.setAttribute('aria-pressed', 'false'));
     timer = true;
-    play.innerHTML = 'Pause <span aria-hidden="true">Ⅱ</span>';
+    play.textContent = 'Pause';
     play.setAttribute('aria-pressed', 'true');
     play.setAttribute('aria-label', 'Pause Chess walkthrough');
     syncDialog();

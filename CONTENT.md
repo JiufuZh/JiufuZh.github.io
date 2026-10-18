@@ -1,73 +1,52 @@
 # Homepage content
 
-This file is the source of truth for public biographical copy, project attribution, dates, and selected resume-disclosed results. Both featured projects are internship projects. Last reviewed: October 17, 2026.
+This file records the public copy and facts used in `index.html`. Both featured projects are internship projects. The resume is authoritative for dates and personal claims; user clarification is authoritative for project attribution. Last reviewed: October 17, 2026.
 
 ## Introduction
 
 **Jiufu Zhou**
 
-**Software engineering · Applied AI**
+I'm a master's student in Information Management at the University of Washington, based in Seattle. I expect to graduate in June 2027.
 
-**Intelligent systems. Thoughtful software.**
+During my software engineering internship at DeepBrain Technology, I worked on a chess coaching app and a Fog of War chess agent. My work covered the web interface, inference services, and model training.
 
-I'm Jiufu, a software engineer and master's student at the University of Washington. I build across the full AI stack—from training data and models to reliable services and the interfaces people use.
+Profile links: [Email](mailto:zjfu2003@gmail.com) · [GitHub](https://github.com/JiufuZh)
 
-Seattle, WA · MS Information Management, expected June 2027
+## Experience
 
-Primary links: [Selected work](#work) · [Email](mailto:zjfu2003@gmail.com) · [GitHub profile](https://github.com/JiufuZh)
+**DeepBrain Technology**
 
-## Internship
+Software Development Engineer Intern · May–September 2026
 
-**DeepBrain Technology (StaySafeNow, Inc.)**
+StaySafeNow, Inc., Tenafly, New Jersey (hybrid)
 
-Software Development Engineer Intern · May–September 2026 · Hybrid, Tenafly, NJ
+## Chess analysis and coaching
 
-I worked across two chess AI systems: a coaching product that explains decisions, and an agent that learns to act with incomplete information. My work spanned data preparation, model training, inference services, and user-facing workflows.
+React, FastAPI, Stockfish WASM, OpenAI API
 
-## 01 · Chess, explained
+I built a web app that takes a PGN game history and produces move analysis, explanations, and practice recommendations. Players can review a mistake, compare it with an alternative, then practice the position.
 
-**Turn a game history into feedback a player can actually use.**
+**Keeping the interface responsive.** Stockfish runs in a Web Worker. I added request cancellation and result versioning so changing positions during analysis would not leave the interface showing an old result.
 
-I designed, built, and deployed a full-stack chess coaching platform that turns PGN game histories into Stockfish-backed move analysis, personalized explanations, and targeted practice.
+**Checking the feedback.** The coaching pipeline adapts explanations to the player's rating and language. I added structured-output validation, checks against engine evidence, and fallback responses for API failures. Saved reviews can be opened without another LLM call.
 
-**The engineering challenge**
+Walkthrough stages: Review · Compare · Practice
 
-An explanation needs to agree with the position. A responsive interface also needs to handle long-running analysis and changing user input.
+Initial caption: “Local sample game. Stockfish analysis; no live LLM request.”
 
-**What I built**
+The media consists of genuine local interface captures with a sample game. Keep capture context in the captions, including when enlarged. Describe the media as a walkthrough, rather than a video recording.
 
-- An LLM coaching pipeline with bilingual explanations adapted to the player's rating, structured-output validation, engine-grounded consistency checks, and deterministic fallbacks when API calls fail.
-- Browser-side Stockfish analysis in Web Workers, with request cancellation and result versioning to prevent stale updates.
-- Saved reviews that can be revisited without additional LLM calls, plus personalized puzzle recommendations and spaced-repetition schedules.
+## Fog of War chess AI
 
-**Workflow labels:** Game history → Engine analysis → Validated explanation → Targeted practice
+Python, PyTorch, FastAPI, JavaScript
 
-**Stack:** React · Python · FastAPI · Stockfish WASM · OpenAI API · Railway
+In Fog of War chess, players cannot see the entire board. I prepared training data from **1,554 games and 88,949 plies**, using observations limited to each player's view.
 
-**Demo caption:** Actual interface captured locally with a sample game. No live LLM request.
+**Avoiding information leakage.** I split the data by game and masked opponent histories, so the input would not reveal information the player could not know.
 
-Use this caption only for a genuine local interface capture. Illustrative or fixture-based states must be labeled as such. Describe the existing media as an app walkthrough, rather than a video recording.
+**Training and integration.** I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script connect inference to the game, keeping observations and move execution in sync.
 
-## 02 · Learning through the fog
-
-**An AI agent that has to decide without seeing the whole board.**
-
-I built a training and inference pipeline for Fog of War chess, where an agent must choose moves without access to the full board.
-
-**The engineering challenge**
-
-Hidden information changes both the model and its evaluation. Training observations must preserve the player's limited view, and histories must not reveal information the player could not know.
-
-**What I built**
-
-- A pipeline processing **1,554 games and 88,949 plies** into player-visible observations and supervised targets, with game-level splits and masked opponent histories to guard against information leakage.
-- A PyTorch policy-and-value model that combines board observations and move-history representations for decisions under uncertainty.
-- Supervised and search-guided self-play training using recorded moves, search visit distributions, and terminal outcomes. I used updated models in self-play and tested checkpoint-resumption consistency.
-- FastAPI inference and a JavaScript browser bridge that synchronize observations and move execution with live game state.
-
-**Walkthrough labels:** Dataset → Train → Self-play → Serve
-
-**Stack:** Python · PyTorch · FastAPI · JavaScript
+Walkthrough stages: Dataset → Train → Self-play → Serve
 
 **Visual label:** Illustrated workflow.
 
@@ -75,17 +54,15 @@ Hidden information changes both the model and its evaluation. Training observati
 
 ## Education
 
-**University of Washington** — MS in Information Management, expected June 2027. GPA: 3.90/4.00. Coursework includes Machine Learning and Building and Applying LLMs.
+**University of Washington** — MS Information Management. Expected June 2027 · GPA 3.90/4.00.
 
-**University at Albany, SUNY** — BS in Informatics, May 2025. GPA: 3.88/4.00.
+**University at Albany, SUNY** — BS Informatics. May 2025 · GPA 3.88/4.00.
 
 ## Research
 
-**Transparency in health supplement promotion on Instagram**
+At the University at Albany, I studied how Instagram posts disclose sponsorship and health credentials in supplement promotion. I developed and validated a codebook for **417 posts** and analyzed the results in Python.
 
-Researcher · August 2024–May 2025
-
-I developed and validated a content-analysis codebook for **417 posts**, achieved **0.95–1.00 intercoder reliability**, and conducted exploratory and statistical analysis in Python. A co-authored extended abstract was **accepted for presentation at the 112th National Communication Association Annual Conference**, New Orleans, November 2026.
+Our co-authored extended abstract was accepted for presentation at the **112th NCA Annual Conference in November 2026**. NCA refers to the National Communication Association.
 
 ## Publication boundaries
 

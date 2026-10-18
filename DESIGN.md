@@ -1,22 +1,11 @@
-# Design direction
+# Personal homepage revision
 
-The page should read like a thoughtful engineer's work, with enough detail to begin an interview. Spend visual emphasis on the real Chess interface and the FOW visibility diagram.
+The first version read too much like a product landing page. The user rejected that direction. The revision should feel like a page Jiufu maintains himself: identifiable, specific, and easy to read.
 
-Palette: paper `#FBFCFE`, white `#FFFFFF`, cloud `#EDF2F8`, ink `#192B45`, blue `#2859C5`, slate `#52647D`. These cool tones complement the portrait and distinguish interactive material without decorative gradients.
+Use a white page (#FFFFFF), dark text (#24292F), quieter secondary text (#57606A), restrained blue links (#245B9A) and pale blue only for selected controls (#EDF3F9). Keep the system sans-serif font. The name is the main heading, at 44px on desktop; project headings are 24px, body copy 16px.
 
-Typography: Segoe UI with system sans-serif fallbacks, generous heading scale, regular body weight, and a maximum prose measure of 68 characters. Avoid font downloads and preserve fast loading.
+Keep a centered reading area of about 900px. Start with name, a short first-person introduction, email/GitHub links and a small portrait. Follow with the internship, two project write-ups with large demonstrations, then education and research. Contact details belong in a small footer.
 
-Layout: a compact identity/navigation header; left-aligned introduction with a smaller portrait at right; a full-width internship band; two substantial project stories; concise education/research and contact. Each project pairs explanation with evidence. On mobile, preserve the reading order and put visuals immediately after their project introduction.
+Remove marketing slogans, the monogram, role dot, tinted section bands, fake browser chrome, three-column benefits, arrow decorations and the large contact pitch. Avoid replacing them with another decorative theme. The chess interface and the partial-information board already make this person's work recognizable.
 
-```
-Name                         navigation
-Role + focused headline      portrait
-Introduction + actions       education
-Internship      scope / engineering decisions
-Chess story                  actual interface capture
-FOW story                    illustrated workflow
-Education                    research
-Contact                      GitHub
-```
-
-Review against the brief: rejected generic skill-pill walls and repeated metric cards because the interviewer's task is assessing ownership. No decorative page-load animation. Chess captures advance only on request; FOW controls permit a deliberate walkthrough. Keep accessible focus, reduced-motion behavior and readable contrast as baseline requirements.
+Preserve keyboard controls, reduced-motion handling, static default demos and honest capture labels. Check factual consistency and desktop/mobile screenshots. Aesthetic judgment is not a substitute for those checks.

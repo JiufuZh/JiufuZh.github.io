@@ -1,6 +1,6 @@
 # Verification
 
-Checked October 17, 2026. Local and live verification are complete.
+Checked October 17, 2026. The original release passed local and live verification. The simpler personal-page revision has passed local checks and is being published.
 
 | Check | Result |
 |---|---|
@@ -18,3 +18,7 @@ Checked October 17, 2026. Local and live verification are complete.
 | GitHub publication | Pass. GitHub Pages reported built for website commit `1218018`. Live HTTPS page renders with portrait, Chess capture and four FOW stages. |
 
 Screenshots are kept in ignored `.qa/`. Original research and reproduction details are kept in ignored `.research/`. Automated analysis does not establish user-perceived performance or WCAG conformance; no such certification is claimed.
+
+## Personal-page revision
+
+Removed promotional headings, decorative chrome and repeated benefit columns. Reviewed new copy against the same source facts. Checked desktop and phone screenshots, 320/390px overflow, stage selection, Chess playback and full-size dialog, FOW keyboard navigation and focus-triggered pause. Both scripts pass syntax checks; the browser reports no errors or warnings. Existing media and disclosure boundaries are unchanged.
