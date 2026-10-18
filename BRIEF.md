@@ -4,7 +4,7 @@
 
 An English portfolio for Software Engineer / Applied AI interviewers. Keep the visual style distinctive and restrained. Make the DeepBrain Technology SDE internship and its two chess projects the core story. Both projects belong to the internship (user clarification overrides ambiguous wording in the original request).
 
-Show ownership, engineering decisions and evidence. Use a real Chess interface capture and an explicitly illustrated FOW training/inference walkthrough. Support desktop and mobile, keyboard navigation and reduced motion. Do not fabricate outcomes, latency, users, model performance or completed research presentations.
+Show ownership, engineering decisions and evidence. Use real Chess captures and, where reproducible, real FOW training/browser-bridge captures with their local demonstration conditions stated. Support desktop and mobile, keyboard navigation and reduced motion. Do not fabricate outcomes, latency, users, model performance or completed research presentations.
 
 Approved project scope: interface demonstrations; technical facts and data scale already disclosed in the resume. Keep private repository source, internal reports, extra experiment metrics and research notes out of the website and public Git history. Publish to GitHub as originally requested, using the proposed default: a public `JiufuZh.github.io` site with the supplied portrait and contact email, without the original resume or phone number. No alternative publication preference was supplied.
 
@@ -14,14 +14,14 @@ User clarification is authoritative for attribution and disclosure. The supplied
 
 ## Acceptance
 
-The page is entirely English; internships precede case studies; both projects have accurate contributions and meaningful visuals. Every visible control works. Chess media is labeled by capture context; FOW animation is never called a training recording. No phone/address, source files or extra internal results appear publicly. Publication is complete only when the remote commit and live URL are verified.
+The page is entirely English; internships precede case studies; both projects have accurate contributions and meaningful visuals. Every visible control works. Media must state capture context; an illustration must never be called a recording. Actual FOW clips must identify local test data/boards and never imply a full historical training run. No phone/address, private source files or extra internal results appear publicly. Publication is complete only when the remote commit and live URL are verified.
 
 ## October 17 reference-led revision
 
 The user rejected both the marketing-like first version and the subsequent plain page. The latest explicit direction is a homepage similar to [Yuyao Wang's](https://kristoff-starling.github.io/): indigo navigation, a profile column, a biography/education column, and sectioned selected work. The user-supplied reference supersedes the earlier visual direction and the tentative OS idea.
 
-Translate the reference's publications list into two internship project entries with visible previews, expandable real/illustrated demonstrations, and engineering contributions. Keep the page English and the previously approved facts and public scope. No further interview is needed for this explicit revision. See [DESIGN.md](DESIGN.md) for implementation decisions.
+Translate the reference's publications list into two internship project entries with visible recordings, optional enlarged views, and engineering contributions. Keep the page English and the previously approved facts and public scope. No further interview is needed for this explicit revision. See [DESIGN.md](DESIGN.md) for implementation decisions.
 
-## October 18 project walkthroughs
+## Latest refinement: real FOW media
 
-The user accepts the overall homepage but wants much clearer project content, presented step by step with animation where possible. Keep the accepted profile and biography. Give both projects a visible, full-width walkthrough with ordered steps, tangible visuals, short input/action/output explanations, and working playback. Chess uses actual captures plus a downloadable GIF; FOW uses a clearly labeled illustrated pipeline. Main project demonstrations should no longer require opening an accordion. Retain the existing disclosure boundary.
+The user finds the project area too template-like and explicitly requests real FOW training and browser-script GIFs rather than only process diagrams. Make real media primary, simplify repeated panels and input/output labels, and use concrete first-person engineering notes. Preserve step-by-step access and the accepted About section. Reproduce short, isolated local runs where feasible; keep trained artifacts, source, credentials and private experiment results out of public assets. State any material capture limitation honestly.

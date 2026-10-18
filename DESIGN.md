@@ -6,7 +6,7 @@ The user supplied [Yuyao Wang's homepage](https://kristoff-starling.github.io/) 
 
 Palette: white #FFFFFF, paper grey #F6F7F9, text #292D33, secondary #616975, indigo #4054AD, pale blue #EBEEF8. Use Georgia/Cambria serif for biography and project prose, with system sans-serif for navigation, headings and controls. Desktop body 20px; compact project prose 18px; headings 34px. Keep text left aligned except the profile identity.
 
-Use a centered 1140px frame. The introduction has a 280px profile column and a wider biography column; education appears beside a brief technical focus list. The internship band uses a left section/employment column and a right list of two project entries. Each entry pairs actual or clearly illustrated media with a concise description, then opens a larger walkthrough and engineering notes. Research is a small separate section. On phones, columns stack in reading order, all controls remain reachable, and media can be enlarged.
+Use a centered 1140px frame. The introduction has a 280px profile column and a wider biography column; education appears beside a brief technical focus list. The internship band places the employer above two full-width project entries. Each entry contains a contribution paragraph, actual local captures with plain chapter links, and visible engineering notes. Research is a small separate section. On phones, columns stack in reading order, all controls remain reachable, and media can be enlarged.
 
 The distinctive content is the contrast between full-information chess explanation and learning from a partially visible board. The matching project entries make this relationship visible without adding a fictional operating system. No automatic entrance animations or fake terminal content.
 
@@ -16,8 +16,8 @@ Applied local frontend-design and the researched [interactive-portfolio guide](h
 
 User-approved agent simulation checked direction only. It did not call the Jev API and does not establish quality. Actual screenshots and interaction checks are required before publication.
 
-## Project walkthrough refinement, October 18
+## Latest direction: recordings and project notes
 
-Keep the accepted colors, type and About layout. Use the full content width for the two projects, with internship context in a compact heading above them. Each project has six ordered steps beside a large visual; the selected step explains the input, action and result. On mobile, steps form a compact two-column selector above the visual. Playback and previous/next controls stay visible. Engineering notes remain optional, while the main story is expanded by default.
+The user rejected the diagram-first FOW presentation and the project area's template-like feel. Keep the accepted About, palette and type. Replace the project dashboard framing with a straightforward media-and-notes layout: title, concrete contribution paragraph, wide recording, compact chapter links and a single caption. Remove numbered circles, duplicate headings, input/action/output rows and the large player shell. Show engineering contributions directly rather than hiding them under an accordion.
 
-The sequence itself supplies the distinctive element: a real Chess game moves from import through a mistake to solved practice; a FOW observation moves through data preparation, learning and browser inference. Use numbered steps because these are ordered processes. No unrelated graphics, marketing cards, fabricated training charts or terminal logs. Compare this plan against the user's request using the already-authorized agent simulation, then verify the actual implementation in the browser.
+FOW has separate real training and browser-bridge clips. A local training log viewer and test-board adapter must be identified as capture tools, not represented as the original product UI. Use actual process events and actual model responses; do not invent a terminal, loss curve or result. The memorable material should be the recorded work itself. Playback remains controllable, with manual chapters, an enlarged view and downloadable GIFs.

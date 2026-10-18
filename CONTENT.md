@@ -27,25 +27,36 @@ Both projects below belong to this internship. The shared introduction reads: �
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
-I worked on the analysis interface and feedback pipeline for a chess coaching app. It connects Stockfish reviews to explanations, candidate moves, and practice on the same position.
+I built the analysis interface and feedback features that take a player from reviewing a mistake to practicing the same position. Stockfish supplies the engine evidence; the app connects it to explanations and candidate moves.
 
-**A responsive analysis interface.** I ran Stockfish in a Web Worker and added request cancellation and result versioning, so changing positions would not leave an old result on screen.
+One problem was keeping the interface correct when a player changed positions quickly. I ran Stockfish in a Web Worker, cancelled old requests, and versioned results so a late response would not overwrite the current board.
 
-**Feedback grounded in the game.** I added structured-output validation, checks against engine evidence, and fallbacks for API failures. Explanations adapt to the player's rating and language; saved reviews reopen without another LLM call.
+I also added structured-output validation and checks against engine evidence, with fallbacks for API failures. Saved reviews reopen without another LLM call.
 
-Visible six-step walkthrough: Import PGN → Find a critical move → Read a grounded explanation → Compare the alternative → Practice the position → Confirm the solution. The sample game reaches 3…Nf6; the engine-backed alternative is Qe7, and practice ends with Qxf7#. Each step has an actual local screenshot and a short input/action/output explanation. Optional playback and a downloadable GIF use the same real captures. Keep the local-engine/no-live-LLM context visible. This is a screenshot walkthrough, not a recording of live model requests.
+The clip has six plain chapters: Import, Review, Explain, Compare, Practice, Solve. Actual local app screenshots show a sample PGN, the critical 3…Nf6 move, engine-backed coaching, the Qe7 alternative arrow, and practice ending with Qxf7#. The alternative is an overlay, not a played move. No live LLM request was made during capture; keep this context visible beneath the clip and in the enlarged viewer.
 
 ## Fog of War chess AI
 
 Python, PyTorch, FastAPI, JavaScript.
 
-I prepared training data and trained policy-and-value models for chess with a partially visible board. My work also covered self-play, resumable training, and browser integration. The first walkthrough step shows the approved scale: **1,554 games and 88,949 plies**.
+I worked on an agent that plays with only a partial view of the board: preparing observations from **1,554 games and 88,949 plies**, training policy-and-value models, and connecting inference to a browser script.
 
-**Keeping hidden information hidden.** I split data by game and masked opponent histories, so the model's input would not reveal information the player could not know.
+The main data constraint was making sure the model could not see what the player could not. I constructed player-visible observations, masked opponent move histories, and kept complete games together when splitting training and evaluation data.
 
-**Training through deployment.** I trained policy-and-value models in PyTorch and worked on self-play and checkpoint resumption. A FastAPI service and JavaScript browser script keep observations, inference, and move execution in sync.
+I worked on self-play updates and resumable checkpoints, then connected the model to a FastAPI service and JavaScript browser bridge.
 
-Visible six-step illustration: Replay games → Mask hidden information → Build examples and split by game → Train policy and value → Self-play and checkpoints → Serve through a browser bridge. Within each stage, example boards, samples or data flow change to show the transformation. The final step shows a browser script sending observations to local inference and applying a returned move. Keep “Illustrated workflow” and the example-position context visible. This is neither a training recording nor a model-performance benchmark. Data-processing scripts and the browser userscript do not imply LLM-generated scripts.
+Two selectable clips show fresh local execution:
+
+- **Training run:** the project's original trainer runs on CPU with a tiny synthetic fixture. A new local event viewer displays observed training, checkpoint-save and resume events. The viewer was built for this demonstration; its events come from the running project code.
+- **Browser integration:** the project's original userscript connects a newly built, permitted local test board to real FastAPI inference using the checkpoint from the training demonstration. It requests and applies a model-selected move.
+
+These are short demonstrations, recorded separately from the historical training run. The approved archive counts describe the internship dataset, not the tiny fixture shown in the clip. The clips do not establish playing strength, production deployment, or performance on the full dataset. “Browser script” means the integration userscript, not LLM-generated source code.
+
+## Media and presentation
+
+Project summaries lead into large captures, plain chapter links and visible engineering notes. Each clip starts paused and provides play/pause, previous/next, an enlarged viewer and GIF download. Reduced-motion users can navigate manually. Playback pauses when the page is hidden or the inline player leaves view; the enlarged viewer can continue playing.
+
+The players and GIFs use snapshots of actual execution. Frame timing is edited for readability; these are not continuous screen videos or measurements of execution time. Captions must identify the local demonstration conditions in both inline and enlarged views.
 
 ## Research
 

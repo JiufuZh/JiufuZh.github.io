@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 20/20 slices. Current: expanded demonstrations delivered. Blockers: none. Next: user review.
+Completed: 24/25 slices. Current: S25, publish and check live media. Blockers: none. Next: verify Pages build and live recordings.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -18,6 +18,11 @@ Completed: 20/20 slices. Current: expanded demonstrations delivered. Blockers: n
 | S18 | Build detailed Chess and FOW walkthroughs | 已完成 | Six Chess captures + GIF; six FOW stages with 24 visual frames; content audit passes | [Homepage](index.html) |
 | S19 | Verify desktop/mobile, content and controls | 已完成 | 24 FOW frames, six Chess steps, 320–1440px layouts, keyboard/playback/reduced motion pass | [QA](QA.md) |
 | S20 | Publish and check live demonstrations | 已完成 | Pages built 0a2ca81; live step changes, images and GIF200 verified | [Live](https://jiufuzh.github.io/) |
+| S21 | Verify real FOW capture path | 已完成 | Original trainer, real inference and unchanged bridge verified; synthetic fixture isolated | [Brief](BRIEF.md) |
+| S22 | Capture training and browser execution | 已完成 | Epoch 1→2 resume and same-checkpoint e2→e4 verified; 9 captures, two GIFs inspected | [Assets](assets/) |
+| S23 | Simplify project presentation | 已完成 | Plain chapters/media and visible notes; controller checks and desktop view pass | [Homepage](index.html) |
+| S24 | Verify media, interactions and disclosure | 已完成 | Independent evidence/media review, 15 chapter mappings, 320–1440px, playback and reduced motion pass | [QA](QA.md) |
+| S25 | Publish real-media revision | 进行中 | Remote commit, Pages build and live playback | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -31,3 +36,5 @@ Completed: 20/20 slices. Current: expanded demonstrations delivered. Blockers: n
 2026-10-18: Restored original fabric detail within the apparel mask. Face and neck pixels remain unchanged. Published and verified the natural-texture portrait.
 
 2026-10-18: User accepted the homepage direction but requested substantially clearer, step-by-step project demonstrations, preferably animated. Keep About unchanged; expand the internship projects into visible walkthroughs.
+
+2026-10-18: User requests actual FOW training/browser-script GIFs and less template-like project presentation. Inspect and record real local runs; clearly distinguish demo conditions from historical training. Keep existing private-data boundaries.
