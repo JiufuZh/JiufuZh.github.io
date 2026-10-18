@@ -1,6 +1,6 @@
 # Verification
 
-Checked October 17, 2026. The original release passed local and live verification. The simpler personal-page revision has passed local checks and is being published.
+Checked October 17, 2026. The simpler personal-page revision passed local checks and is live.
 
 | Check | Result |
 |---|---|
@@ -21,4 +21,4 @@ Screenshots are kept in ignored `.qa/`. Original research and reproduction detai
 
 ## Personal-page revision
 
-Removed promotional headings, decorative chrome and repeated benefit columns. Reviewed new copy against the same source facts. Checked desktop and phone screenshots, 320/390px overflow, stage selection, Chess playback and full-size dialog, FOW keyboard navigation and focus-triggered pause. Both scripts pass syntax checks; the browser reports no errors or warnings. Existing media and disclosure boundaries are unchanged.
+Removed promotional headings, decorative chrome and repeated benefit columns. Reviewed new copy against the same source facts. Checked desktop and phone screenshots, 320/390/768px overflow, stage selection, Chess playback and full-size dialog, FOW keyboard navigation and focus-triggered pause. Both scripts pass syntax checks; the browser reports no errors or warnings. Existing media and disclosure boundaries are unchanged. GitHub Pages built `491dfbc`; the live page shows the revised name heading and project sections.

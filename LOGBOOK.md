@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 7/8 slices. Current: S8, publish the simpler personal page. Blockers: none. Next: verify the revised live homepage.
+Completed: 8/8 slices. Current: revised page delivered. Blockers: none. Next: user review of [the live homepage](https://jiufuzh.github.io/).
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -11,7 +11,7 @@ Completed: 7/8 slices. Current: S8, publish the simpler personal page. Blockers:
 | S5 | Upload and verify GitHub publication | 已完成 | Pages built for `1218018`; live HTTPS page and assets verified | [Live site](https://jiufuzh.github.io/) |
 | S6 | Replace slogans and promotional layout | 已完成 | Name-led introduction, concrete copy, larger demos; direction confirmed | [Design](DESIGN.md) |
 | S7 | Verify revised page | 已完成 | Desktop/mobile checked; playback, dialog and keyboard controls pass | [QA](QA.md) |
-| S8 | Publish the revision | 进行中 | Revision ready for upload | [Live site](https://jiufuzh.github.io/) |
+| S8 | Publish the revision | 已完成 | Pages built for `491dfbc`; revised heading and live page verified | [Live site](https://jiufuzh.github.io/) |
 
 2026-10-17: Started three parallel research agents. Confirmed SWE / Applied AI audience and both projects' internship attribution. Public scope includes interface recordings and resume-disclosed facts; excludes private source, internal reports and additional experimental metrics.
 
@@ -20,3 +20,5 @@ Completed: 7/8 slices. Current: S8, publish the simpler personal page. Blockers:
 2026-10-17: Uploaded to [JiufuZh/JiufuZh.github.io](https://github.com/JiufuZh/JiufuZh.github.io). GitHub Pages built successfully; live page and project media checked. All five slices complete.
 
 2026-10-17: User found the result too AI-like. Revising it into a compact personal page: name as title, smaller photo, ordinary project names, concrete first-person descriptions, and fewer decorative elements. Existing evidence, demos and disclosure scope stay authoritative.
+
+2026-10-17: User confirmed the understated engineer-page direction. Revision `491dfbc` is live. Desktop, tablet and phone widths pass; Chess playback/dialog and FOW keyboard controls pass. Source facts and public scope were rechecked.
