@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 15/16 slices. Current: S16, publish natural fabric refinement. Blockers: none. Next: verify live asset and Pages build.
+Completed: 16/16 slices. Current: natural fabric refinement delivered. Blockers: none. Next: user review.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -13,7 +13,7 @@ Completed: 15/16 slices. Current: S16, publish natural fabric refinement. Blocke
 | S13 | Repair clothing moire in portrait | 已完成 | Local filtering; face/skin/outside-mask RGB equality verified; rendered sizes inspected | [Portrait](assets/jiufu-zhou-retouched.webp) |
 | S14 | Publish repaired portrait | 已完成 | Pages built `1ba435c`; live lossless portrait loaded and visually checked | [Live](https://jiufuzh.github.io/) |
 | S15 | Restore more natural cloth detail | 已完成 | Original fine detail restored; visual review and exact face/neck equality pass | [Portrait](assets/jiufu-zhou-natural.webp) |
-| S16 | Publish texture refinement | 进行中 | Pixel checks and deployed image required | [Live](https://jiufuzh.github.io/) |
+| S16 | Publish texture refinement | 已完成 | Pages built `987915c`; live natural portrait loaded and visually checked | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -23,3 +23,5 @@ Completed: 15/16 slices. Current: S16, publish natural fabric refinement. Blocke
 
 
 2026-10-17: Reference-led revision published. Desktop/mobile checks and true screenshot pause verified. Live Pages build and media confirmed; final screenshot retained in ignored .qa/.
+
+2026-10-18: Restored original fabric detail within the apparel mask. Face and neck pixels remain unchanged. Published and verified the natural-texture portrait.
