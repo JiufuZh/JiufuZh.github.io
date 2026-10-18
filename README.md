@@ -33,4 +33,4 @@ This static site can be served directly from the repository root on the `main` b
 
 The site is published from `main` at the repository root. Verification is recorded in [QA.md](QA.md), with progress in [LOGBOOK.md](LOGBOOK.md). No analytics, contact-form backend, external fonts, or paid service is required.
 
-The displayed portrait uses `assets/jiufu-zhou-retouched.webp`, a lossless, locally filtered copy with clothing moire reduced. Face and neck pixels are preserved; the original supplied JPG remains available in assets.
+The displayed portrait uses `assets/jiufu-zhou-natural.webp`, a lossless copy with broad clothing moire reduced and original fine fabric detail retained. Face and neck pixels are preserved; the original supplied JPG remains available in assets.

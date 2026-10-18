@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 14/14 slices. Current: delivered. Blockers: none. Next: user review of the repaired portrait on the live homepage.
+Completed: 15/16 slices. Current: S16, publish natural fabric refinement. Blockers: none. Next: verify live asset and Pages build.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -12,6 +12,8 @@ Completed: 14/14 slices. Current: delivered. Blockers: none. Next: user review o
 | S12 | Publish and verify live result | 已完成 | `3832529` built; live layout, previews and Chess viewer verified | [Live](https://jiufuzh.github.io/) |
 | S13 | Repair clothing moire in portrait | 已完成 | Local filtering; face/skin/outside-mask RGB equality verified; rendered sizes inspected | [Portrait](assets/jiufu-zhou-retouched.webp) |
 | S14 | Publish repaired portrait | 已完成 | Pages built `1ba435c`; live lossless portrait loaded and visually checked | [Live](https://jiufuzh.github.io/) |
+| S15 | Restore more natural cloth detail | 已完成 | Original fine detail restored; visual review and exact face/neck equality pass | [Portrait](assets/jiufu-zhou-natural.webp) |
+| S16 | Publish texture refinement | 进行中 | Pixel checks and deployed image required | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
