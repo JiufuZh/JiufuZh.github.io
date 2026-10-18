@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 19/20 slices. Current: S20, publish expanded demonstrations. Blockers: none. Next: verify the deployed page and GIF.
+Completed: 20/20 slices. Current: expanded demonstrations delivered. Blockers: none. Next: user review.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -17,7 +17,7 @@ Completed: 19/20 slices. Current: S20, publish expanded demonstrations. Blockers
 | S17 | Plan visible project stories and verify evidence | 已完成 | Six stages mapped to real captures or supported illustrations; simulated direction check | [Content](CONTENT.md) |
 | S18 | Build detailed Chess and FOW walkthroughs | 已完成 | Six Chess captures + GIF; six FOW stages with 24 visual frames; content audit passes | [Homepage](index.html) |
 | S19 | Verify desktop/mobile, content and controls | 已完成 | 24 FOW frames, six Chess steps, 320–1440px layouts, keyboard/playback/reduced motion pass | [QA](QA.md) |
-| S20 | Publish and check live demonstrations | 进行中 | Remote commit and deployed interactions | [Live](https://jiufuzh.github.io/) |
+| S20 | Publish and check live demonstrations | 已完成 | Pages built 0a2ca81; live step changes, images and GIF200 verified | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
