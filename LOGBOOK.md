@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 27/29 slices. Current: S28, verification. Blockers: local browser preview is unavailable; public-site checks follow deployment. Next: verify live navigation and responsive layout.
+Completed: 29/29 slices. Current: navigation revision published and verified. Blockers: none. Next: user review of the live page.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -25,8 +25,8 @@ Completed: 27/29 slices. Current: S28, verification. Blockers: local browser pre
 | S25 | Publish real-media revision | 已完成 | Pages built de1bfe8; live clip/image changes and both GIF200/byte counts verified | [Live](https://jiufuzh.github.io/) |
 | S26 | Define navigation views and research links | 已完成 | Four views agreed; official conference, adviser and CV destinations verified | [Brief](BRIEF.md) |
 | S27 | Build separate content views | 已完成 | Navigation/controller checks pass; About rewritten; all 15 media frames retained | [Homepage](index.html) |
-| S28 | Verify routes, media and layout | 进行中 | Static references and isolated routing/lifecycle tests pass; live layout pending | [QA](QA.md) |
-| S29 | Publish navigation revision | 进行中 | Deploy for final live browser verification | [Live](https://jiufuzh.github.io/) |
+| S28 | Verify routes, media and layout | 已完成 | Live four-view navigation, history, pause/close, keyboard, reduced motion and 320–1440px checks pass | [QA](QA.md) |
+| S29 | Publish navigation revision | 已完成 | Pages built 22398cd; live About, project layouts and Research links verified | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -48,3 +48,5 @@ Completed: 27/29 slices. Current: S28, verification. Blockers: local browser pre
 2026-10-21: User requests navigation-based content switching instead of one continuous page, plus corresponding Research links. Existing content/media and disclosure scope remain in force.
 
 2026-10-21: About now connects Informatics education, specific internship work and Instagram research. Content and layout agents found no material static issue. Nine controller checks, routing checks and local-reference validation passed.
+
+2026-10-21: Published 22398cd. Live checks passed all four view widths, browser history and old links, page-change pause and dialog closure, keyboard navigation and reduced motion. About, Chess, FOW and Research screenshots inspected; console clear.
