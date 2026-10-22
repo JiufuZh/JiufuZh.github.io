@@ -1,6 +1,6 @@
 # Homepage content
 
-Authority for public facts and wording in [index.html](index.html). Reviewed October 21, 2026. Sources: the resume and explicit user clarifications, including internship attribution and the struvite research entry.
+Public facts and wording for [index.html](index.html), reviewed October 21, 2026. Sources: the resume and user clarifications on internship attribution, research methods and findings.
 
 ## Profile and introduction
 
@@ -21,8 +21,6 @@ Technical focus: web applications, applied machine learning, and AI-assisted lea
 
 DeepBrain Technology (StaySafeNow, Inc.). Software Development Engineer Intern. May–September 2026. Tenafly, NJ, hybrid.
 
-Both project views identify this internship and the contributions below.
-
 ## Chess Coaching
 
 React, FastAPI, Stockfish WASM, OpenAI API.
@@ -33,7 +31,7 @@ When players change positions, engine responses can arrive out of order. I ran S
 
 I validated LLM output against the expected structure and engine evidence, and added fallbacks for API failures. Saved reviews reopen without another LLM call.
 
-The clip has six plain chapters: Import, Review, Explain, Compare, Practice, Solve. Actual local app screenshots show a sample PGN, the critical 3…Nf6 move, engine-backed coaching, the Qe7 alternative arrow, and practice ending with Qxf7#. The alternative is an overlay, not a played move. No live LLM request was made during capture; keep this context visible beneath the clip and in the enlarged viewer.
+Six chapters—Import, Review, Explain, Compare, Practice, Solve—use actual local screenshots: sample PGN, critical 3…Nf6, engine-backed coaching, Qe7 arrow and Qxf7# practice. The alternative is an overlay, not a played move. No live LLM request was made; preserve this context inline and enlarged.
 
 ## Fog of War Chess Engine
 
@@ -47,10 +45,10 @@ I worked on self-play updates and checkpoint resumption, and connected the model
 
 Two selectable clips show fresh local execution:
 
-- **Training run:** the project's original trainer runs on CPU with a tiny synthetic fixture. A new local event viewer displays observed training, checkpoint-save and resume events. The viewer was built for this demonstration; its events come from the running project code.
-- **Browser integration:** the project's original userscript connects a newly built, permitted local test board to real FastAPI inference using the checkpoint from the training demonstration. It requests and applies a model-selected move.
+- **Training run:** the original trainer runs on CPU with a tiny synthetic fixture. A new local viewer displays actual training, checkpoint-save and resume events.
+- **Browser integration:** the original userscript connects a new permitted local test board to real FastAPI inference with the demonstration checkpoint, requesting and applying a model-selected move.
 
-These are short demonstrations, recorded separately from the historical training run. The approved archive counts describe the internship dataset, not the tiny fixture shown in the clip. The clips do not establish playing strength, production deployment, or performance on the full dataset. “Browser script” means the integration userscript, not LLM-generated source code.
+These demonstrations are separate from historical training. Dataset counts describe the internship archive, not the tiny fixture. The clips establish neither strength, production deployment nor full-dataset performance. “Browser script” means the integration userscript, not LLM-generated code.
 
 ## Media and presentation
 
@@ -62,13 +60,21 @@ Snapshots and GIFs use edited timing, not continuous video or execution-time mea
 
 ## Research
 
+Order: Instagram health-promotion study first; struvite research second. Keep their records independent.
+
 ### Health supplement promotion
 
 University at Albany, SUNY. August 2024–May 2025.
 
 **Transparency and message processing in health supplement promotion on Instagram.** This is the resume's project title, not a verified NCA abstract title.
 
-I studied how supplement-promotion posts disclose sponsorship and health credentials. I developed and validated a codebook for **417 posts** and analyzed the results in Python.
+I developed and validated a codebook for **417 branded health-supplement Instagram posts**, covering sponsorship disclosure, influencer type, product category and Elaboration Likelihood Model (ELM) message-processing routes.
+
+In a multi-stage content analysis, intercoder reliability ranged from **0.95–1.00**. The sample showed missing sponsorship labels and heavy use of peripheral-route persuasion among influencers.
+
+I used statistical analysis and Python to explore associations among influencer characteristics, disclosure transparency and message-processing strategies.
+
+These user-supplied findings are approved public facts. Do not infer the reliability coefficient type, statistical significance or causality.
 
 Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty/archana-krishnan) and PhD candidate Alex R. Stankus.
 

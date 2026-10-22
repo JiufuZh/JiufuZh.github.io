@@ -123,6 +123,7 @@ h2 { font-size: 34px; letter-spacing: -.6px; }
 .research-copy .research-advisers { font: 14px/1.7 var(--sans); }
 .research-methods { margin: 20px 0 0; padding-left: 21px; font-size: 18px; }
 .research-methods li + li { margin-top: 12px; }
+.research-methods + p { margin-top: 20px; }
 .research-copy .research-status { font-size: 16px; color: var(--muted); }
 .research-advisers { font: 14px/1.7 var(--sans); margin-top: 20px; }
 .research-links { display: flex; flex-wrap: wrap; gap: 12px 25px; margin-top: 25px; font: 14px/1.6 var(--sans); }

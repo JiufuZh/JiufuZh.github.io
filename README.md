@@ -43,9 +43,11 @@ Changing views pauses players and closes the enlarged viewer. Playback also paus
 
 ## Research entries and links
 
-The Research view keeps two independent entries, each with its own role or dates, advisers, contributions and source links. Publication status belongs only to the relevant entry.
+Research shows the Instagram health-promotion study first and struvite research second. Each entry has its own role or dates, advisers, contributions and source links; publication status belongs only to the relevant entry.
 
 The health-promotion entry uses the resume's project title, “Transparency and message processing in health supplement promotion on Instagram.” The title is not presented as a verified NCA abstract title. The advisers are Prof. Archana Krishnan and PhD candidate Alex R. Stankus.
+
+User-approved details cover 417 branded posts; sponsorship, influencer, product and ELM variables; intercoder reliability of 0.95–1.00; missing sponsorship labels and peripheral-route persuasion; and exploratory statistical/Python associations. Do not infer a reliability coefficient type, statistical significance or causation. [CONTENT.md](CONTENT.md) records the exact scope.
 
 - [Archana Krishnan's faculty profile](https://www.albany.edu/communication/faculty/archana-krishnan) identifies the adviser.
 - [NCA 2026 conference](https://www.natcom.org/nca-112th-annual-convention/) provides general event information. The resume supports the accepted-for-presentation status for November 2026.
