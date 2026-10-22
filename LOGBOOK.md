@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 25/25 slices. Current: delivered. Blockers: none. Next: user review of the live recordings.
+Completed: 27/29 slices. Current: S28, verification. Blockers: local browser preview is unavailable; public-site checks follow deployment. Next: verify live navigation and responsive layout.
 
 | Slice | Goal | Status | Verification | Output |
 |---|---|---|---|---|
@@ -23,6 +23,10 @@ Completed: 25/25 slices. Current: delivered. Blockers: none. Next: user review o
 | S23 | Simplify project presentation | 已完成 | Plain chapters/media and visible notes; controller checks and desktop view pass | [Homepage](index.html) |
 | S24 | Verify media, interactions and disclosure | 已完成 | Independent evidence/media review, 15 chapter mappings, 320–1440px, playback and reduced motion pass | [QA](QA.md) |
 | S25 | Publish real-media revision | 已完成 | Pages built de1bfe8; live clip/image changes and both GIF200/byte counts verified | [Live](https://jiufuzh.github.io/) |
+| S26 | Define navigation views and research links | 已完成 | Four views agreed; official conference, adviser and CV destinations verified | [Brief](BRIEF.md) |
+| S27 | Build separate content views | 已完成 | Navigation/controller checks pass; About rewritten; all 15 media frames retained | [Homepage](index.html) |
+| S28 | Verify routes, media and layout | 进行中 | Static references and isolated routing/lifecycle tests pass; live layout pending | [QA](QA.md) |
+| S29 | Publish navigation revision | 进行中 | Deploy for final live browser verification | [Live](https://jiufuzh.github.io/) |
 
 2026-10-17: Original scope confirmed: English SWE / Applied AI homepage; both projects belong to DeepBrain internship. Only approved UI demonstrations and resume-disclosed facts may be public.
 
@@ -40,3 +44,7 @@ Completed: 25/25 slices. Current: delivered. Blockers: none. Next: user review o
 2026-10-18: User requests actual FOW training/browser-script GIFs and less template-like project presentation. Inspect and record real local runs; clearly distinguish demo conditions from historical training. Keep existing private-data boundaries.
 
 2026-10-18: Real CPU training and resume captured, then the same checkpoint drove the original browser bridge to e2→e4. Two GIFs published; project panels simplified. Capture adapters, checkpoints and audit evidence remain private.
+
+2026-10-21: User requests navigation-based content switching instead of one continuous page, plus corresponding Research links. Existing content/media and disclosure scope remain in force.
+
+2026-10-21: About now connects Informatics education, specific internship work and Instagram research. Content and layout agents found no material static issue. Nine controller checks, routing checks and local-reference validation passed.

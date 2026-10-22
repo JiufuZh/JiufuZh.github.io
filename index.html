@@ -12,9 +12,11 @@
   <link rel="canonical" href="https://jiufuzh.github.io/">
   <title>Jiufu Zhou</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261018-fow-final">
-  <script src="recordings.js?v=20261018-fow-final" defer></script>
-  <script src="main.js?v=20261018-fow-final" defer></script>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="styles.css?v=20261021-navigation">
+  <script src="recordings.js?v=20261021-navigation" defer></script>
+  <script src="main.js?v=20261021-navigation" defer></script>
+  <script src="nav.js?v=20261021-navigation" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -22,15 +24,16 @@
     <div class="header-inner wrap">
       <a class="site-name" href="#about">Jiufu Zhou</a>
       <nav aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#research">Research</a>
+        <a href="#about" data-nav="about" aria-current="page">About</a>
+        <a href="#chess-analysis" data-nav="chess-analysis">Chess</a>
+        <a href="#fog-of-war" data-nav="fog-of-war">FOW</a>
+        <a href="#research" data-nav="research">Research</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <section class="about-section wrap" id="about" aria-labelledby="about-title">
+  <main id="main" tabindex="-1">
+    <section class="about-section wrap is-active" data-page id="about" aria-labelledby="about-title">
       <aside class="profile" aria-label="Profile and contact">
         <img class="portrait" src="assets/jiufu-zhou-natural.webp" width="779" height="1134" alt="Jiufu Zhou" fetchpriority="high">
         <h1>Jiufu Zhou</h1>
@@ -45,7 +48,7 @@
       <div class="biography">
         <h2 id="about-title">About me</h2>
         <p>I'm Jiufu, a master's student in Information Management at the <a href="https://www.washington.edu/">University of Washington</a>. I work on software engineering and applied AI, with experience across web interfaces, inference services, and model training.</p>
-        <p>During my internship at <a href="#experience">DeepBrain Technology</a>, I worked on two chess projects: an app that helps players understand their moves, and an agent that learns to play with only a partial view of the board.</p>
+        <p>My background is in Informatics: I earned my bachelor's degree at the University at Albany and now study at the University of Washington. At DeepBrain Technology, I worked across the stack, from <a href="#chess-analysis">React interfaces and chess-analysis feedback</a> to <a href="#fog-of-war">PyTorch training and browser-connected inference</a>. Earlier, I helped study transparency in Instagram supplement promotions, developing a codebook and analyzing 417 posts. That <a href="#research">research</a> gave me experience turning a research question into a structured dataset and analysis.</p>
         <div class="about-facts">
           <div class="focus">
             <h3>Technical focus</h3>
@@ -70,27 +73,16 @@
       </div>
     </section>
 
-    <section class="experience-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-grid wrap">
-        <div class="section-intro">
-          <h2 id="experience-title">Internship <br>projects</h2>
-          <div class="employment">
-            <h3>DeepBrain Technology</h3>
-            <p>Software Development <br>Engineer Intern</p>
-            <p class="employment-date">May – September 2026</p>
-            <p class="secondary">StaySafeNow, Inc. <br>Tenafly, NJ · Hybrid</p>
-          </div>
-          <p class="section-note">Two projects from my internship, from analyzing a visible board to learning from an incomplete one.</p>
-        </div>
-
-        <div class="project-list" id="work">
-          <article class="project" id="chess-analysis" aria-labelledby="chess-title">
-            <header class="project-summary">
-              <h3 id="chess-title">Chess analysis and coaching</h3>
+    <article class="project-page wrap" data-page id="chess-analysis" aria-labelledby="chess-title">
+      <div class="project-intro">
+        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
+        <header class="project-summary">
+              <h2 id="chess-title">Chess analysis and coaching</h2>
               <p>I built the analysis interface and feedback features that take a player from reviewing a mistake to practicing the same position. Stockfish supplies the engine evidence; the app connects it to explanations and candidate moves.</p>
               <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
             </header>
-            <section class="recording" data-player="chess" aria-label="Chess app demonstration">
+      </div>
+      <section class="recording" data-player="chess" aria-label="Chess app demonstration">
               <figure>
                 <div class="recording-image"><img data-image src="assets/chess/01-import.png" width="1280" height="720" alt="Chess app game import" loading="lazy"></div>
                 <figcaption data-caption>Import a sample game to begin the review.</figcaption>
@@ -100,19 +92,22 @@
               <p class="recording-context" data-context>Local app capture with Stockfish. No live LLM request.</p>
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
-            <div class="project-notes" id="chess-engineering">
+      <div class="project-notes" id="chess-engineering">
               <p>One problem was keeping the interface correct when a player changed positions quickly. I ran Stockfish in a Web Worker, cancelled old requests, and versioned results so a late response would not overwrite the current board.</p>
               <p>I also added structured-output validation and checks against engine evidence, with fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
             </div>
-          </article>
+    </article>
 
-          <article class="project" id="fog-of-war" aria-labelledby="fow-title">
-            <header class="project-summary">
-              <h3 id="fow-title">Fog of War chess AI</h3>
+    <article class="project-page wrap" data-page id="fog-of-war" aria-labelledby="fow-title">
+      <div class="project-intro">
+        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
+        <header class="project-summary">
+              <h2 id="fow-title">Fog of War chess AI</h2>
               <p>I worked on an agent that plays with only a partial view of the board: preparing observations from <strong>1,554 games and 88,949 plies</strong>, training policy-and-value models, and connecting inference to a browser script.</p>
               <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
             </header>
-            <section class="recording" data-player="fow" id="fow-workflow" aria-label="Fog of War local recordings">
+      </div>
+      <section class="recording" data-player="fow" id="fow-workflow" aria-label="Fog of War local recordings">
               <div class="recording-switch" aria-label="Choose a Fog of War recording"><button type="button" data-clip="0" aria-pressed="true">Browser integration</button><button type="button" data-clip="1" aria-pressed="false">Training &amp; resume</button></div>
               <figure>
                 <div class="recording-image"><img data-image src="assets/fow/browser-01.png" width="1380" height="1040" alt="Original FOW browser script on a local test board" loading="lazy"></div>
@@ -123,21 +118,21 @@
               <p class="recording-context" data-context>Short local demonstrations, recorded separately from the original training run.</p>
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
-            <div class="project-notes" id="fow-engineering">
+      <div class="project-notes" id="fow-engineering">
               <p>The main data constraint was making sure the model could not see what the player could not. I constructed player-visible observations, masked opponent move histories, and kept complete games together when splitting training and evaluation data.</p>
               <p>I worked on self-play updates and resumable checkpoints, then connected the model to a FastAPI service and JavaScript browser bridge. The clips above show local execution; they are not a playing-strength benchmark.</p>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    </article>
 
-    <section class="research-section section-grid wrap" id="research" aria-labelledby="research-title">
+    <section class="research-section section-grid wrap" data-page id="research" aria-labelledby="research-title">
       <div class="section-intro"><h2 id="research-title">Research</h2><p class="secondary">University at Albany, SUNY<br>August 2024 – May 2025</p></div>
       <div class="research-copy">
-        <h3>Sponsorship and health credentials on Instagram</h3>
+        <h3>Transparency and message processing in health supplement promotion on Instagram</h3>
         <p>I studied how supplement-promotion posts disclose sponsorship and health credentials. I developed and validated a codebook for <strong>417 posts</strong> and analyzed the results in Python.</p>
-        <p class="research-status">Our co-authored extended abstract was accepted for presentation at the <strong>112th NCA Annual Conference</strong>, November 2026.</p>
+        <p class="research-advisers">Advised by <a href="https://www.albany.edu/communication/faculty/archana-krishnan" target="_blank" rel="noopener noreferrer">Prof. Archana Krishnan</a> and PhD candidate Alex R. Stankus.</p>
+        <p class="research-status">Our co-authored extended abstract was accepted for presentation at the <a href="https://www.natcom.org/nca-112th-annual-convention/" target="_blank" rel="noopener noreferrer">112th NCA Annual Convention</a>, November 2026.</p>
+        <div class="research-links"><a href="https://www.natcom.org/nca-112th-annual-convention/" target="_blank" rel="noopener noreferrer">NCA 2026 conference</a><a href="https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12" target="_blank" rel="noopener noreferrer">Research listing in adviser's CV (PDF)</a></div>
+        <p class="source-note">The February 2026 CV lists the related work “Unlabeled influence” as a COMET submission. It is a research listing, not the NCA abstract.</p>
       </div>
     </section>
   </main>
@@ -149,6 +144,6 @@
     <a class="original-image-link" data-dialog-original target="_blank" rel="noopener">Open full-resolution image</a>
     <p data-dialog-caption></p>
   </dialog>
-  <footer class="site-footer wrap"><span>Jiufu Zhou</span><a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a><a href="#about">Back to top</a></footer>
+  <footer class="site-footer wrap"><span>Jiufu Zhou</span><a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a><a href="#about">About Jiufu</a></footer>
 </body>
 </html>

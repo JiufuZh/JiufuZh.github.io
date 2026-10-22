@@ -1,6 +1,6 @@
 # Homepage content
 
-This is the authority for public facts and wording in [index.html](index.html). Last reviewed: October 18, 2026. The resume establishes personal facts; the user's clarification establishes both projects as internship work.
+This is the authority for public facts and wording in [index.html](index.html). Last reviewed: October 21, 2026. The resume establishes personal facts; the user's clarification establishes both projects as internship work.
 
 ## Profile and introduction
 
@@ -8,7 +8,7 @@ Jiufu Zhou. MS Information Management, University of Washington. Seattle, Washin
 
 I'm Jiufu, a master's student in Information Management at the University of Washington. I work on software engineering and applied AI, with experience across web interfaces, inference services, and model training.
 
-During my internship at DeepBrain Technology, I worked on two chess projects: an app that helps players understand their moves, and an agent that learns to play with only a partial view of the board.
+My background is in Informatics: I earned my bachelor's degree at the University at Albany and now study at the University of Washington. At DeepBrain Technology, I worked across the stack, from React interfaces and chess-analysis feedback to PyTorch training and browser-connected inference. Earlier, I helped study transparency in Instagram supplement promotions, developing a codebook and analyzing 417 posts. That research gave me experience turning a research question into a structured dataset and analysis.
 
 Technical focus summarizes demonstrated work: web applications, applied machine learning, and AI-assisted learning tools. It does not claim personal hobbies or unverified specialties.
 
@@ -21,7 +21,7 @@ Technical focus summarizes demonstrated work: web applications, applied machine 
 
 DeepBrain Technology (StaySafeNow, Inc.). Software Development Engineer Intern. May–September 2026. Tenafly, NJ, hybrid.
 
-Both projects below belong to this internship. The shared introduction reads: “Two projects from my internship, from analyzing a visible board to learning from an incomplete one.”
+Both project views identify this internship and the contributions below.
 
 ## Chess analysis and coaching
 
@@ -54,7 +54,9 @@ These are short demonstrations, recorded separately from the historical training
 
 ## Media and presentation
 
-Project summaries lead into large captures, plain chapter links and visible engineering notes. Each clip starts paused and provides play/pause, previous/next, an enlarged viewer and GIF download. Reduced-motion users can navigate manually. Playback pauses when the page is hidden or the inline player leaves view; the enlarged viewer can continue playing.
+Navigation selects one of four views: About, Chess, FOW or Research. Each project places internship context, contribution and engineering notes beside its recording on desktop; phones stack the active view. About links directly to both projects and Research. Hash links and browser history preserve navigation through [nav.js](nav.js).
+
+Clips start paused and provide play/pause, previous/next, plain chapter links, an enlarged viewer and GIF download. Reduced-motion users navigate manually. Changing views pauses playback and closes the enlarged viewer. Playback also pauses when the document is hidden or the inline player leaves view; an enlarged clip can continue playing.
 
 The players and GIFs use snapshots of actual execution. Frame timing is edited for readability; these are not continuous screen videos or measurements of execution time. Captions must identify the local demonstration conditions in both inline and enlarged views.
 
@@ -62,11 +64,15 @@ The players and GIFs use snapshots of actual execution. Frame timing is edited f
 
 University at Albany, SUNY. August 2024–May 2025.
 
-**Sponsorship and health credentials on Instagram.** This is a descriptive heading, not a claimed publication title.
+**Transparency and message processing in health supplement promotion on Instagram.** This is the resume's project title, not a verified NCA abstract title.
 
 I studied how supplement-promotion posts disclose sponsorship and health credentials. I developed and validated a codebook for **417 posts** and analyzed the results in Python.
 
-Our co-authored extended abstract was **accepted for presentation at the 112th NCA Annual Conference**, November 2026. NCA is the National Communication Association. Do not change to presented/published without new confirmation.
+Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty/archana-krishnan) and PhD candidate Alex R. Stankus.
+
+Our co-authored extended abstract was **accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/)**, November 2026. This status comes from the resume; the conference page is general event information. Do not change to presented/published without confirmation.
+
+The [research listing in the adviser's CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) identifies related work, “Unlabeled influence,” as a COMET submission in February 2026. It is not the NCA abstract or evidence of NCA acceptance. No exact public NCA abstract link has been verified.
 
 ## Disclosure
 

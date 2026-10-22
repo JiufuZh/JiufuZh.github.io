@@ -6,13 +6,9 @@
   let enlarged = null;
   let opener = null;
 
-  function revealHash() {
-    let target;
-    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
-    target?.scrollIntoView({ block: 'start', behavior: 'auto' });
-  }
-  addEventListener('hashchange', revealHash);
-  if (location.hash) requestAnimationFrame(revealHash);
+  document.addEventListener('pagechange', () => {
+    if (dialog?.open) dialog.close();
+  });
 
   function makePlayer(root) {
     const clips = recordings[root.dataset.player];
@@ -154,6 +150,7 @@
       syncDialog();
     });
     document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
+    document.addEventListener('pagechange', pause);
     reducedMotion.addEventListener('change', pause);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(entries => {

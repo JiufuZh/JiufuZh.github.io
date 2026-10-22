@@ -25,3 +25,7 @@ Translate the reference's publications list into two internship project entries 
 ## Latest refinement: real FOW media
 
 The user finds the project area too template-like and explicitly requests real FOW training and browser-script GIFs rather than only process diagrams. Make real media primary, simplify repeated panels and input/output labels, and use concrete first-person engineering notes. Preserve step-by-step access and the accepted About section. Reproduce short, isolated local runs where feasible; keep trained artifacts, source, credentials and private experiment results out of public assets. State any material capture limitation honestly.
+
+## October 21 navigation revision
+
+Replace the continuous page with navigation-selected About, Chess, FOW and Research views. Each project gets its own desktop layout, with contribution/context beside its recording; phones stack the active project's content only. Preserve existing media controls and deep links, stop hidden playback, support browser history and indicate the current page. Add verified research links, distinguishing an exact abstract/paper from general conference or supervisor pages. The user requested this directly, so no new interview is needed.
