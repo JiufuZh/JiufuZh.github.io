@@ -1,6 +1,6 @@
 # Homepage content
 
-This is the authority for public facts and wording in [index.html](index.html). Last reviewed: October 21, 2026. The resume establishes personal facts; the user's clarification establishes both projects as internship work.
+Authority for public facts and wording in [index.html](index.html). Reviewed October 21, 2026. Sources: the resume and explicit user clarifications, including internship attribution and the struvite research entry.
 
 ## Profile and introduction
 
@@ -54,13 +54,15 @@ These are short demonstrations, recorded separately from the historical training
 
 ## Media and presentation
 
-Top-level navigation is About / Projects / Research. Projects has secondary Chess Coaching / Fog of War Chess Engine links and shows one project at a time. `#projects` defaults to Chess Coaching; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
+Navigation is About / Projects / Research, with Chess Coaching / Fog of War Chess Engine under Projects. One project is shown; `#projects` defaults to Chess Coaching. Preserve `#chess-analysis`, `#fog-of-war` and browser history. Desktop projects pair text and recordings; widths up to 1000px stack introduction, media, then notes.
 
-Clips start paused with step counts, chapter navigation and GIF downloads. Clicking a screenshot or Enlarge opens the same viewer. Playback, chapter, clip-selection, retry and download controls have a 44px minimum height. Loading and retry states handle unavailable images; the modal has a live status region. Reduced-motion users navigate manually. View changes pause playback and close the viewer; hidden documents and offscreen inline players pause playback.
+Clips start paused, with chapters, step counts, enlargement and GIF downloads. See [README.md](README.md) for playback, accessibility, loading and retry behavior.
 
-The players and GIFs use snapshots of actual execution. Frame timing is edited for readability; these are not continuous screen videos or measurements of execution time. Captions must identify the local demonstration conditions in both inline and enlarged views.
+Snapshots and GIFs use edited timing, not continuous video or execution-time measurements. Keep local demonstration conditions visible inline and enlarged.
 
 ## Research
+
+### Health supplement promotion
 
 University at Albany, SUNY. August 2024–May 2025.
 
@@ -72,8 +74,18 @@ Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty
 
 An extended abstract I co-authored was **accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/)**, November 2026. This status comes from the resume; the conference page is general event information. Do not change to presented/published without confirmation.
 
-The [research listing in the adviser's CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) identifies related work, “Unlabeled influence,” as a COMET submission in February 2026. It is not the NCA abstract or evidence of NCA acceptance. No exact public NCA abstract link has been verified.
+The [adviser's February 2026 CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) lists related work, “Unlabeled influence,” as a COMET submission, not evidence of NCA acceptance. No exact public NCA abstract link is verified.
+
+### Struvite nutrient release
+
+**Wastewater-derived struvite for sustainable agriculture: characterization and controls on nutrient release.** User-supplied project title.
+
+University at Albany ESE Research Lab, Albany, NY. Research Aide, February–May 2025. Advised by [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano.
+
+I tested dissolution of three struvite types in organic acids and deionized water over 24 hours, using ICP measurements and recording pH at seven time points. I also conducted soil-column experiments simulating environmental conditions and used ICP measurements to track dissolution. I cleaned and processed ICP and pH data and visualized relationships between test conditions and dissolution.
+
+These facts come from the user's research description. Keep this entry independent of the health-promotion study; no resulting publication or authorship is verified.
 
 ## Disclosure
 
-Publish only approved interface demonstrations, resume-disclosed technical details and data scales. Exclude private source, datasets, internal reports, extra experimental metrics, credentials, phone/address, original resume files and inaccessible private repository links. Do not add unverified user counts, latency, cost, model gains, GRU architecture or rating claims.
+Publish approved demonstrations, resume-disclosed facts and explicitly supplied research details. Exclude private source, datasets, reports, extra metrics, credentials, phone/address, original resume files and private repository links. Do not add unverified user counts, latency, cost, model gains, GRU architecture or rating claims.

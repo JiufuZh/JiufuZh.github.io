@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 37/37 slices. Current: project names published and verified. Blockers: none. Next: user review.
+Completed: 38/39 slices. Current: publish and inspect the research addition. Blockers: none. Next: desktop and phone verification.
 
 Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HISTORY.md).
 
@@ -15,6 +15,8 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 | S35 | Group Chess and FOW under Projects | 已完成 | Group/default/leaf/history/focus checks pass; 19 player checks pass; assets and fragments resolve | [Navigation](nav.js) |
 | S36 | Verify and publish grouped navigation | 已完成 | Pages built 749132d; desktop/phone layout, switch, history, keyboard focus and playback pause verified live | [QA](QA.md) |
 | S37 | Rename projects consistently | 已完成 | Pages built 03d339c; navigation/headings/titles verified at desktop and 320px phone size without overflow | [Homepage](index.html) |
+| S38 | Add UAlbany ESE research experience | 已完成 | Facts checked against user text and linked chat; official adviser link verified; 30 references and 19 IDs pass | [Research](index.html#research) |
+| S39 | Publish and inspect both research entries | 进行中 | Content, fragment and navigation checks pass; rendered inspection pending deployment | [QA](QA.md) |
 
 2026-10-21: User requests all relevant skills for polish. Using UI Taste polish/craft, frontend-design, content-research-writer, browser verification and the previously approved Jev agent simulation. The established direction and disclosure scope remain binding, so no repeat interview is needed. Current screenshots are the constrained visual baseline; this is refinement, not a new visual concept.
 
@@ -29,3 +31,5 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 2026-10-21: The user requests Chess Coaching and delegates the FOW name. Use Fog of War Chess Engine in navigation, headings, page titles and recording titles. Keep the stable links and established project claims.
 
 2026-10-21: Published 03d339c. Navigation checks and asset references pass. Live desktop and narrow-phone inspection confirms the names and readable wrapping; both project routes work.
+
+2026-10-21: Add UAlbany ESE Research Lab, Research Aide, February–May 2025. The linked chat confirms the struvite project title; no resulting publication was verified. Preserve the existing health-communication research and keep each entry's dates and advisers separate. Apply content-research-writer and UI Taste guidance within the established layout.

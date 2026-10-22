@@ -6,11 +6,11 @@ An English portfolio for Software Engineer / Applied AI interviewers. Keep the v
 
 Show ownership, engineering decisions and evidence. Use real Chess captures and, where reproducible, real FOW training/browser-bridge captures with their local demonstration conditions stated. Support desktop and mobile, keyboard navigation and reduced motion. Do not fabricate outcomes, latency, users, model performance or completed research presentations.
 
-Approved project scope: interface demonstrations; technical facts and data scale already disclosed in the resume. Keep private repository source, internal reports, extra experiment metrics and research notes out of the website and public Git history. Publish to GitHub as originally requested, using the proposed default: a public `JiufuZh.github.io` site with the supplied portrait and contact email, without the original resume or phone number. No alternative publication preference was supplied.
+Approved public scope: interface demonstrations; technical facts and data scale disclosed in the resume; explicitly supplied research details. Keep private repository source, internal reports, extra experiment metrics and research notes out of the website and public Git history. Publish to GitHub as originally requested, using the proposed default: a public `JiufuZh.github.io` site with the supplied portrait and contact email, without the original resume or phone number. No alternative publication preference was supplied.
 
 ## Sources and precedence
 
-User clarification is authoritative for attribution and disclosure. The supplied resume is authoritative for employment, education and personal claims. Inspected code verifies workflow details; private evidence stays in ignored `.research/`. NCA work is accepted for November 2026 presentation, not already presented. FOW's reported rating is not standard chess Elo and will not be used as a headline metric.
+User clarification is authoritative for attribution and disclosure. The supplied resume establishes employment, education and personal claims; the later user description adds the struvite Research Aide work. Inspected code verifies workflow details; private evidence stays in ignored `.research/`. NCA work is accepted for November 2026 presentation, not already presented. FOW's reported rating is not standard chess Elo and will not be used as a headline metric.
 
 ## Acceptance
 
@@ -29,3 +29,7 @@ The user finds the project area too template-like and explicitly requests real F
 ## October 21 navigation revision
 
 Use top-level About / Projects / Research navigation. Projects contains secondary Chess Coaching / Fog of War Chess Engine links and shows one project at a time. `#projects` defaults to Chess Coaching; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. Each project keeps its desktop layout, with contribution/context beside its recording; widths of 1000px or less stack introduction, media, then notes. Preserve existing media controls, stop hidden playback, support browser history and indicate the active section and project. Keep verified research links, distinguishing an exact abstract/paper from general conference or supervisor pages. The user requested this directly, so no new interview is needed.
+
+## October 21 research addition
+
+Add the user-supplied struvite project as an independent Research entry: Research Aide at UAlbany's ESE Research Lab, Albany, NY, February–May 2025; advised by Prof. Rixiang Huang and PhD candidate Shyrill F. Mariano. Describe the three-type dissolution tests, 24-hour measurements, seven pH time points, soil-column experiments, and ICP/pH data work. [CONTENT.md](CONTENT.md) holds the exact title and facts. Keep this experimental work distinct from the health-promotion study and its NCA status. No struvite publication, authorship or agricultural performance result is established.

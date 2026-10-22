@@ -41,15 +41,19 @@ Clicking a screenshot or Enlarge opens the same viewer. Playback buttons, chapte
 
 Changing views pauses players and closes the enlarged viewer. Playback also pauses when the document is hidden or an inline player leaves view; an enlarged clip can continue playing. Closing the viewer pauses it. Reduced-motion users can inspect every chapter manually. These notes describe the implementation; verification results belong in [QA.md](QA.md).
 
-## Research links
+## Research entries and links
 
-The Research view uses the resume's project title, “Transparency and message processing in health supplement promotion on Instagram.” The title is not presented as a verified NCA abstract title. The advisers are Prof. Archana Krishnan and PhD candidate Alex R. Stankus.
+The Research view keeps two independent entries, each with its own role or dates, advisers, contributions and source links. Publication status belongs only to the relevant entry.
+
+The health-promotion entry uses the resume's project title, “Transparency and message processing in health supplement promotion on Instagram.” The title is not presented as a verified NCA abstract title. The advisers are Prof. Archana Krishnan and PhD candidate Alex R. Stankus.
 
 - [Archana Krishnan's faculty profile](https://www.albany.edu/communication/faculty/archana-krishnan) identifies the adviser.
 - [NCA 2026 conference](https://www.natcom.org/nca-112th-annual-convention/) provides general event information. The resume supports the accepted-for-presentation status for November 2026.
 - [Research listing in the adviser's CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) lists related work, “Unlabeled influence,” as a COMET submission in February 2026. It is not the NCA abstract or proof of NCA acceptance.
 
 Keep these distinctions visible. No exact public NCA paper or abstract link has been verified.
+
+The user supplied the title “Wastewater-derived struvite for sustainable agriculture: characterization and controls on nutrient release” and the Research Aide role at UAlbany's ESE Research Lab, February–May 2025. Advisers: [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano. The entry describes dissolution and soil-column experiments, ICP/pH measurements, and data cleaning and visualization. No resulting publication or authorship is verified; the faculty link identifies the adviser, not a paper. Exact approved details are in [CONTENT.md](CONTENT.md).
 
 Private repositories, internal reports, original resume files, credentials and research notes are not part of this site. Keep `.research/`, `.qa/`, environment files and dependencies ignored by Git.
 

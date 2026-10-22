@@ -35,3 +35,7 @@ Use the existing 1440×1000 About/Chess screenshots and 390px FOW screenshot as 
 Improve the same layout: underlined prose links, one navigation indicator, 44px recording controls and chapter targets, a visible step count, clearer metadata, and 16px desktop engineering notes. At widths up to 1000px, give the recording the full content width in intro → media → notes order. The screenshot opens the existing enlarged viewer. Image loading and retry states must preserve playback timing; manual modal changes receive an in-dialog announcement. Tighten repeated biography and project language without changing claims.
 
 Compare the final page at the baseline dimensions, then check 320px, tablet, keyboard and reduced-motion behavior. Agent simulation supports refinement within this established direction; it does not replace these checks.
+
+## October 21 research addition
+
+Research contains two independent entries: health supplement promotion and struvite nutrient release. Give each its own title, dates or role, advisers, contribution text and relevant links, using quiet spacing or a rule rather than cards. This keeps the studies' different methods and source records clear. The NCA acceptance and COMET CV note belong only to the health-promotion entry. The struvite entry presents user-supplied Research Aide work and an adviser profile link; do not style it as a publication or attach the NCA status to it. Preserve the existing navigation and project media.
