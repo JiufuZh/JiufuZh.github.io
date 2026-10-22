@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 33/33 slices. Current: polish published and verified. Blockers: none. Next: user review.
+Completed: 33/34 slices. Current: S34, portrait framing. Blockers: none. Next: verify the full head at desktop and phone sizes, then publish.
 
 Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HISTORY.md).
 
@@ -11,6 +11,7 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 | S31 | Refine readability and recording controls | 已完成 | 19 player checks and static validation pass; existing images unchanged | [Homepage](index.html) |
 | S32 | Verify polish at desktop, tablet and phone sizes | 已完成 | Live visual/interaction checks pass; stale clip announcement corrected and regression-tested | [QA](QA.md) |
 | S33 | Publish and verify live result | 已完成 | Pages built 1638e90; live clip-switch announcement matches its selected step | [Live](https://jiufuzh.github.io/) |
+| S34 | Center the portrait and prevent head cropping | 进行中 | Source image inspected; top-centered crop preserves existing dimensions and pixels | [Portrait style](styles.css) |
 
 2026-10-21: User requests all relevant skills for polish. Using UI Taste polish/craft, frontend-design, content-research-writer, browser verification and the previously approved Jev agent simulation. The established direction and disclosure scope remain binding, so no repeat interview is needed. Current screenshots are the constrained visual baseline; this is refinement, not a new visual concept.
 

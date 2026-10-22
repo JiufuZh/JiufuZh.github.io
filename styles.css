@@ -45,7 +45,7 @@ img { max-width: 100%; display: block; }
 .site-header a:focus-visible { outline-color: white; }
 .about-section { display: grid; grid-template-columns: 280px minmax(0, 1fr); column-gap: 68px; padding-block: 57px 66px; }
 .profile { text-align: center; font-family: var(--sans); padding-top: 4px; }
-.portrait { width: 230px; height: 250px; margin-inline: auto; object-fit: cover; object-position: 50% 25%; border-radius: 14px; }
+.portrait { width: 230px; height: 250px; margin-inline: auto; object-fit: cover; object-position: center top; border-radius: 14px; }
 .profile h1 { font-size: 36px; letter-spacing: -.6px; margin-top: 19px; }
 .profile-role { color: var(--muted); font-size: 18px; margin-top: 10px; }
 .profile-school { color: var(--muted); font-size: 17px; margin-top: 4px; }
