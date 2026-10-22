@@ -31,3 +31,7 @@ Isolated navigation checks pass for group selection, secondary visibility, curre
 Live browser inspection at 1440×1000 and a 390×844 phone viewport confirms the new hierarchy, one project at a time, and no horizontal overflow. Secondary links measure at least 44px high. Projects remains active on FOW; Research hides the secondary links. Back/Forward restores the selected project, Enter focuses the project heading, and switching to FOW pauses Chess playback. Browser warnings/errors: none. Viewport overrides were restored.
 
 Screenshots: `.qa/projects-navigation-desktop.png`, `.qa/projects-navigation-mobile.png`, and `.qa/projects-fow-mobile.png`. Phone screenshots show viewport portions, not the whole page. This was a scoped UI Taste refinement; no new design concept or Jev judgment was needed.
+
+## Project names
+
+Pages built `03d339c`. Navigation, headings, browser titles and recording titles now use Chess Coaching and Fog of War Chess Engine. Stable hashes and media assets remain unchanged. Navigation checks, recording-script syntax and local-reference validation pass. Inspected the live names at 1440px and 320px; both navigation labels wrap cleanly on the narrow phone with no horizontal overflow. Screenshots: `.qa/project-names-desktop.png` and `.qa/project-names-mobile.png`. Viewport overrides restored.
