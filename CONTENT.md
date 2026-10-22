@@ -25,11 +25,11 @@ DeepBrain Technology (StaySafeNow, Inc.). Software Development Engineer Intern. 
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
-I built the interface and feedback features for a chess coaching app. Players can review a mistake with Stockfish, compare an alternative move, and practice the same position.
+Built the interface and feedback features for a chess coaching app that helps players review mistakes with Stockfish, compare alternative moves, and practice the same position.
 
-When players change positions, engine responses can arrive out of order. I ran Stockfish in a Web Worker and added request cancellation and result versioning to prevent an old response from overwriting the current analysis.
+Engine responses can arrive out of order as players switch positions. Stockfish runs in a Web Worker, with request cancellation and result versioning to prevent stale results from replacing the current analysis.
 
-I validated LLM output against the expected structure and engine evidence, and added fallbacks for API failures. Saved reviews reopen without another LLM call.
+Added checks for LLM response structure and consistency with engine evidence, plus fallbacks for API failures. Saved reviews reopen without another LLM call.
 
 Six chapters—Import, Review, Explain, Compare, Practice, Solve—use actual local screenshots: sample PGN, critical 3…Nf6, engine-backed coaching, Qe7 arrow and Qxf7# practice. The alternative is an overlay, not a played move. No live LLM request was made; preserve this context inline and enlarged.
 
@@ -37,11 +37,11 @@ Six chapters—Import, Review, Explain, Compare, Practice, Solve—use actual lo
 
 Python, PyTorch, FastAPI, JavaScript.
 
-I worked on a chess agent that can see only part of the board. I prepared observations from **1,554 games and 88,949 plies**, trained policy-and-value models, and connected inference to a browser script.
+The agent plays chess with only part of the board visible. My work included preparing observations from **1,554 games and 88,949 plies**, training policy-and-value models, and connecting inference to a browser script.
 
-Hidden information had to stay out of the model's input. I built observations from the player's view and masked opponent move histories. I also split the data by complete games, keeping positions from the same game together.
+Observations reflect only the player's view, with opponent move histories masked to keep hidden information out of the model's input. Splitting the data by complete games keeps positions from the same game together.
 
-I worked on self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.
+Contributed to self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.
 
 Two selectable clips show fresh local execution:
 

@@ -82,7 +82,7 @@
         <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
               <h2 id="chess-title">Chess Coaching</h2>
-              <p>I built the interface and feedback features for a chess coaching app. Players can review a mistake with Stockfish, compare an alternative move, and practice the same position.</p>
+              <p>Built the interface and feedback features for a chess coaching app that helps players review mistakes with Stockfish, compare alternative moves, and practice the same position.</p>
               <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
             </header>
       </div>
@@ -97,8 +97,8 @@
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
       <div class="project-notes" id="chess-engineering">
-              <p>When players change positions, engine responses can arrive out of order. I ran Stockfish in a Web Worker and added request cancellation and result versioning to prevent an old response from overwriting the current analysis.</p>
-              <p>I validated LLM output against the expected structure and engine evidence, and added fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
+              <p>Engine responses can arrive out of order as players switch positions. Stockfish runs in a Web Worker, with request cancellation and result versioning to prevent stale results from replacing the current analysis.</p>
+              <p>Added checks for LLM response structure and consistency with engine evidence, plus fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
             </div>
     </article>
 
@@ -107,7 +107,7 @@
         <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
               <h2 id="fow-title">Fog of War Chess Engine</h2>
-              <p>I worked on a chess agent that can see only part of the board. I prepared observations from <strong>1,554 games and 88,949 plies</strong>, trained policy-and-value models, and connected inference to a browser script.</p>
+              <p>The agent plays chess with only part of the board visible. My work included preparing observations from <strong>1,554 games and 88,949 plies</strong>, training policy-and-value models, and connecting inference to a browser script.</p>
               <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
             </header>
       </div>
@@ -123,8 +123,8 @@
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
       <div class="project-notes" id="fow-engineering">
-              <p>Hidden information had to stay out of the model's input. I built observations from the player's view and masked opponent move histories. I also split the data by complete games, keeping positions from the same game together.</p>
-              <p>I worked on self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.</p>
+              <p>Observations reflect only the player's view, with opponent move histories masked to keep hidden information out of the model's input. Splitting the data by complete games keeps positions from the same game together.</p>
+              <p>Contributed to self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.</p>
             </div>
     </article>
 
