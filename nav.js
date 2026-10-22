@@ -20,8 +20,8 @@
   };
   const titles = {
     about: 'Jiufu Zhou',
-    'chess-analysis': 'Chess analysis and coaching — Jiufu Zhou',
-    'fog-of-war': 'Fog of War chess AI — Jiufu Zhou',
+    'chess-analysis': 'Chess Coaching — Jiufu Zhou',
+    'fog-of-war': 'Fog of War Chess Engine — Jiufu Zhou',
     research: 'Research — Jiufu Zhou'
   };
   const headingIds = {

@@ -1,6 +1,6 @@
 window.projectRecordings = {
   chess: [{
-    title: 'Chess analysis and coaching',
+    title: 'Chess Coaching',
     gif: 'assets/chess/chess-walkthrough.gif',
     context: 'Local app screenshots using Stockfish and engine-backed coaching. No live LLM request.',
     frames: [
@@ -13,7 +13,7 @@ window.projectRecordings = {
     ]
   }],
   fow: [{
-    title: 'FOW browser integration',
+    title: 'Fog of War Chess Engine — browser integration',
     gif: 'assets/fow/browser.gif',
     context: 'Original browser script and inference service on a local test board, using the checkpoint from the training clip. Captured states with edited timing; not an online match or strength benchmark.',
     frames: [
@@ -23,7 +23,7 @@ window.projectRecordings = {
       { label: 'Read it back', src: 'assets/fow/browser-04.png', duration: 5000, alt: 'Refreshed browser bridge shows the pawn on e4 in its observed position', caption: 'Refresh position reads the updated board. The bridge’s own view now shows the pawn on e4.' }
     ]
   }, {
-    title: 'FOW training and checkpoint resume',
+    title: 'Fog of War Chess Engine — training and checkpoint resume',
     gif: 'assets/fow/training.gif',
     context: 'Original training code, a tiny synthetic fixture, and CPU execution. A local viewer displays observed events. Captured states with edited timing; not the full internship dataset or a performance evaluation.',
     frames: [

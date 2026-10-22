@@ -23,7 +23,7 @@ DeepBrain Technology (StaySafeNow, Inc.). Software Development Engineer Intern. 
 
 Both project views identify this internship and the contributions below.
 
-## Chess analysis and coaching
+## Chess Coaching
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
@@ -35,7 +35,7 @@ I validated LLM output against the expected structure and engine evidence, and a
 
 The clip has six plain chapters: Import, Review, Explain, Compare, Practice, Solve. Actual local app screenshots show a sample PGN, the critical 3…Nf6 move, engine-backed coaching, the Qe7 alternative arrow, and practice ending with Qxf7#. The alternative is an overlay, not a played move. No live LLM request was made during capture; keep this context visible beneath the clip and in the enlarged viewer.
 
-## Fog of War chess AI
+## Fog of War Chess Engine
 
 Python, PyTorch, FastAPI, JavaScript.
 
@@ -54,7 +54,7 @@ These are short demonstrations, recorded separately from the historical training
 
 ## Media and presentation
 
-Top-level navigation is About / Projects / Research. Projects has secondary Chess / FOW links and shows one project at a time. `#projects` defaults to Chess; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
+Top-level navigation is About / Projects / Research. Projects has secondary Chess Coaching / Fog of War Chess Engine links and shows one project at a time. `#projects` defaults to Chess Coaching; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
 
 Clips start paused with step counts, chapter navigation and GIF downloads. Clicking a screenshot or Enlarge opens the same viewer. Playback, chapter, clip-selection, retry and download controls have a 44px minimum height. Loading and retry states handle unavailable images; the modal has a live status region. Reduced-motion users navigate manually. View changes pause playback and close the viewer; hidden documents and offscreen inline players pause playback.
 

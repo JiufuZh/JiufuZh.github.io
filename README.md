@@ -4,7 +4,7 @@ An English portfolio focused on software engineering, applied AI, and two projec
 
 **Live site:** [jiufuzh.github.io](https://jiufuzh.github.io/)
 
-Updated October 21, 2026. Top-level navigation is **About / Projects / Research**. Projects has secondary **Chess / FOW** links and shows one project at a time. `#projects` defaults to Chess; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. About connects Jiufu's UW studies with the two internship projects, then describes his React, Stockfish, PyTorch and browser-script work and earlier Informatics research. Project views use two columns on desktop: the introduction and engineering notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes.
+Updated October 21, 2026. Top-level navigation is **About / Projects / Research**. Projects has secondary **Chess Coaching / Fog of War Chess Engine** links and shows one project at a time. `#projects` defaults to Chess Coaching; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. About connects Jiufu's UW studies with the two internship projects, then describes his React, Stockfish, PyTorch and browser-script work and earlier Informatics research. Project views use two columns on desktop: the introduction and engineering notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes.
 
 ## Run locally
 
@@ -26,9 +26,9 @@ Open http://127.0.0.1:4173/ in a browser.
 - `assets/`: portrait, favicon and approved project UI captures.
 - [CONTENT.md](CONTENT.md): verified biographical and project facts.
 
-Project summaries, large captures, plain chapter links and visible engineering notes keep the work easy to inspect. The Chess clip uses six actual local app screenshots: import, review, explanation, alternative, practice and solution. It runs bundled Stockfish with engine-backed coaching; no live LLM request was made during capture.
+Project summaries, large captures, plain chapter links and visible engineering notes keep the work easy to inspect. The Chess Coaching clip uses six actual local app screenshots: import, review, explanation, alternative, practice and solution. It runs bundled Stockfish with engine-backed coaching; no live LLM request was made during capture.
 
-Fog of War has two local demonstrations:
+Fog of War Chess Engine has two local demonstrations:
 
 - **Training run:** the project's original trainer executes on CPU with a tiny synthetic fixture. A new local event viewer displays observed training, checkpoint saving and resumption. It does not display invented progress or replay a historical full training run.
 - **Browser integration:** the original userscript connects a newly built, permitted local test board to real FastAPI inference, using the checkpoint from the training demonstration. The model returns a move, which the script applies on the test board.
