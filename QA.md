@@ -13,7 +13,7 @@ This pass refines the established four-view homepage. Earlier source, recording 
 | Responsive layout | All four views measured at 320, 390, 768, 1000 and 1440px: one active page and no horizontal overflow. Controls and chapter labels wrap within the selected page. |
 | Native browser behavior | Screenshot opens with Enter, modal Next updates its live status, and Escape restores the screenshot-button focus. Playback advances through browser frames and pauses on navigation. Reduced-motion disables timed playback while manual training steps work. |
 | Failure recovery | Temporarily blocked one public image request in the test tab. The error state appeared, Play disabled, and manual steps remained available. After removing the block, Retry loaded the image and stayed paused. Network and media overrides restored. |
-| Follow-up | Live review found an old training-step announcement remaining after a recording switch. Corrected and covered by the 19th controller check; final live deployment verification pending. |
-| Publication | Pages built `a3af764`. Revised layouts, copy and controls verified on the public site. No JavaScript warnings or errors during the browser checks. |
+| Follow-up | Live review found an old training-step announcement remaining after a recording switch. Corrected and covered by the 19th controller check. Live 1638e90 confirms switching back from training announces “Step 1 of 4: Read the board.” |
+| Publication | Pages built `a3af764` and final correction `1638e90`. Revised layouts, copy and controls verified on the public site. No JavaScript warnings or errors during the browser checks. |
 
 Evidence remains in ignored `.research/` and `.qa/`. No physical-device or formal accessibility-conformance claim is made.
