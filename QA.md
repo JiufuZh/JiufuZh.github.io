@@ -35,3 +35,9 @@ Screenshots: `.qa/projects-navigation-desktop.png`, `.qa/projects-navigation-mob
 ## Project names
 
 Pages built `03d339c`. Navigation, headings, browser titles and recording titles now use Chess Coaching and Fog of War Chess Engine. Stable hashes and media assets remain unchanged. Navigation checks, recording-script syntax and local-reference validation pass. Inspected the live names at 1440px and 320px; both navigation labels wrap cleanly on the narrow phone with no horizontal overflow. Screenshots: `.qa/project-names-desktop.png` and `.qa/project-names-mobile.png`. Viewport overrides restored.
+
+## UAlbany ESE research
+
+Pages built `f28dfa5`. New title comes from the user's linked chat; role, dates, advisers and three contributions match the supplied text. Huang's official faculty page was verified. The two research entries have separate dates and advisers; the NCA/COMET status stays with health-promotion research.
+
+Navigation checks and 30 references / 19 unique IDs pass. Compared live 1440×1100 layout with the prior Research page, then inspected upper and lower 390×844 phone views. Both entries are readable without horizontal overflow; Research remains selected. No browser warnings/errors. Viewport overrides restored. Evidence: `.qa/research-ese-desktop.png`, `.qa/research-ese-mobile.png`, `.qa/research-ese-mobile-lower.png`.

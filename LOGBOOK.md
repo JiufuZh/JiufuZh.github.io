@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 38/39 slices. Current: publish and inspect the research addition. Blockers: none. Next: desktop and phone verification.
+Completed: 39/39 slices. Current: UAlbany ESE research published and verified. Blockers: none. Next: user review.
 
 Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HISTORY.md).
 
@@ -16,7 +16,7 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 | S36 | Verify and publish grouped navigation | 已完成 | Pages built 749132d; desktop/phone layout, switch, history, keyboard focus and playback pause verified live | [QA](QA.md) |
 | S37 | Rename projects consistently | 已完成 | Pages built 03d339c; navigation/headings/titles verified at desktop and 320px phone size without overflow | [Homepage](index.html) |
 | S38 | Add UAlbany ESE research experience | 已完成 | Facts checked against user text and linked chat; official adviser link verified; 30 references and 19 IDs pass | [Research](index.html#research) |
-| S39 | Publish and inspect both research entries | 进行中 | Content, fragment and navigation checks pass; rendered inspection pending deployment | [QA](QA.md) |
+| S39 | Publish and inspect both research entries | 已完成 | Pages built f28dfa5; two entries, separate dates/advisers, desktop/phone wrapping and Research navigation verified | [QA](QA.md) |
 
 2026-10-21: User requests all relevant skills for polish. Using UI Taste polish/craft, frontend-design, content-research-writer, browser verification and the previously approved Jev agent simulation. The established direction and disclosure scope remain binding, so no repeat interview is needed. Current screenshots are the constrained visual baseline; this is refinement, not a new visual concept.
 
@@ -33,3 +33,5 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 2026-10-21: Published 03d339c. Navigation checks and asset references pass. Live desktop and narrow-phone inspection confirms the names and readable wrapping; both project routes work.
 
 2026-10-21: Add UAlbany ESE Research Lab, Research Aide, February–May 2025. The linked chat confirms the struvite project title; no resulting publication was verified. Preserve the existing health-communication research and keep each entry's dates and advisers separate. Apply content-research-writer and UI Taste guidance within the established layout.
+
+2026-10-21: Pages built f28dfa5. Live 1440px and 390px layouts inspected; both studies remain readable with no horizontal overflow. Research stays selected, the adviser link matches the official faculty profile, and browser warnings/errors are absent.
