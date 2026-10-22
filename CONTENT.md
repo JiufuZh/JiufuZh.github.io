@@ -54,7 +54,7 @@ These are short demonstrations, recorded separately from the historical training
 
 ## Media and presentation
 
-Navigation selects one of four views: About, Chess, FOW or Research. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
+Top-level navigation is About / Projects / Research. Projects has secondary Chess / FOW links and shows one project at a time. `#projects` defaults to Chess; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
 
 Clips start paused with step counts, chapter navigation and GIF downloads. Clicking a screenshot or Enlarge opens the same viewer. Playback, chapter, clip-selection, retry and download controls have a 44px minimum height. Loading and retry states handle unavailable images; the modal has a live status region. Reduced-motion users navigate manually. View changes pause playback and close the viewer; hidden documents and offscreen inline players pause playback.
 

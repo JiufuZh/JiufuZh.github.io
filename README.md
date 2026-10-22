@@ -4,7 +4,7 @@ An English portfolio focused on software engineering, applied AI, and two projec
 
 **Live site:** [jiufuzh.github.io](https://jiufuzh.github.io/)
 
-Updated October 21, 2026. Navigation selects **About, Chess, FOW or Research**, showing one view at a time. About connects Jiufu's UW studies with the two internship projects, then describes his React, Stockfish, PyTorch and browser-script work and earlier Informatics research. Project views use two columns on desktop: the introduction and engineering notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes.
+Updated October 21, 2026. Top-level navigation is **About / Projects / Research**. Projects has secondary **Chess / FOW** links and shows one project at a time. `#projects` defaults to Chess; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. About connects Jiufu's UW studies with the two internship projects, then describes his React, Stockfish, PyTorch and browser-script work and earlier Informatics research. Project views use two columns on desktop: the introduction and engineering notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes.
 
 ## Run locally
 
@@ -22,7 +22,7 @@ Open http://127.0.0.1:4173/ in a browser.
 - `styles.css`: responsive layout and presentation.
 - `recordings.js`: clip chapters, screenshot paths, captions, playback timing and GIF links.
 - `main.js`: shared screenshot player, clip switching and enlarged viewer.
-- `nav.js`: exclusive content views, hash links, browser history and current-navigation state.
+- `nav.js`: top-level and project navigation, exclusive content views, hash links, browser history and current-navigation state.
 - `assets/`: portrait, favicon and approved project UI captures.
 - [CONTENT.md](CONTENT.md): verified biographical and project facts.
 

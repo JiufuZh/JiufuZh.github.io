@@ -7,7 +7,11 @@
   if (!byId.has('about')) return;
 
   const links = [...document.querySelectorAll('[data-nav]')];
+  const projectLinks = [...document.querySelectorAll('[data-project-nav]')];
+  const projectNavigation = document.querySelector('[data-project-navigation]');
+  const projectIds = new Set(['chess-analysis', 'fog-of-war']);
   const aliases = {
+    projects: 'chess-analysis',
     experience: 'chess-analysis',
     work: 'chess-analysis',
     'chess-engineering': 'chess-analysis',
@@ -70,8 +74,15 @@
       });
       activePage = page;
     }
-    links.forEach(link => {
-      const selected = resolve(link.getAttribute('href') || '').page === page;
+    const isProject = projectIds.has(page.id);
+    if (projectNavigation) {
+      projectNavigation.hidden = !isProject;
+      projectNavigation.classList.toggle('is-active', isProject);
+    }
+    [...links, ...projectLinks].forEach(link => {
+      const selected = link.getAttribute('data-nav') === 'projects'
+        ? isProject
+        : resolve(link.getAttribute('href') || '').page === page;
       link.classList.toggle('is-active', selected);
       if (selected) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
