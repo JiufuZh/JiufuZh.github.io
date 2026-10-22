@@ -180,7 +180,7 @@
       controls();
       schedule();
     }
-    function selectClip(index) {
+    function selectClip(index, announceSelection = false) {
       if (!clips[index]) return;
       pause();
       clipIndex = index;
@@ -197,7 +197,7 @@
         return item;
       }));
       root.querySelectorAll('[data-clip]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.clip) === index)));
-      show();
+      show(announceSelection);
     }
     const api = { pause, toggle, previous: () => selectFrame(frameIndex - 1), next: () => selectFrame(frameIndex + 1), syncDialog };
     image.addEventListener('load', imageLoaded);
@@ -215,7 +215,7 @@
     play.addEventListener('click', toggle);
     previous.addEventListener('click', api.previous);
     next.addEventListener('click', api.next);
-    root.querySelectorAll('[data-clip]').forEach(button => button.addEventListener('click', () => selectClip(Number(button.dataset.clip))));
+    root.querySelectorAll('[data-clip]').forEach(button => button.addEventListener('click', () => selectClip(Number(button.dataset.clip), true)));
     root.querySelectorAll('[data-expand]').forEach(button => button.addEventListener('click', event => {
       if (!dialog) return;
       enlarged?.pause();
