@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 40/41 slices. Current: polish repetitive research wording. Blockers: none. Next: publish and verify the revised copy.
+Completed: 41/41 slices. Current: research wording polished, published and verified. Blockers: none. Next: user review.
 
 Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HISTORY.md).
 
@@ -18,7 +18,7 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 | S38 | Add UAlbany ESE research experience | 已完成 | Facts checked against user text and linked chat; official adviser link verified; 30 references and 19 IDs pass | [Research](index.html#research) |
 | S39 | Publish and inspect both research entries | 已完成 | Pages built f28dfa5; two entries, separate dates/advisers, desktop/phone wrapping and Research navigation verified | [QA](QA.md) |
 | S40 | Put health research first and expand its methods/results | 已完成 | Pages built bcf010f; order, three detailed bullets, figures, preserved links and responsive wrapping checked | [Research](index.html#research) |
-| S41 | Vary research sentence openings | 进行中 | Content-research-writer pass and independent editorial review; preserve methods, figures and ownership | [Research copy](index.html#research) |
+| S41 | Vary research sentence openings | 已完成 | Pages built a4621b0; six live bullets and figures checked; desktop rendering inspected; references resolve | [Research copy](index.html#research) |
 
 2026-10-21: User requests all relevant skills for polish. Using UI Taste polish/craft, frontend-design, content-research-writer, browser verification and the previously approved Jev agent simulation. The established direction and disclosure scope remain binding, so no repeat interview is needed. Current screenshots are the constrained visual baseline; this is refinement, not a new visual concept.
 
@@ -43,3 +43,5 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 2026-10-21: Published bcf010f. Live text and DOM confirm the order, all three contribution bullets and exact supplied figures. Desktop and phone viewport inspection plus width measurements pass; existing struvite text and all research links are preserved.
 
 2026-10-21: User requests varied sentence openings. Revise six research bullets with direct contribution verbs and method-led sentences, reduce repetition, and scope Instagram findings to the sample. Keep all supplied quantities, methods, advisers, dates and links.
+
+2026-10-21: Pages built a4621b0. Six revised bullets verified on the live page; 417 posts, 0.95–1.00 reliability, three struvite types, 24 hours and seven pH time points remain intact. Static checks pass (30 references, 19 IDs); desktop view has no horizontal overflow. Screenshot: `.qa/research-wording-polish.png`.
