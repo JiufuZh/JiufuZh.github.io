@@ -1,47 +1,22 @@
-# Verification — October 21, 2026
+# Verification — October 22, 2026
 
-The table records the earlier polish pass; subsequent portrait and grouped-navigation checks follow below. Earlier source, recording and navigation verification remains in [QA-HISTORY.md](QA-HISTORY.md).
+This pass expands the project walkthroughs. Earlier checks are in [QA-HISTORY.md](QA-HISTORY.md).
 
 | Check | Evidence / result |
 |---|---|
-| Baseline and scope | Inspected incumbent About and Chess at 1440×1000 and phone FOW at 390px; captured current Chess at 900×1100 and 1440×1000. UI Taste polish/craft and independent design review support local changes, not a new identity. |
-| Content | Independent content review found no factual defects. Copy now avoids repeated education and vague summaries. Counts, internship attribution, research status, original images and capture disclosures are retained. Both source repositories are private, so no inaccessible source link was added. |
-| Structure | 28 local references resolve and 14 IDs are unique. Navigation checks and script syntax pass. Prose links are underlined; primary controls and chapters have 44px targets. |
-| Player | 19 isolated behavior checks pass: original playback/route checks plus delayed loading, failures/retry, late events, both enlargement openers, progress and modal announcements. Initial setup stays silent; explicit recording switches announce the new first step. |
-| Direction | Jev agent simulation was used under the user's prior provider choice; no API or paid service was called. It advised a bounded refinement and required rendered verification. |
-| Visual comparison | Inspected the new About and Chess at 1440×1000 against the saved baseline. At 900px, the larger recording replaces the narrow column. At 390px, inspected separate top and controls/notes viewport captures; full-page capture was unreliable. Portrait and capture pixels are unchanged. |
-| Responsive layout | All four views measured at 320, 390, 768, 1000 and 1440px: one active page and no horizontal overflow. Controls and chapter labels wrap within the selected page. |
-| Native browser behavior | Screenshot opens with Enter, modal Next updates its live status, and Escape restores the screenshot-button focus. Playback advances through browser frames and pauses on navigation. Reduced-motion disables timed playback while manual training steps work. |
-| Failure recovery | Temporarily blocked one public image request in the test tab. The error state appeared, Play disabled, and manual steps remained available. After removing the block, Retry loaded the image and stayed paused. Network and media overrides restored. |
-| Follow-up | Live review found an old training-step announcement remaining after a recording switch. Corrected and covered by the 19th controller check. Live 1638e90 confirms switching back from training announces “Step 1 of 4: Read the board.” |
-| Publication | Pages built `a3af764` and final correction `1638e90`. Revised layouts, copy and controls verified on the public site. No JavaScript warnings or errors during the browser checks. |
+| Scope and direction | Inspected 1265×712 incumbent project views. Preserve the accepted identity; move introduction above a larger recording, add a task selector and contextual notes, remove the redundant footer. Previously approved Jev agent simulation advised this direction; no API call. |
+| Chess evidence | Two clips use seven existing real app captures, including the previously omitted hint. Original source images remain unchanged. Broader features are identified as implementation notes, not additional footage. No live LLM request. |
+| FOW evidence | Five topics: observation preparation, CPU training, checkpoint resume, self-play, browser execution. Original-code data/self-play output is explicitly labeled as a rendered local execution trace. Training uses the earlier event viewer; browser footage uses the original userscript and local test board. |
+| New execution | Original source hashes unchanged. Tiny synthetic fixture replay, visibility/history masking and disjoint game splits checked. Actual capped CPU self-play produced valid moves, changed weights, saved optimizer state and a reloadable checkpoint. No promotion or playing-strength claim. |
+| Media | Seven GIFs have 26 frame entries. Every source and GIF exists; each GIF frame count and duration matches its clip metadata. New frames and caption strips visually inspected. |
+| Controller | All 27 isolated checks pass: existing playback/loading/error/retry/modal lifecycle plus generated topics, poster-to-start playback, manual poster override, dynamic notes, original-image selection, failed initial loads and invalid poster fallback. |
+| Navigation and structure | Grouped Projects and legacy routes pass. Static validation reports 28 resolved references, 19 unique IDs and valid ARIA references. Script syntax and diff whitespace checks pass. |
+| Publication | GitHub Pages built `8894c41`; the public site loads the seven-topic version and no footer. |
+| Desktop and tablet | Inspected desktop captures at a 1280×720 viewport and tablet at 900×1100. The larger media, top controls, readable notes and topic selection match the constrained baseline changes. Tablet media spans about 819px. |
+| Phone | Inspected 390×844 top and media viewports; measured 320px controls. No horizontal overflow at 1280, 900, 390 or 320px. Playback targets remain 44px high and topics 48px. |
+| Live interactions | All five FOW topics have one selected button, matching poster/count, note and GIF. Chess poster Play starts at step 1 and advances; switching to Practice pauses and the Hint step updates its note. Enlarge carries the correct image/context; Escape restores focus. |
+| Keyboard and motion | Enter selects a topic. Reduced-motion disables timed playback and permits Next to the Hint. Changing to Research pauses FOW; project and research navigation preserve the expected views. Overrides restored. No browser warnings/errors observed. |
 
-Evidence remains in ignored `.research/` and `.qa/`. No physical-device or formal accessibility-conformance claim is made.
+Private source, data, runs, checkpoints and detailed evidence stay in ignored `.research/` and `.qa/`. Only approved presentation assets are published. New Chess browser captures are unavailable in this environment; the page does not claim recordings of its broader feature set. No physical-device or formal accessibility-conformance claim.
 
-## Portrait framing correction
-
-Pages built `8fd9c60`. The existing photo now uses a horizontally centered, top-aligned crop. Inspected live captures at 1440px and 390px: the full head remains visible in the unchanged 230×250 and 170×185 frames. Phone horizontal center differs from its profile container by less than 1px. Original image pixels are unchanged. Screenshots are saved in `.qa/portrait-centered-desktop.png` and `.qa/portrait-centered-mobile.png`.
-
-## Grouped Projects navigation
-
-Pages built `749132d`. Top navigation now reads About / Projects / Research; Projects contains Chess / FOW links and defaults to Chess. Existing project content, portrait and recordings are unchanged.
-
-Isolated navigation checks pass for group selection, secondary visibility, current states, project switching, history, focus, skip link, old hashes and invalid routes. All 19 player checks still pass; 29 references resolve and 15 IDs are unique.
-
-Live browser inspection at 1440×1000 and a 390×844 phone viewport confirms the new hierarchy, one project at a time, and no horizontal overflow. Secondary links measure at least 44px high. Projects remains active on FOW; Research hides the secondary links. Back/Forward restores the selected project, Enter focuses the project heading, and switching to FOW pauses Chess playback. Browser warnings/errors: none. Viewport overrides were restored.
-
-Screenshots: `.qa/projects-navigation-desktop.png`, `.qa/projects-navigation-mobile.png`, and `.qa/projects-fow-mobile.png`. Phone screenshots show viewport portions, not the whole page. This was a scoped UI Taste refinement; no new design concept or Jev judgment was needed.
-
-## Project names
-
-Pages built `03d339c`. Navigation, headings, browser titles and recording titles now use Chess Coaching and Fog of War Chess Engine. Stable hashes and media assets remain unchanged. Navigation checks, recording-script syntax and local-reference validation pass. Inspected the live names at 1440px and 320px; both navigation labels wrap cleanly on the narrow phone with no horizontal overflow. Screenshots: `.qa/project-names-desktop.png` and `.qa/project-names-mobile.png`. Viewport overrides restored.
-
-## UAlbany ESE research
-
-Pages built `f28dfa5`. New title comes from the user's linked chat; role, dates, advisers and three contributions match the supplied text. Huang's official faculty page was verified. The two research entries have separate dates and advisers; the NCA/COMET status stays with health-promotion research.
-
-Navigation checks and 30 references / 19 unique IDs pass. Compared live 1440×1100 layout with the prior Research page, then inspected upper and lower 390×844 phone views. Both entries are readable without horizontal overflow; Research remains selected. No browser warnings/errors. Viewport overrides restored. Evidence: `.qa/research-ese-desktop.png`, `.qa/research-ese-mobile.png`, `.qa/research-ese-mobile-lower.png`.
-
-## Research order and expanded Instagram study
-
-Pages built `bcf010f`. Live order is health-promotion research, then struvite. Three bullets include all supplied variables, 417 posts, 0.95–1.00 intercoder reliability, findings and exploratory analysis. Advisers, dates, links and struvite text are preserved. Local checks pass: 30 references, 19 unique IDs. Desktop screenshot and 390px phone upper-view screenshot inspected; DOM widths show no horizontal overflow. Full-page captures were unreliable, so this is viewport verification. Valid evidence: `.qa/research-health-first-desktop.png`, `.qa/research-health-first-mobile.png`. Browser logs clear; viewport overrides restored.
+Valid captures include `.qa/projects-fow-full.png`, `projects-desktop-final.png`, `projects-tablet-final.png`, `projects-phone-top-final.png` and `projects-phone-media-final.png`. Full-page capture was unreliable after resizing: two phone captures misplaced sticky elements, and a later desktop capture failed. They were not counted as layout passes; normal viewport captures and DOM measurements verified the affected states. A preview-control timeout recovered after resetting the viewport and reloading. Failure/retry behavior in this pass was checked by the isolated tests; earlier live failure checks remain in the history.

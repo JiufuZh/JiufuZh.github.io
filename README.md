@@ -1,68 +1,59 @@
 # Jiufu Zhou
 
-An English portfolio focused on software engineering, applied AI, and two projects from a DeepBrain Technology internship.
+An English portfolio for software engineering and applied AI roles, centered on two DeepBrain Technology internship projects. [Live site](https://jiufuzh.github.io/). Updated October 22, 2026.
 
-**Live site:** [jiufuzh.github.io](https://jiufuzh.github.io/)
+## Structure
 
-Updated October 21, 2026. Top-level navigation is **About / Projects / Research**. Projects has secondary **Chess Coaching / Fog of War Chess Engine** links and shows one project at a time. `#projects` defaults to Chess Coaching; existing `#chess-analysis` and `#fog-of-war` deep links remain valid. About connects Jiufu's UW studies with the two internship projects, then describes his React, Stockfish, PyTorch and browser-script work and earlier Informatics research. Project views use two columns on desktop: the introduction and engineering notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes.
+Top-level navigation is **About / Projects / Research**. Projects contains **Chess Coaching / Fog of War Chess Engine**, with one project visible at a time. `#projects` defaults to Chess Coaching; `#chess-analysis` and `#fog-of-war` remain stable. Hash navigation and browser history are handled by `nav.js`.
 
-## Run locally
+About retains the portrait, introduction, education and contact links. Research shows the Instagram study first and struvite work second. Project introductions sit above a topic rail and wide media area, with controls above each capture and engineering notes tied to its current step. At widths up to 1000px, topics appear above the full-width media and additional implementation notes follow it. The introduction stacks at 760px. The repeated footer has been removed.
 
-No installation or build step is required. From this folder:
+## Run and edit
+
+No installation or build step is required:
 
 ```sh
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:4173/ in a browser.
+Open http://127.0.0.1:4173/.
 
-## Edit
+- `index.html`: structure, biography, project ownership and research.
+- `styles.css`: layout, typography and responsive behavior.
+- `recordings.js`: topics, posters, steps, captions, engineering notes, timing and GIF links.
+- `main.js`: shared player and enlarged viewer.
+- `nav.js`: content selection, history and navigation state.
+- `assets/`: portrait and approved demonstration media.
+- [CONTENT.md](CONTENT.md): facts and disclosure limits; [DESIGN.md](DESIGN.md): presentation decisions.
 
-- `index.html`: page content and structure.
-- `styles.css`: responsive layout and presentation.
-- `recordings.js`: clip chapters, screenshot paths, captions, playback timing and GIF links.
-- `main.js`: shared screenshot player, clip switching and enlarged viewer.
-- `nav.js`: top-level and project navigation, exclusive content views, hash links, browser history and current-navigation state.
-- `assets/`: portrait, favicon and approved project UI captures.
-- [CONTENT.md](CONTENT.md): verified biographical and project facts.
+## Walkthrough coverage
 
-Project summaries, large captures, plain chapter links and visible engineering notes keep the work easy to inspect. The Chess Coaching clip uses six actual local app screenshots: import, review, explanation, alternative, practice and solution. It runs bundled Stockfish with engine-backed coaching; no live LLM request was made during capture.
+There are **seven walkthroughs with 26 step entries**. A training checkpoint image appears in both training and resumption; the count is not 26 unique captures.
 
-Fog of War Chess Engine has two local demonstrations:
+| Project | Walkthrough | Steps | Evidence shown |
+| --- | --- | ---: | --- |
+| Chess Coaching | Review & explain | 4 | Original app screenshots: import, review, coaching and candidate preview |
+| Chess Coaching | Practice a mistake | 3 | Original app screenshots: exercise, hint and accepted move |
+| Fog of War | Prepare observations | 4 | Rendered outputs from original replay, observation and history encoders, plus the fixture split manifest |
+| Fog of War | Train a model | 3 | Local event viewer observing the original CPU trainer |
+| Fog of War | Resume a checkpoint | 3 | Saved state, second process, restored weights/optimizer and continued training |
+| Fog of War | Run self-play | 5 | Actual capped rollout reconstructed from saved moves, then update/save checks |
+| Fog of War | Play in the browser | 4 | Original userscript and real FastAPI inference on a permitted local test board |
 
-- **Training run:** the project's original trainer executes on CPU with a tiny synthetic fixture. A new local event viewer displays observed training, checkpoint saving and resumption. It does not display invented progress or replay a historical full training run.
-- **Browser integration:** the original userscript connects a newly built, permitted local test board to real FastAPI inference, using the checkpoint from the training demonstration. The model returns a move, which the script applies on the test board.
+Chess uses Stockfish and local coaching; no live LLM request was made. Its broader implementation notes describe verified features beyond the available footage, including saved reviews, configurable coaching, custom positions and practice history. Those notes do not imply additional recorded demonstrations.
 
-The approved internship dataset counts describe the original project data, not the small demonstration fixture. These clips demonstrate execution and integration, not playing strength or production deployment. The browser script is an integration userscript; it is not generated by an LLM.
+FOW uses a tiny synthetic fixture. Observation and self-play graphics render actual execution traces; they are not original product screenshots. Training footage uses a demonstration event viewer. The browser runs the original integration script against a new local test-board adapter and uses the checkpoint from the resumed training run. Self-play is capped and demonstrates loop mechanics, changed weights and checkpoint reload, not playing strength or model promotion. The 1,554 games / 88,949 plies describe the internship archive, not the fixture.
 
-The players and downloadable GIFs use actual execution snapshots with timing edited for readability, not continuous screen video. Each clip starts paused and shows its current step and total. Play/Pause retains the current frame and remaining time; Previous/Next and chapter links select individual snapshots. Playback ends at the final frame and can be replayed. Switching clips resets to the first frame.
+## Player behavior
 
-Clicking a screenshot or Enlarge opens the same viewer. Playback buttons, chapters, clip selectors, retry buttons and GIF links have a 44px minimum height. Images show loading and retry states; playback waits for a loaded capture. The viewer includes a live status region for manual navigation and playback/error messages. Keep demonstration captions in both inline and enlarged views.
+Topics are generated from metadata and start paused at their selected poster. Play begins at the first step; manual navigation cancels that poster behavior. Changing topics pauses playback and selects the new poster. Each step updates its caption, number and engineering note. Playback ends at the last step and can replay; pausing preserves remaining frame time.
 
-Changing views pauses players and closes the enlarged viewer. Playback also pauses when the document is hidden or an inline player leaves view; an enlarged clip can continue playing. Closing the viewer pauses it. Reduced-motion users can inspect every chapter manually. These notes describe the implementation; verification results belong in [QA.md](QA.md).
+Clicking a capture or Enlarge opens the same viewer. If supplied, `originalSrc` is used there and in the full-resolution link. Playback waits for loaded images; failures expose retry. View changes close the viewer and pause players. Hidden documents and offscreen inline players pause; an enlarged clip may continue until closed. Reduced-motion users navigate manually. Keep keyboard focus, live status messages and the existing 44px playback/chapter targets; topic buttons are at least 48px on desktop.
 
-## Research entries and links
+GIFs and players use edited snapshot timing, not continuous video or execution-speed measurements. Capture notes distinguish original screenshots, local viewers and rendered traces; the enlarged caption includes the selected topic's context.
 
-Research shows the Instagram health-promotion study first and struvite research second. Each entry has its own role or dates, advisers, contributions and source links; publication status belongs only to the relevant entry.
+## Research and publication
 
-The health-promotion entry uses the resume's project title, “Transparency and message processing in health supplement promotion on Instagram.” The title is not presented as a verified NCA abstract title. The advisers are Prof. Archana Krishnan and PhD candidate Alex R. Stankus.
+Research facts, advisers and dates remain in [CONTENT.md](CONTENT.md). The Instagram study's 0.95–1.00 reliability has no specified coefficient type; exploratory associations do not establish significance or causation. Its November 2026 NCA status is accepted for presentation. The general conference link is not an abstract, and the adviser's February CV lists related work as a COMET submission. The struvite entry has no verified resulting publication or authorship.
 
-User-approved details cover 417 branded posts; sponsorship, influencer, product and ELM variables; intercoder reliability of 0.95–1.00; missing sponsorship labels and peripheral-route persuasion; and exploratory statistical/Python associations. Do not infer a reliability coefficient type, statistical significance or causation. [CONTENT.md](CONTENT.md) records the exact scope.
-
-- [Archana Krishnan's faculty profile](https://www.albany.edu/communication/faculty/archana-krishnan) identifies the adviser.
-- [NCA 2026 conference](https://www.natcom.org/nca-112th-annual-convention/) provides general event information. The resume supports the accepted-for-presentation status for November 2026.
-- [Research listing in the adviser's CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) lists related work, “Unlabeled influence,” as a COMET submission in February 2026. It is not the NCA abstract or proof of NCA acceptance.
-
-Keep these distinctions visible. No exact public NCA paper or abstract link has been verified.
-
-The user supplied the title “Wastewater-derived struvite for sustainable agriculture: characterization and controls on nutrient release” and the Research Aide role at UAlbany's ESE Research Lab, February–May 2025. Advisers: [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano. The entry describes dissolution and soil-column experiments, ICP/pH measurements, and data cleaning and visualization. No resulting publication or authorship is verified; the faculty link identifies the adviser, not a paper. Exact approved details are in [CONTENT.md](CONTENT.md).
-
-Private repositories, internal reports, original resume files, credentials and research notes are not part of this site. Keep `.research/`, `.qa/`, environment files and dependencies ignored by Git.
-
-## GitHub Pages
-
-This static site can be served directly from the repository root on the `main` branch. `.nojekyll` keeps it buildless. Use the GitHub Pages settings to select `main` and `/ (root)`.
-
-The site is published from `main` at the repository root. Verification is recorded in [QA.md](QA.md), with progress in [LOGBOOK.md](LOGBOOK.md). No analytics, contact-form backend, external fonts, or paid service is required.
-
-The displayed portrait uses `assets/jiufu-zhou-natural.webp`, a lossless copy with broad clothing moire reduced and original fine fabric detail retained. Face and neck pixels are preserved; the original supplied JPG remains available in assets. The photo is horizontally centered and framed from the top so the full head stays visible at every breakpoint.
+Keep private source, datasets, internal metrics, credentials, original resume files and research notes out of Git. Ignore `.research/`, `.qa/`, environment files and dependencies. GitHub Pages serves `main` from the repository root with `.nojekyll`; no external fonts, analytics or paid service are required. Verification belongs in [QA.md](QA.md), progress in [LOGBOOK.md](LOGBOOK.md).

@@ -1,97 +1,78 @@
 # Homepage content
 
-Public facts and wording for [index.html](index.html), reviewed October 21, 2026. Sources: the resume and user clarifications on internship attribution, research methods and findings.
+Public facts and wording for [index.html](index.html), reviewed October 22, 2026. Sources: the resume, explicit user clarifications and inspected implementation. Preserve the distinction between demonstrated behavior and implementation notes.
 
-## Profile and introduction
+## Profile
 
-Jiufu Zhou. MS Information Management, University of Washington. Seattle, Washington. [Email](mailto:zjfu2003@gmail.com), [GitHub](https://github.com/JiufuZh).
+Jiufu Zhou, Seattle, Washington. [Email](mailto:zjfu2003@gmail.com), [GitHub](https://github.com/JiufuZh).
 
 I'm Jiufu, a master's student in Information Management at the University of Washington. During my internship at DeepBrain Technology, I worked on a chess coaching app and a Fog of War chess agent.
 
 My work covered React interfaces and Stockfish analysis, as well as PyTorch training and the browser script that uses model predictions. Earlier, I studied Informatics at the University at Albany, where I developed a codebook and analyzed 417 Instagram posts for a study of health supplement promotion.
 
-Technical focus: web applications, applied machine learning, and AI-assisted learning tools.
-
-## Education
+Technical focus: web applications, applied machine learning and AI-assisted learning tools.
 
 - University of Washington: MS Information Management, expected June 2027; GPA 3.90/4.00.
 - University at Albany, SUNY: BS Informatics, May 2025; GPA 3.88/4.00.
 
 ## Internship
 
-DeepBrain Technology (StaySafeNow, Inc.). Software Development Engineer Intern. May–September 2026. Tenafly, NJ, hybrid.
+DeepBrain Technology (StaySafeNow, Inc.), Tenafly, NJ, hybrid. Software Development Engineer Intern, May–September 2026. Both projects are internship work.
 
 ## Chess Coaching
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
-Built the interface and feedback features for a chess coaching app that helps players review mistakes with Stockfish, compare alternative moves, and practice the same position.
+Built the interface and feedback features that turn a game review into a lesson: find the mistake, compare a better move, then practice the idea on the board.
 
-Engine responses can arrive out of order as players switch positions. Stockfish runs in a Web Worker, with request cancellation and result versioning to prevent stale results from replacing the current analysis.
+Contribution includes Stockfish in a Web Worker, request cancellation and result versioning; checks for LLM response structure and consistency with engine evidence; API-failure fallbacks; and saved reviews that reopen without another LLM call.
 
-Added checks for LLM response structure and consistency with engine evidence, plus fallbacks for API failures. Saved reviews reopen without another LLM call.
+Two walkthroughs contain seven steps: **Review & explain** covers import, review, coaching and Qe7 preview; **Practice a mistake** covers the exercise, staged hint and Qxf7# solution. These are original local app screenshots. Qe7 is a preview overlay, not a played move. Coaching uses local engine evidence, with no live LLM request.
 
-Six chapters—Import, Review, Explain, Compare, Practice, Solve—use actual local screenshots: sample PGN, critical 3…Nf6, engine-backed coaching, Qe7 arrow and Qxf7# practice. The alternative is an overlay, not a played move. No live LLM request was made; preserve this context inline and enlarged.
+Separate implementation notes cover configurable teaching profiles, candidate exploration, FEN/board editing, multi-move practice, saved reviews and practice history. These verified capabilities extend beyond the recorded coverage; do not imply new footage or measured learning gains.
 
 ## Fog of War Chess Engine
 
 Python, PyTorch, FastAPI, JavaScript.
 
-The agent plays chess with only part of the board visible. My work included preparing observations from **1,554 games and 88,949 plies**, training policy-and-value models, and connecting inference to a browser script.
+From partial-board observations to a move in the browser. My work covered data preparation, policy-and-value training, and the script that puts model predictions into play.
 
-Observations reflect only the player's view, with opponent move histories masked to keep hidden information out of the model's input. Splitting the data by complete games keeps positions from the same game together.
+The internship archive contains **1,554 games and 88,949 plies**. Contributions include player-visible observations, masked opponent histories, whole-game splits, policy/value training, self-play updates, checkpoint resumption and the FastAPI/browser bridge.
 
-Contributed to self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.
+Five walkthroughs contain 19 steps:
 
-Two selectable clips show fresh local execution:
+- **Prepare observations:** original replay and encoders process a synthetic example; rendered outputs show visible input, masked history and whole-game splits.
+- **Train a model:** original CPU training runs on a tiny synthetic fixture; a local event viewer displays observed training and checkpoint events.
+- **Resume a checkpoint:** a second process restores weights and optimizer state, completes the next epoch and saves the browser demonstration's checkpoint.
+- **Run self-play:** an actual capped rollout is reconstructed from saved moves as White's visible input. Model weights change, optimizer state is saved and the checkpoint reloads. No model promotion or strength result is claimed.
+- **Play in the browser:** the original userscript connects a permitted local test-board adapter to real inference using the resumed training checkpoint, applies e2→e4 and reads back the board.
 
-- **Training run:** the original trainer runs on CPU with a tiny synthetic fixture. A new local viewer displays actual training, checkpoint-save and resume events.
-- **Browser integration:** the original userscript connects a new permitted local test board to real FastAPI inference with the demonstration checkpoint, requesting and applying a model-selected move.
+These local runs are separate from historical training. Dataset counts do not describe the fixture. Rendered execution traces and capture tools are not original product UI. The browser demonstration shows one decision, not an autonomous online match. “Browser script” means the integration userscript, not LLM-generated code.
 
-These demonstrations are separate from historical training. Dataset counts describe the internship archive, not the tiny fixture. The clips establish neither strength, production deployment nor full-dataset performance. “Browser script” means the integration userscript, not LLM-generated code.
+## Presentation
 
-## Media and presentation
+About / Projects / Research navigation remains; Projects selects Chess Coaching or Fog of War Chess Engine. `#projects` defaults to Chess Coaching; preserve existing deep links. Topic rails, meaningful posters, controls above media and step-specific notes replace the narrow prose/media layout. Play starts at step one; manual navigation selects individual states. The repeated footer is removed. [README.md](README.md) documents controls and responsive behavior.
 
-Navigation is About / Projects / Research, with Chess Coaching / Fog of War Chess Engine under Projects. One project is shown; `#projects` defaults to Chess Coaching. Preserve `#chess-analysis`, `#fog-of-war` and browser history. Desktop projects pair text and recordings; widths up to 1000px stack introduction, media, then notes.
-
-Clips start paused, with chapters, step counts, enlargement and GIF downloads. See [README.md](README.md) for playback, accessibility, loading and retry behavior.
-
-Snapshots and GIFs use edited timing, not continuous video or execution-time measurements. Keep local demonstration conditions visible inline and enlarged.
+Seven walkthroughs contain 26 step entries. GIFs use edited snapshot timing, not continuous video or timing measurements. Preserve capture context in the inline notes and enlarged viewer.
 
 ## Research
 
-Order: Instagram health-promotion study first; struvite research second. Keep their records independent.
+Show the Instagram study first and struvite second, with independent advisers, dates and status.
 
 ### Health supplement promotion
 
-University at Albany, SUNY. August 2024–May 2025.
+University at Albany, SUNY, August 2024–May 2025. **Transparency and message processing in health supplement promotion on Instagram** is the resume project title, not a verified NCA abstract title.
 
-**Transparency and message processing in health supplement promotion on Instagram.** This is the resume's project title, not a verified NCA abstract title.
+Designed and refined a codebook for **417 Instagram posts** promoting branded health supplements: sponsorship disclosure, influencer type, product category and Elaboration Likelihood Model (ELM) message-processing routes. Multi-stage analysis achieved intercoder reliability of **0.95–1.00** and showed missing sponsorship labels and heavy peripheral-route persuasion among influencers in the sample. Statistical analysis and exploratory Python work examined associations among influencer characteristics, disclosure transparency and processing strategies. Do not infer coefficient type, significance or causality.
 
-Designed and refined a codebook for **417 Instagram posts** promoting branded health supplements. Variables covered sponsorship disclosure, influencer type, product category, and message-processing routes from the Elaboration Likelihood Model (ELM).
-
-Multi-stage content analysis, with intercoder reliability of **0.95–1.00**, revealed missing sponsorship labels and heavy reliance on peripheral-route persuasion cues among influencers in the sample.
-
-Used statistical analysis and exploratory work in Python to examine associations among influencer characteristics, disclosure transparency, and message-processing strategies.
-
-These user-supplied findings are approved public facts. Do not infer the reliability coefficient type, statistical significance or causality.
-
-Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty/archana-krishnan) and PhD candidate Alex R. Stankus.
-
-An extended abstract I co-authored was **accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/)**, November 2026. This status comes from the resume; the conference page is general event information. Do not change to presented/published without confirmation.
-
-The [adviser's February 2026 CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) lists related work, “Unlabeled influence,” as a COMET submission, not evidence of NCA acceptance. No exact public NCA abstract link is verified.
+Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty/archana-krishnan) and PhD candidate Alex R. Stankus. A co-authored extended abstract was accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/), November 2026; not already presented/published. The [February 2026 adviser CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) lists related “Unlabeled influence” work as a COMET submission. Neither link verifies an exact NCA abstract.
 
 ### Struvite nutrient release
 
-**Wastewater-derived struvite for sustainable agriculture: characterization and controls on nutrient release.** User-supplied project title.
+**Wastewater-derived struvite for sustainable agriculture: characterization and controls on nutrient release.** User-supplied title. Research Aide, University at Albany ESE Research Lab, Albany, NY, February–May 2025. Advised by [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano.
 
-University at Albany ESE Research Lab, Albany, NY. Research Aide, February–May 2025. Advised by [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano.
-
-Tracked how three types of struvite dissolved in organic acids and deionized water over 24 hours using inductively coupled plasma (ICP) measurements, with pH recorded at seven time points. Soil column experiments simulated environmental conditions, with ICP measurements used to assess dissolution. Cleaned and processed the ICP and pH datasets, then visualized the results to investigate factors affecting dissolution.
-
-These facts come from the user's research description. Keep this entry independent of the health-promotion study; no resulting publication or authorship is verified.
+Tracked three struvite types dissolving in organic acids and deionized water over 24 hours using inductively coupled plasma (ICP) measurements, with pH at seven time points. Soil-column experiments simulated environmental conditions with ICP dissolution measurements. Cleaned/processed ICP and pH data and visualized factors affecting dissolution. No resulting publication, authorship or agricultural-performance outcome is verified.
 
 ## Disclosure
 
-Publish approved demonstrations, resume-disclosed facts and explicitly supplied research details. Exclude private source, datasets, reports, extra metrics, credentials, phone/address, original resume files and private repository links. Do not add unverified user counts, latency, cost, model gains, GRU architecture or rating claims.
+Publish approved demonstrations, resume facts and explicitly supplied research details. Exclude private source, datasets, reports, extra metrics, credentials, phone/address, original resume files and private repository links. No unverified latency, cost, model gains, GRU architecture or rating claims.

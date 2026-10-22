@@ -1,41 +1,41 @@
-# Reference-led homepage
+# Homepage design
 
-The user supplied [Yuyao Wang's homepage](https://kristoff-starling.github.io/) after rejecting the two earlier directions. The reference is the visual authority for this revision: indigo navigation, a left profile, a right biography and education, and quiet section bands containing a readable list of work. Implement independently; do not reuse its personal content or assets.
+Updated October 22, 2026. The accepted reference is [Yuyao Wang's homepage](https://kristoff-starling.github.io/): indigo navigation, a profile column beside biography and education, and restrained academic typography. Preserve the established About, Research and navigation identity. The current project revision makes actual work easier to inspect; it does not introduce a new visual theme.
 
-## Design
+## Structure
 
-Palette: white #FFFFFF, paper grey #F6F7F9, text #292D33, secondary #616975, indigo #4054AD, pale blue #EBEEF8. Use Georgia/Cambria serif for biography and project prose, with system sans-serif for navigation, headings and controls. Desktop body 20px; compact project prose 18px; headings 34px. Keep text left aligned except the profile identity.
+About / Projects / Research selects one main section. Projects contains Chess Coaching / Fog of War Chess Engine, with one project visible. `#projects` defaults to Chess Coaching; `#chess-analysis` and `#fog-of-war` remain valid. Preserve browser history, current-page indicators, keyboard focus and the selected page's starting position.
 
-Use a centered 1140px frame. The introduction has a 280px profile column and a wider biography column; education appears beside a brief technical focus list. Projects contains separate Chess Coaching and Fog of War Chess Engine views, with one visible at a time. Each includes the employer, a contribution paragraph, actual local captures with plain chapter links, and visible engineering notes. Research has its own view. On phones, columns stack in reading order, all controls remain reachable, and media can be enlarged.
+About keeps its portrait, first-person introduction, technical focus, education and contact links. Research presents the Instagram study first and struvite work second, with separate titles, dates/roles, advisers, contributions and links. NCA acceptance and the COMET CV note belong only to the Instagram study. The struvite adviser link is not a publication record. The repeated footer name, email and About link are removed; contact remains available in About.
 
-The distinctive content is the contrast between full-information chess explanation and learning from a partially visible board. The matching project entries make this relationship visible without adding a fictional operating system. No automatic entrance animations or fake terminal content.
+## Projects
 
-## Skills and verification
+Place a readable title and concrete contribution paragraph above the walkthrough, with internship context alongside the introduction. Keep technology names subordinate. The contribution should explain what Jiufu worked on without implying sole ownership of either company project.
 
-Applied local frontend-design and the researched [interactive-portfolio guide](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/interactive-portfolio/SKILL.md). Content review also used [personal-homepage-skill](https://github.com/shengjidaguai-china/personal-homepage-skill/blob/main/SKILL.md). External skills were read; not installed or executed. Preserve the facts and disclosure boundary in [CONTENT.md](CONTENT.md) and [BRIEF.md](BRIEF.md).
+Below it, a 185px topic rail sits beside the wide media area. Topic buttons use plain task names and a visible selected state. The selected topic has a short heading and summary, then playback controls above the image. Captions, step navigation and an engineering note follow the image. Notes change with the selected step, connecting an observable result to the implementation decision behind it.
 
-User-approved agent simulation checked direction only. It did not call the Jev API and does not establish quality. Actual screenshots and interaction checks are required before publication.
+At widths up to 1000px, the rail becomes wrapping topic buttons above full-width media; broader implementation notes move below it. Step-note headings stack above their text. At 760px, the project introduction also stacks. Preserve original media aspect ratios and offer enlargement instead of hiding details through cropping.
 
-## Latest direction: recordings and project notes
+Chess's “More in the app” uses compact disclosure sections for source-verified capabilities outside the available recordings: responsive analysis, saved reviews, adaptable coaching, custom positions and practice history. Its visible coverage note must remain. FOW's rail states the partial-observation constraint and provides a contribution disclosure. Essential ownership stays visible in the project introduction.
 
-The user rejected the diagram-first FOW presentation and the project area's template-like feel. Keep the accepted About, palette and type. Replace the project dashboard framing with a straightforward media-and-notes layout: title, concrete contribution paragraph, wide recording, compact chapter links and a single caption. Remove numbered circles, duplicate headings, input/action/output rows and the large player shell. Show engineering contributions directly rather than hiding them under an accordion.
+## Evidence and coverage
 
-FOW has separate real training and browser-bridge clips. A local training log viewer and test-board adapter must be identified as capture tools, not represented as the original product UI. Use actual process events and actual model responses; do not invent a terminal, loss curve or result. The memorable material should be the recorded work itself. Playback remains controllable, with manual chapters, an enlarged view and downloadable GIFs.
+Seven walkthroughs contain 26 step entries: Chess review/explanation (4) and practice/hint/solution (3); FOW observations (4), training (3), resume (3), self-play (5) and browser integration (4). The training/resume topics share one saved-checkpoint capture.
 
-## October 21: navigation selects the page
+Original Chess screenshots use local Stockfish coaching without a live LLM request. Original browser-script captures use real inference on a permitted local test board. Training runs through the original code with a demonstration event viewer. Observation and self-play graphics render genuine encoder outputs and saved moves; they are execution traces, not original product screenshots. Preserve these distinctions in capture notes and the enlarged viewer.
 
-Keep the established white #FFFFFF, paper grey #F6F7F9, ink #292D33, secondary #616975 and indigo #4054AD palette. Keep Georgia prose and system sans-serif navigation. Top-level About / Projects / Research links select the main section. Within Projects, secondary Chess Coaching / Fog of War Chess Engine links select one project and indicate the active choice; Projects stays active in the top navigation. `#projects` defaults to Chess Coaching, while existing `#chess-analysis` and `#fog-of-war` deep links remain valid. The left-aligned desktop project layout puts specific contributions and internship context in a narrow text column, alongside the existing real recording in a wider column. This is a content layout, without decorative app-window framing or additional cards. Small screens stack the selected project, with notes after the media. Research has a readable account, collaborators when verified, and clearly labeled source links.
+Use a meaningful poster for each topic. Play starts at its first step, while manual navigation lets visitors inspect any state. Topic changes pause playback. Each topic has its own downloadable GIF. Edited frame timing improves readability and does not represent execution speed. The historical archive counts are separate from the tiny synthetic fixture. Do not turn capped self-play into a strength benchmark or imply model promotion.
 
-Desktop: navigation above [project contribution and notes | recording, chapters and controls]. About keeps its accepted profile/biography composition. Only the selected view occupies document space; switching pages returns to its start. A brief user-approved agent simulation checks this direction; actual behavior still requires verification.
+## Visual language
 
-## October 21 polish constraints
+Use white #FFFFFF, paper grey #F6F7F9, ink #292D33, secondary #616975, indigo #4054AD and pale blue #EBEEF8. Georgia/Cambria carries prose; system sans-serif carries navigation and controls. Keep the centered 1140px frame, expanding to 1200px on wide screens.
 
-Use the existing 1440×1000 About/Chess screenshots and 390px FOW screenshot as the visual baseline, plus the newly captured 900×1100 Chess view. Keep indigo #4054AD, white #FFFFFF, ink #292D33, secondary #616975 and rules #DCE0E8; Georgia prose and system-sans controls; the existing portrait and all real recording pixels. No new concept image is needed for this scoped refinement.
+Project titles are 34px; introduction prose 19px; topic headings 22px; captions 18px; engineering notes 17px. Ordinary project metadata is 14–15px. Keep prose left aligned, with sensible line lengths. Playback/chapter controls have at least 44px height; desktop topic buttons have 48px. Use spacing and the existing rules to organize content. Avoid extra cards, badges, fake terminal windows, numbered decoration or automatic entrance motion.
 
-Improve the same layout: underlined prose links, one navigation indicator, 44px recording controls and chapter targets, a visible step count, clearer metadata, and 16px desktop engineering notes. At widths up to 1000px, give the recording the full content width in intro → media → notes order. The screenshot opens the existing enlarged viewer. Image loading and retry states must preserve playback timing; manual modal changes receive an in-dialog announcement. Tighten repeated biography and project language without changing claims.
+## Behavior and verification
 
-Compare the final page at the baseline dimensions, then check 320px, tablet, keyboard and reduced-motion behavior. Agent simulation supports refinement within this established direction; it does not replace these checks.
+Preserve paused startup, remaining-time pause/resume, final-step replay, image-loading/retry states and reduced-motion manual access. Clicking the screenshot and Enlarge open the same native dialog. View changes close it and pause playback; closing restores focus. Per-step status updates remain available to assistive technology. Details controls must stay keyboard reachable.
 
-## October 21 research addition
+Applied frontend-design and UI Taste polish/distill guidance, alongside the previously researched [interactive-portfolio](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/interactive-portfolio/SKILL.md) and [personal-homepage](https://github.com/shengjidaguai-china/personal-homepage-skill/blob/main/SKILL.md) guides. External skills were read, not installed or executed. The approved Jev agent simulation is advisory; no Jev API was called.
 
-Research contains two independent entries in the user's requested order: Instagram health supplement promotion first, struvite nutrient release second. Give each its own title, dates or role, advisers, contribution text and relevant links, using quiet spacing or a rule rather than cards. Present the expanded Instagram methods and findings as readable contribution points; keep the reliability range in context, without turning it into a performance badge. The NCA acceptance and COMET CV note belong only to that entry. The struvite entry presents user-supplied Research Aide work and an adviser profile link; do not style it as a publication or attach the NCA status to it. Preserve the existing navigation and project media.
+[CONTENT.md](CONTENT.md) governs facts and disclosure; [README.md](README.md) describes implementation. Confirm the changed layout with real browser inspection at desktop, tablet and phone widths, including keyboard, reduced motion, topic switching, posters, loading/retry and the enlarged viewer. Source checks and simulation do not establish visual or accessibility conformance. Record actual results in [QA.md](QA.md) and progress in [LOGBOOK.md](LOGBOOK.md).
