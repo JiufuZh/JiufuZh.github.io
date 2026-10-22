@@ -41,3 +41,7 @@ Pages built `03d339c`. Navigation, headings, browser titles and recording titles
 Pages built `f28dfa5`. New title comes from the user's linked chat; role, dates, advisers and three contributions match the supplied text. Huang's official faculty page was verified. The two research entries have separate dates and advisers; the NCA/COMET status stays with health-promotion research.
 
 Navigation checks and 30 references / 19 unique IDs pass. Compared live 1440×1100 layout with the prior Research page, then inspected upper and lower 390×844 phone views. Both entries are readable without horizontal overflow; Research remains selected. No browser warnings/errors. Viewport overrides restored. Evidence: `.qa/research-ese-desktop.png`, `.qa/research-ese-mobile.png`, `.qa/research-ese-mobile-lower.png`.
+
+## Research order and expanded Instagram study
+
+Pages built `bcf010f`. Live order is health-promotion research, then struvite. Three bullets include all supplied variables, 417 posts, 0.95–1.00 intercoder reliability, findings and exploratory analysis. Advisers, dates, links and struvite text are preserved. Local checks pass: 30 references, 19 unique IDs. Desktop screenshot and 390px phone upper-view screenshot inspected; DOM widths show no horizontal overflow. Full-page captures were unreliable, so this is viewport verification. Valid evidence: `.qa/research-health-first-desktop.png`, `.qa/research-health-first-mobile.png`. Browser logs clear; viewport overrides restored.
