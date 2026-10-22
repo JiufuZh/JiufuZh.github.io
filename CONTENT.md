@@ -68,11 +68,11 @@ University at Albany, SUNY. August 2024–May 2025.
 
 **Transparency and message processing in health supplement promotion on Instagram.** This is the resume's project title, not a verified NCA abstract title.
 
-I developed and validated a codebook for **417 branded health-supplement Instagram posts**, covering sponsorship disclosure, influencer type, product category and Elaboration Likelihood Model (ELM) message-processing routes.
+Designed and refined a codebook for **417 Instagram posts** promoting branded health supplements. Variables covered sponsorship disclosure, influencer type, product category, and message-processing routes from the Elaboration Likelihood Model (ELM).
 
-In a multi-stage content analysis, intercoder reliability ranged from **0.95–1.00**. The sample showed missing sponsorship labels and heavy use of peripheral-route persuasion among influencers.
+Multi-stage content analysis, with intercoder reliability of **0.95–1.00**, revealed missing sponsorship labels and heavy reliance on peripheral-route persuasion cues among influencers in the sample.
 
-I used statistical analysis and Python to explore associations among influencer characteristics, disclosure transparency and message-processing strategies.
+Used statistical analysis and exploratory work in Python to examine associations among influencer characteristics, disclosure transparency, and message-processing strategies.
 
 These user-supplied findings are approved public facts. Do not infer the reliability coefficient type, statistical significance or causality.
 
@@ -88,7 +88,7 @@ The [adviser's February 2026 CV, page 12](https://www.albany.edu/sites/default/f
 
 University at Albany ESE Research Lab, Albany, NY. Research Aide, February–May 2025. Advised by [Prof. Rixiang Huang](https://www.albany.edu/environmental-sustainable-engineering/faculty/rixiang-huang) and PhD candidate Shyrill F. Mariano.
 
-I tested dissolution of three struvite types in organic acids and deionized water over 24 hours, using ICP measurements and recording pH at seven time points. I also conducted soil-column experiments simulating environmental conditions and used ICP measurements to track dissolution. I cleaned and processed ICP and pH data and visualized relationships between test conditions and dissolution.
+Tracked how three types of struvite dissolved in organic acids and deionized water over 24 hours using inductively coupled plasma (ICP) measurements, with pH recorded at seven time points. Soil column experiments simulated environmental conditions, with ICP measurements used to assess dissolution. Cleaned and processed the ICP and pH datasets, then visualized the results to investigate factors affecting dissolution.
 
 These facts come from the user's research description. Keep this entry independent of the health-promotion study; no resulting publication or authorship is verified.
 
