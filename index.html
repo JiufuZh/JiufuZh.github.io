@@ -13,9 +13,9 @@
   <title>Jiufu Zhou</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="styles.css?v=20261021-research-details">
-  <script src="recordings.js?v=20261021-project-names" defer></script>
-  <script src="main.js?v=20261021-polish2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261022-walkthroughs">
+  <script src="recordings.js?v=20261022-walkthroughs" defer></script>
+  <script src="main.js?v=20261022-walkthroughs" defer></script>
   <script src="nav.js?v=20261021-project-names" defer></script>
 </head>
 <body>
@@ -79,53 +79,76 @@
 
     <article class="project-page wrap" data-page id="chess-analysis" aria-labelledby="chess-title">
       <div class="project-intro">
-        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
-              <h2 id="chess-title">Chess Coaching</h2>
-              <p>Built the interface and feedback features for a chess coaching app that helps players review mistakes with Stockfish, compare alternative moves, and practice the same position.</p>
-              <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
-            </header>
+          <h2 id="chess-title">Chess Coaching</h2>
+          <p>Built the interface and feedback features that turn a game review into a lesson: find the mistake, compare a better move, then practice the idea on the board.</p>
+          <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
+        </header>
+        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
       </div>
-      <section class="recording" data-player="chess" aria-label="Chess app demonstration">
-              <figure>
-                <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Chess recording"><img data-image src="assets/chess/01-import.png" width="1280" height="720" alt="Chess app game import" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
-                <figcaption><span class="recording-position" data-progress>Step 1 of 6</span><span data-caption>Import a sample game to begin the review.</span></figcaption>
-              </figure>
-              <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Chess step">Previous</button><button type="button" data-next aria-label="Next Chess step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/chess/chess-walkthrough.gif" download>Download GIF</a></div>
-              <ol class="recording-chapters" data-chapters aria-label="Chess demonstration chapters"></ol>
-              <p class="recording-context" data-context>Local app capture with Stockfish. No live LLM request.</p>
-              <span class="sr-only" data-status role="status" aria-live="polite"></span>
-            </section>
-      <div class="project-notes" id="chess-engineering">
-              <p>Engine responses can arrive out of order as players switch positions. Stockfish runs in a Web Worker, with request cancellation and result versioning to prevent stale results from replacing the current analysis.</p>
-              <p>Added checks for LLM response structure and consistency with engine evidence, plus fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
-            </div>
+      <section class="recording" data-player="chess"  aria-label="Chess Coaching walkthroughs">
+        <aside class="recording-rail">
+          <h3>Explore the project</h3>
+          <div class="recording-switch" data-topics role="group" aria-label="Choose a Chess Coaching walkthrough"></div>
+
+        </aside>
+        <div class="recording-stage">
+          <div class="recording-heading"><h3 data-clip-title>Chess Coaching</h3><p data-clip-summary></p></div>
+          <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Chess Coaching step">Previous</button><button type="button" data-next aria-label="Next Chess Coaching step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/chess/chess-walkthrough.gif" download>Download GIF</a></div>
+          <figure>
+            <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Chess Coaching capture"><img data-image src="assets/chess/06-alternative.png" width="1280" height="720" alt="Chess Coaching demonstration" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
+            <figcaption><span class="recording-position" data-progress></span><span data-caption>Compare a candidate move with the mistake in the game.</span></figcaption>
+          </figure>
+          <ol class="recording-chapters" data-chapters aria-label="Chess Coaching walkthrough steps"></ol>
+          <div class="recording-note"><h4 data-note-title>Behind this step</h4><p data-note></p></div>
+          <details class="recording-provenance"><summary>Capture notes · local app, edited timing</summary><p class="recording-context" data-context>Real local app captures. Stockfish analysis and local coaching; no live LLM request.</p></details>
+          <span class="sr-only" data-status role="status" aria-live="polite"></span>
+        </div>
+          <div class="project-more" id="chess-engineering">
+            <h3>More in the app</h3>
+            <p class="coverage-note">Implemented features beyond these recordings.</p>
+            <details><summary>Responsive analysis</summary><p>Stockfish runs in a Web Worker. Request cancellation and result versioning keep stale engine responses from replacing the current position’s analysis.</p></details>
+            <details><summary>Saved reviews</summary><p>Reopen a review from the local library with its stored analysis and teaching variants, without another LLM call.</p></details>
+            <details><summary>Adaptable coaching</summary><p>Choose White, Black or Observer and a Foundation, Standard or Deep explanation. Try a candidate before revealing the coaching.</p></details>
+            <details><summary>Custom positions</summary><p>Load a FEN position or edit pieces on the board, then analyze it and practice. Multi-move exercises include opponent replies and move feedback.</p></details>
+            <details><summary>Practice history</summary><p>My Progress collects attempts, recurring mistakes and review activity, with a mistake library and scheduled reviews.</p></details>
+          </div>
+      </section>
     </article>
 
     <article class="project-page wrap" data-page id="fog-of-war" aria-labelledby="fow-title">
       <div class="project-intro">
-        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
-              <h2 id="fow-title">Fog of War Chess Engine</h2>
-              <p>The agent plays chess with only part of the board visible. My work included preparing observations from <strong>1,554 games and 88,949 plies</strong>, training policy-and-value models, and connecting inference to a browser script.</p>
-              <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
-            </header>
+          <h2 id="fow-title">Fog of War Chess Engine</h2>
+          <p>From partial-board observations to a move in the browser. My work covered data preparation, policy-and-value training, and the script that puts model predictions into play.</p>
+          <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
+        </header>
+        <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>Internship data: <strong>1,554 games · 88,949 plies</strong></p></div>
       </div>
-      <section class="recording" data-player="fow" id="fow-workflow" aria-label="Fog of War local recordings">
-              <div class="recording-switch" aria-label="Choose a Fog of War recording"><button type="button" data-clip="0" aria-pressed="true">Browser integration</button><button type="button" data-clip="1" aria-pressed="false">Training &amp; resume</button></div>
-              <figure>
-                <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Fog of War recording"><img data-image src="assets/fow/browser-01.png" width="1380" height="1040" alt="Original FOW browser script on a local test board" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
-                <figcaption><span class="recording-position" data-progress>Step 1 of 4</span><span data-caption>The original browser script reads the visible board and requests a move from local inference.</span></figcaption>
-              </figure>
-              <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Fog of War step">Previous</button><button type="button" data-next aria-label="Next Fog of War step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/fow/browser.gif" download>Download GIF</a></div>
-              <ol class="recording-chapters" data-chapters aria-label="Fog of War recording chapters"></ol>
-              <p class="recording-context" data-context>Short local demonstrations, recorded separately from the original training run.</p>
-              <span class="sr-only" data-status role="status" aria-live="polite"></span>
-            </section>
-      <div class="project-notes" id="fow-engineering">
-              <p>Observations reflect only the player's view, with opponent move histories masked to keep hidden information out of the model's input. Splitting the data by complete games keeps positions from the same game together.</p>
-              <p>Contributed to self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.</p>
-            </div>
+      <section class="recording" data-player="fow" id="fow-workflow" aria-label="Fog of War walkthroughs">
+        <aside class="recording-rail">
+          <h3>Explore the project</h3>
+          <div class="recording-switch" data-topics role="group" aria-label="Choose a Fog of War walkthrough"></div>
+
+        </aside>
+        <div class="recording-stage">
+          <div class="recording-heading"><h3 data-clip-title>Fog of War</h3><p data-clip-summary></p></div>
+          <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Fog of War step">Previous</button><button type="button" data-next aria-label="Next Fog of War step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/fow/browser.gif" download>Download GIF</a></div>
+          <figure>
+            <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Fog of War capture"><img data-image src="assets/fow/browser-03.png" width="1380" height="1040" alt="Fog of War demonstration" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
+            <figcaption><span class="recording-position" data-progress></span><span data-caption>The original browser script applies a model-selected move on the local test board.</span></figcaption>
+          </figure>
+          <ol class="recording-chapters" data-chapters aria-label="Fog of War walkthrough steps"></ol>
+          <div class="recording-note"><h4 data-note-title>Behind this step</h4><p data-note></p></div>
+          <details class="recording-provenance"><summary>Capture notes · local fixtures, edited timing</summary><p class="recording-context" data-context>Small local demonstrations, separate from the internship training dataset.</p></details>
+          <span class="sr-only" data-status role="status" aria-live="polite"></span>
+        </div>
+          <div class="project-more" id="fow-engineering">
+            <h3>The constraint</h3>
+            <p>The model acts on a partial board. Hidden pieces and the opponent’s private move history must stay out of its input.</p>
+            <details><summary>My contribution</summary><p>Prepared player-visible observations, trained policy-and-value models, contributed to self-play and checkpoint resumption, and connected inference to the browser script.</p></details>
+          </div>
+      </section>
     </article>
 
     <section class="research-section section-grid wrap" data-page id="research" aria-labelledby="research-title">
@@ -166,6 +189,5 @@
     <p class="sr-only" data-dialog-status role="status" aria-live="polite" aria-atomic="true"></p>
     <p data-dialog-caption></p>
   </dialog>
-  <footer class="site-footer wrap"><span>Jiufu Zhou</span><a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a><a href="#about">About Jiufu</a></footer>
 </body>
 </html>

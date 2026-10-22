@@ -23,8 +23,14 @@
     const status = root.querySelector('[data-status]');
     const progress = root.querySelector('[data-progress]');
     const retry = root.querySelector('[data-retry]');
+    const topics = root.querySelector('[data-topics]');
+    const clipTitle = root.querySelector('[data-clip-title]');
+    const clipSummary = root.querySelector('[data-clip-summary]');
+    const noteTitle = root.querySelector('[data-note-title]');
+    const note = root.querySelector('[data-note]');
     let clipIndex = 0;
     let frameIndex = 0;
+    let showingPoster = false;
     let playing = false;
     let finished = false;
     let timer = null;
@@ -73,9 +79,10 @@
       const frame = currentFrame();
       dialog.querySelector('#media-dialog-title').textContent = currentClip().title;
       const dialogImage = dialog.querySelector('[data-dialog-image]');
-      if (dialogImage.getAttribute('src') !== frame.src) dialogImage.src = frame.src;
+      const source = frame.originalSrc || frame.src;
+      if (dialogImage.getAttribute('src') !== source) dialogImage.src = source;
       dialogImage.alt = frame.alt;
-      dialog.querySelector('[data-dialog-original]')?.setAttribute('href', frame.src);
+      dialog.querySelector('[data-dialog-original]')?.setAttribute('href', source);
       dialog.querySelector('[data-dialog-caption]').textContent = `${frame.caption} ${currentClip().context}`;
       controls();
     }
@@ -117,6 +124,8 @@
       image.alt = frame.alt;
       caption.textContent = frame.caption;
       context.textContent = currentClip().context;
+      if (noteTitle) { noteTitle.textContent = frame.noteTitle || ''; noteTitle.hidden = !frame.noteTitle; }
+      if (note) { note.textContent = frame.note || ''; note.hidden = !frame.note; }
       if (progress) progress.textContent = stepLabel();
       root.querySelector('[data-download]').href = currentClip().gif;
       [...chapters.querySelectorAll('button')].forEach((button, index) => {
@@ -144,6 +153,7 @@
       if (index < 0 || index >= currentClip().frames.length) return;
       pause();
       frameIndex = index;
+      showingPoster = false;
       finished = false;
       remaining = currentFrame().duration;
       show(true);
@@ -175,7 +185,14 @@
       if (reducedMotion.matches || imageError || document.hidden || (!inView && !isEnlarged())) return;
       // The same image is also used by the viewer, even when its inline copy is offscreen.
       image.loading = 'eager';
-      if (finished) { frameIndex = 0; finished = false; remaining = currentFrame().duration; show(); }
+      if (finished || showingPoster) {
+        frameIndex = 0;
+        finished = false;
+        showingPoster = false;
+        remaining = currentFrame().duration;
+        show();
+      }
+      if (imageError) return;
       playing = true;
       controls();
       schedule();
@@ -184,9 +201,13 @@
       if (!clips[index]) return;
       pause();
       clipIndex = index;
-      frameIndex = 0;
+      const clip = currentClip();
+      showingPoster = Number.isInteger(clip.posterIndex) && clip.posterIndex >= 0 && clip.posterIndex < clip.frames.length;
+      frameIndex = showingPoster ? clip.posterIndex : 0;
       finished = false;
       remaining = currentFrame().duration;
+      if (clipTitle) clipTitle.textContent = clip.label || clip.title;
+      if (clipSummary) { clipSummary.textContent = clip.summary || ''; clipSummary.hidden = !clip.summary; }
       chapters.replaceChildren(...currentClip().frames.map((frame, index) => {
         const item = document.createElement('li');
         const button = document.createElement('button');
@@ -215,6 +236,15 @@
     play.addEventListener('click', toggle);
     previous.addEventListener('click', api.previous);
     next.addEventListener('click', api.next);
+    if (topics) {
+      topics.replaceChildren(...clips.map((clip, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.clip = String(index);
+        button.textContent = clip.label || clip.title;
+        return button;
+      }));
+    }
     root.querySelectorAll('[data-clip]').forEach(button => button.addEventListener('click', () => selectClip(Number(button.dataset.clip), true)));
     root.querySelectorAll('[data-expand]').forEach(button => button.addEventListener('click', event => {
       if (!dialog) return;
