@@ -17,3 +17,7 @@ This pass refines the established four-view homepage. Earlier source, recording 
 | Publication | Pages built `a3af764` and final correction `1638e90`. Revised layouts, copy and controls verified on the public site. No JavaScript warnings or errors during the browser checks. |
 
 Evidence remains in ignored `.research/` and `.qa/`. No physical-device or formal accessibility-conformance claim is made.
+
+## Portrait framing correction
+
+Pages built `8fd9c60`. The existing photo now uses a horizontally centered, top-aligned crop. Inspected live captures at 1440px and 390px: the full head remains visible in the unchanged 230×250 and 170×185 frames. Phone horizontal center differs from its profile container by less than 1px. Original image pixels are unchanged. Screenshots are saved in `.qa/portrait-centered-desktop.png` and `.qa/portrait-centered-mobile.png`.
