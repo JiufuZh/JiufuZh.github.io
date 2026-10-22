@@ -13,10 +13,10 @@
   <title>Jiufu Zhou</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="styles.css?v=20261021-navigation">
-  <script src="recordings.js?v=20261021-navigation" defer></script>
-  <script src="main.js?v=20261021-navigation" defer></script>
-  <script src="nav.js?v=20261021-navigation" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261021-polish">
+  <script src="recordings.js?v=20261021-polish" defer></script>
+  <script src="main.js?v=20261021-polish" defer></script>
+  <script src="nav.js?v=20261021-polish" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -47,8 +47,8 @@
       </aside>
       <div class="biography">
         <h2 id="about-title">About me</h2>
-        <p>I'm Jiufu, a master's student in Information Management at the <a href="https://www.washington.edu/">University of Washington</a>. I work on software engineering and applied AI, with experience across web interfaces, inference services, and model training.</p>
-        <p>My background is in Informatics: I earned my bachelor's degree at the University at Albany and now study at the University of Washington. At DeepBrain Technology, I worked across the stack, from <a href="#chess-analysis">React interfaces and chess-analysis feedback</a> to <a href="#fog-of-war">PyTorch training and browser-connected inference</a>. Earlier, I helped study transparency in Instagram supplement promotions, developing a codebook and analyzing 417 posts. That <a href="#research">research</a> gave me experience turning a research question into a structured dataset and analysis.</p>
+        <p>I'm Jiufu, a master's student in Information Management at the <a href="https://www.washington.edu/">University of Washington</a>. During my internship at DeepBrain Technology, I worked on a <a href="#chess-analysis">chess coaching app</a> and a <a href="#fog-of-war">Fog of War chess agent</a>.</p>
+        <p>My work covered React interfaces and Stockfish analysis, as well as PyTorch training and the browser script that uses model predictions. Earlier, I studied Informatics at the University at Albany, where I developed a codebook and analyzed <a href="#research">417 Instagram posts for a study of health supplement promotion</a>.</p>
         <div class="about-facts">
           <div class="focus">
             <h3>Technical focus</h3>
@@ -78,14 +78,14 @@
         <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
               <h2 id="chess-title">Chess analysis and coaching</h2>
-              <p>I built the analysis interface and feedback features that take a player from reviewing a mistake to practicing the same position. Stockfish supplies the engine evidence; the app connects it to explanations and candidate moves.</p>
+              <p>I built the interface and feedback features for a chess coaching app. Players can review a mistake with Stockfish, compare an alternative move, and practice the same position.</p>
               <p class="stack">React, FastAPI, Stockfish WASM, OpenAI API</p>
             </header>
       </div>
       <section class="recording" data-player="chess" aria-label="Chess app demonstration">
               <figure>
-                <div class="recording-image"><img data-image src="assets/chess/01-import.png" width="1280" height="720" alt="Chess app game import" loading="lazy"></div>
-                <figcaption data-caption>Import a sample game to begin the review.</figcaption>
+                <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Chess recording"><img data-image src="assets/chess/01-import.png" width="1280" height="720" alt="Chess app game import" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
+                <figcaption><span class="recording-position" data-progress>Step 1 of 6</span><span data-caption>Import a sample game to begin the review.</span></figcaption>
               </figure>
               <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Chess step">Previous</button><button type="button" data-next aria-label="Next Chess step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/chess/chess-walkthrough.gif" download>Download GIF</a></div>
               <ol class="recording-chapters" data-chapters aria-label="Chess demonstration chapters"></ol>
@@ -93,8 +93,8 @@
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
       <div class="project-notes" id="chess-engineering">
-              <p>One problem was keeping the interface correct when a player changed positions quickly. I ran Stockfish in a Web Worker, cancelled old requests, and versioned results so a late response would not overwrite the current board.</p>
-              <p>I also added structured-output validation and checks against engine evidence, with fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
+              <p>When players change positions, engine responses can arrive out of order. I ran Stockfish in a Web Worker and added request cancellation and result versioning to prevent an old response from overwriting the current analysis.</p>
+              <p>I validated LLM output against the expected structure and engine evidence, and added fallbacks for API failures. Saved reviews reopen without another LLM call.</p>
             </div>
     </article>
 
@@ -103,15 +103,15 @@
         <div class="project-employment"><p>DeepBrain Technology</p><p>Software Development Engineer Intern<br>May–September 2026</p><p>StaySafeNow, Inc. · Tenafly, NJ · Hybrid</p></div>
         <header class="project-summary">
               <h2 id="fow-title">Fog of War chess AI</h2>
-              <p>I worked on an agent that plays with only a partial view of the board: preparing observations from <strong>1,554 games and 88,949 plies</strong>, training policy-and-value models, and connecting inference to a browser script.</p>
+              <p>I worked on a chess agent that can see only part of the board. I prepared observations from <strong>1,554 games and 88,949 plies</strong>, trained policy-and-value models, and connected inference to a browser script.</p>
               <p class="stack">Python, PyTorch, FastAPI, JavaScript</p>
             </header>
       </div>
       <section class="recording" data-player="fow" id="fow-workflow" aria-label="Fog of War local recordings">
               <div class="recording-switch" aria-label="Choose a Fog of War recording"><button type="button" data-clip="0" aria-pressed="true">Browser integration</button><button type="button" data-clip="1" aria-pressed="false">Training &amp; resume</button></div>
               <figure>
-                <div class="recording-image"><img data-image src="assets/fow/browser-01.png" width="1380" height="1040" alt="Original FOW browser script on a local test board" loading="lazy"></div>
-                <figcaption data-caption>The original browser script reads the visible board and requests a move from local inference.</figcaption>
+                <div class="recording-image"><button type="button" class="recording-preview" data-expand aria-label="Enlarge Fog of War recording"><img data-image src="assets/fow/browser-01.png" width="1380" height="1040" alt="Original FOW browser script on a local test board" loading="lazy"></button><span class="recording-loading" aria-hidden="true">Loading capture…</span><div class="recording-error"><p>Capture unavailable.</p><button type="button" data-retry>Retry image</button></div></div>
+                <figcaption><span class="recording-position" data-progress>Step 1 of 4</span><span data-caption>The original browser script reads the visible board and requests a move from local inference.</span></figcaption>
               </figure>
               <div class="recording-controls"><div class="recording-actions"><button type="button" data-play aria-pressed="false">Play clip</button><button type="button" data-prev aria-label="Previous Fog of War step">Previous</button><button type="button" data-next aria-label="Next Fog of War step">Next</button><button type="button" data-expand>Enlarge</button></div><a data-download href="assets/fow/browser.gif" download>Download GIF</a></div>
               <ol class="recording-chapters" data-chapters aria-label="Fog of War recording chapters"></ol>
@@ -119,8 +119,8 @@
               <span class="sr-only" data-status role="status" aria-live="polite"></span>
             </section>
       <div class="project-notes" id="fow-engineering">
-              <p>The main data constraint was making sure the model could not see what the player could not. I constructed player-visible observations, masked opponent move histories, and kept complete games together when splitting training and evaluation data.</p>
-              <p>I worked on self-play updates and resumable checkpoints, then connected the model to a FastAPI service and JavaScript browser bridge. The clips above show local execution; they are not a playing-strength benchmark.</p>
+              <p>Hidden information had to stay out of the model's input. I built observations from the player's view and masked opponent move histories. I also split the data by complete games, keeping positions from the same game together.</p>
+              <p>I worked on self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.</p>
             </div>
     </article>
 
@@ -130,9 +130,9 @@
         <h3>Transparency and message processing in health supplement promotion on Instagram</h3>
         <p>I studied how supplement-promotion posts disclose sponsorship and health credentials. I developed and validated a codebook for <strong>417 posts</strong> and analyzed the results in Python.</p>
         <p class="research-advisers">Advised by <a href="https://www.albany.edu/communication/faculty/archana-krishnan" target="_blank" rel="noopener noreferrer">Prof. Archana Krishnan</a> and PhD candidate Alex R. Stankus.</p>
-        <p class="research-status">Our co-authored extended abstract was accepted for presentation at the <a href="https://www.natcom.org/nca-112th-annual-convention/" target="_blank" rel="noopener noreferrer">112th NCA Annual Convention</a>, November 2026.</p>
-        <div class="research-links"><a href="https://www.natcom.org/nca-112th-annual-convention/" target="_blank" rel="noopener noreferrer">NCA 2026 conference</a><a href="https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12" target="_blank" rel="noopener noreferrer">Research listing in adviser's CV (PDF)</a></div>
-        <p class="source-note">The February 2026 CV lists the related work “Unlabeled influence” as a COMET submission. It is a research listing, not the NCA abstract.</p>
+        <p class="research-status">An extended abstract I co-authored was accepted for presentation at the <a href="https://www.natcom.org/nca-112th-annual-convention/" target="_blank" rel="noopener noreferrer">112th NCA Annual Convention</a>, November 2026.</p>
+        <div class="research-links"><a href="https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12" target="_blank" rel="noopener noreferrer">Research listing in adviser's CV (PDF)</a></div>
+        <p class="source-note">The February 2026 CV lists the related work “Unlabeled influence” as a COMET submission. The NCA link opens the conference website.</p>
       </div>
     </section>
   </main>
@@ -142,6 +142,7 @@
     <img data-dialog-image alt="Enlarged project capture">
     <div class="dialog-controls"><button type="button" data-dialog-prev>Previous</button><button type="button" data-dialog-play aria-pressed="false">Play clip</button><button type="button" data-dialog-next>Next</button></div>
     <a class="original-image-link" data-dialog-original target="_blank" rel="noopener">Open full-resolution image</a>
+    <p class="sr-only" data-dialog-status role="status" aria-live="polite" aria-atomic="true"></p>
     <p data-dialog-caption></p>
   </dialog>
   <footer class="site-footer wrap"><span>Jiufu Zhou</span><a href="mailto:zjfu2003@gmail.com">zjfu2003@gmail.com</a><a href="#about">About Jiufu</a></footer>

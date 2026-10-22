@@ -21,6 +21,8 @@
     const next = root.querySelector('[data-next]');
     const context = root.querySelector('[data-context]');
     const status = root.querySelector('[data-status]');
+    const progress = root.querySelector('[data-progress]');
+    const retry = root.querySelector('[data-retry]');
     let clipIndex = 0;
     let frameIndex = 0;
     let playing = false;
@@ -28,15 +30,31 @@
     let timer = null;
     let started = 0;
     let inView = true;
+    let loading = false;
+    let imageError = false;
+    let shownSource = null;
     let remaining = clips[0].frames[0].duration;
     const currentClip = () => clips[clipIndex];
     const currentFrame = () => currentClip().frames[frameIndex];
     const isEnlarged = () => dialog?.open && enlarged === api;
+    const imageReady = () => image.complete && image.naturalWidth > 0;
+    const stepLabel = () => `Step ${frameIndex + 1} of ${currentClip().frames.length}`;
+
+    function announce(message) {
+      if (status) status.textContent = message;
+      const dialogStatus = isEnlarged() && dialog.querySelector('[data-dialog-status]');
+      if (dialogStatus) dialogStatus.textContent = message;
+    }
+
+    function imageState() {
+      root.dataset.loading = String(loading);
+      root.dataset.imageError = String(imageError);
+    }
 
     function label() { return reducedMotion.matches ? 'Use the steps below' : playing ? 'Pause clip' : finished ? 'Replay clip' : 'Play clip'; }
     function controls() {
       play.textContent = label();
-      play.disabled = reducedMotion.matches;
+      play.disabled = reducedMotion.matches || imageError;
       play.setAttribute('aria-pressed', String(playing));
       play.setAttribute('aria-label', `${label()}: ${currentClip().title}`);
       previous.disabled = frameIndex === 0;
@@ -44,7 +62,7 @@
       if (isEnlarged()) {
         const dplay = dialog.querySelector('[data-dialog-play]');
         dplay.textContent = label();
-        dplay.disabled = reducedMotion.matches;
+        dplay.disabled = reducedMotion.matches || imageError;
         dplay.setAttribute('aria-pressed', String(playing));
         dialog.querySelector('[data-dialog-prev]').disabled = previous.disabled;
         dialog.querySelector('[data-dialog-next]').disabled = next.disabled;
@@ -54,29 +72,69 @@
       if (!isEnlarged()) return;
       const frame = currentFrame();
       dialog.querySelector('#media-dialog-title').textContent = currentClip().title;
-      dialog.querySelector('[data-dialog-image]').src = frame.src;
-      dialog.querySelector('[data-dialog-image]').alt = frame.alt;
+      const dialogImage = dialog.querySelector('[data-dialog-image]');
+      if (dialogImage.getAttribute('src') !== frame.src) dialogImage.src = frame.src;
+      dialogImage.alt = frame.alt;
       dialog.querySelector('[data-dialog-original]')?.setAttribute('href', frame.src);
       dialog.querySelector('[data-dialog-caption]').textContent = `${frame.caption} ${currentClip().context}`;
       controls();
     }
+
+    function imageFailed() {
+      const shouldAnnounce = !imageError;
+      loading = false;
+      imageError = true;
+      imageState();
+      pause();
+      if (shouldAnnounce) announce('This image could not load. Retry the image or choose another step.');
+    }
+
+    function imageLoaded() {
+      // A late event must not schedule a still-pending replacement image.
+      if (!imageReady()) return;
+      loading = false;
+      imageError = false;
+      imageState();
+      controls();
+      schedule();
+    }
+
+    function requestImage(force = false) {
+      const source = currentFrame().src;
+      if (!force && source === shownSource) return;
+      shownSource = source;
+      loading = true;
+      imageError = false;
+      imageState();
+      if (force) image.removeAttribute('src');
+      image.src = source;
+      if (imageReady()) imageLoaded();
+      else if (image.complete) imageFailed();
+    }
+
     function show(announce = false) {
       const frame = currentFrame();
-      image.src = frame.src;
       image.alt = frame.alt;
       caption.textContent = frame.caption;
       context.textContent = currentClip().context;
+      if (progress) progress.textContent = stepLabel();
       root.querySelector('[data-download]').href = currentClip().gif;
       [...chapters.querySelectorAll('button')].forEach((button, index) => {
         if (index === frameIndex) button.setAttribute('aria-current', 'step');
         else button.removeAttribute('aria-current');
       });
-      if (announce) status.textContent = `${frameIndex + 1} of ${currentClip().frames.length}: ${frame.label}`;
+      if (announce) announceStep();
+      requestImage();
       controls();
       syncDialog();
     }
+
+    function announceStep() {
+      announce(`${stepLabel()}: ${currentFrame().label}`);
+    }
+
     function pause() {
-      if (playing) remaining = Math.max(0, remaining - (performance.now() - started));
+      if (timer !== null) remaining = Math.max(0, remaining - (performance.now() - started));
       clearTimeout(timer);
       timer = null;
       playing = false;
@@ -91,6 +149,8 @@
       show(true);
     }
     function schedule() {
+      if (!playing || timer !== null || loading || imageError || !imageReady()) return;
+      if (document.hidden || reducedMotion.matches || (!inView && !isEnlarged())) return pause();
       started = performance.now();
       timer = setTimeout(() => {
         timer = null;
@@ -101,7 +161,7 @@
           finished = true;
           remaining = 0;
           controls();
-          status.textContent = 'Clip complete. Replay or choose a step.';
+          announce('Clip complete. Replay or choose a step.');
           return;
         }
         frameIndex += 1;
@@ -112,7 +172,9 @@
     }
     function toggle() {
       if (playing) return pause();
-      if (reducedMotion.matches || document.hidden || (!inView && !isEnlarged())) return;
+      if (reducedMotion.matches || imageError || document.hidden || (!inView && !isEnlarged())) return;
+      // The same image is also used by the viewer, even when its inline copy is offscreen.
+      image.loading = 'eager';
       if (finished) { frameIndex = 0; finished = false; remaining = currentFrame().duration; show(); }
       playing = true;
       controls();
@@ -138,17 +200,32 @@
       show();
     }
     const api = { pause, toggle, previous: () => selectFrame(frameIndex - 1), next: () => selectFrame(frameIndex + 1), syncDialog };
+    image.addEventListener('load', imageLoaded);
+    image.addEventListener('error', () => {
+      if (image.complete && !image.naturalWidth) imageFailed();
+    });
+    retry?.addEventListener('click', () => {
+      pause();
+      finished = false;
+      remaining = currentFrame().duration;
+      image.loading = 'eager';
+      requestImage(true);
+      controls();
+    });
     play.addEventListener('click', toggle);
     previous.addEventListener('click', api.previous);
     next.addEventListener('click', api.next);
     root.querySelectorAll('[data-clip]').forEach(button => button.addEventListener('click', () => selectClip(Number(button.dataset.clip))));
-    root.querySelector('[data-expand]').addEventListener('click', event => {
+    root.querySelectorAll('[data-expand]').forEach(button => button.addEventListener('click', event => {
+      if (!dialog) return;
       enlarged?.pause();
       enlarged = api;
       opener = event.currentTarget;
+      image.loading = 'eager';
       dialog.showModal();
       syncDialog();
-    });
+      announceStep();
+    }));
     document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
     document.addEventListener('pagechange', pause);
     reducedMotion.addEventListener('change', pause);

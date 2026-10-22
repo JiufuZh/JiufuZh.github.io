@@ -27,3 +27,11 @@ FOW has separate real training and browser-bridge clips. A local training log vi
 Keep the established white #FFFFFF, paper grey #F6F7F9, ink #292D33, secondary #616975 and indigo #4054AD palette. Keep Georgia prose and system sans-serif navigation. Top-level About / Chess / FOW / Research links select one view with a visible current-page underline. The left-aligned desktop project layout puts specific contributions and internship context in a narrow text column, alongside the existing real recording in a wider column. This is a content layout, without decorative app-window framing or additional cards. Small screens stack the selected project, with notes after the media. Research has a readable account, collaborators when verified, and clearly labeled source links. Existing fragment URLs resolve to the right view.
 
 Desktop: navigation above [project contribution and notes | recording, chapters and controls]. About keeps its accepted profile/biography composition. Only the selected view occupies document space; switching pages returns to its start. A brief user-approved agent simulation checks this direction; actual behavior still requires verification.
+
+## October 21 polish constraints
+
+Use the existing 1440×1000 About/Chess screenshots and 390px FOW screenshot as the visual baseline, plus the newly captured 900×1100 Chess view. Keep indigo #4054AD, white #FFFFFF, ink #292D33, secondary #616975 and rules #DCE0E8; Georgia prose and system-sans controls; the existing portrait and all real recording pixels. No new concept image is needed for this scoped refinement.
+
+Improve the same layout: underlined prose links, one navigation indicator, 44px recording controls and chapter targets, a visible step count, clearer metadata, and 16px desktop engineering notes. At widths up to 1000px, give the recording the full content width in intro → media → notes order. The screenshot opens the existing enlarged viewer. Image loading and retry states must preserve playback timing; manual modal changes receive an in-dialog announcement. Tighten repeated biography and project language without changing claims.
+
+Compare the final page at the baseline dimensions, then check 320px, tablet, keyboard and reduced-motion behavior. Agent simulation supports refinement within this established direction; it does not replace these checks.

@@ -6,11 +6,11 @@ This is the authority for public facts and wording in [index.html](index.html). 
 
 Jiufu Zhou. MS Information Management, University of Washington. Seattle, Washington. [Email](mailto:zjfu2003@gmail.com), [GitHub](https://github.com/JiufuZh).
 
-I'm Jiufu, a master's student in Information Management at the University of Washington. I work on software engineering and applied AI, with experience across web interfaces, inference services, and model training.
+I'm Jiufu, a master's student in Information Management at the University of Washington. During my internship at DeepBrain Technology, I worked on a chess coaching app and a Fog of War chess agent.
 
-My background is in Informatics: I earned my bachelor's degree at the University at Albany and now study at the University of Washington. At DeepBrain Technology, I worked across the stack, from React interfaces and chess-analysis feedback to PyTorch training and browser-connected inference. Earlier, I helped study transparency in Instagram supplement promotions, developing a codebook and analyzing 417 posts. That research gave me experience turning a research question into a structured dataset and analysis.
+My work covered React interfaces and Stockfish analysis, as well as PyTorch training and the browser script that uses model predictions. Earlier, I studied Informatics at the University at Albany, where I developed a codebook and analyzed 417 Instagram posts for a study of health supplement promotion.
 
-Technical focus summarizes demonstrated work: web applications, applied machine learning, and AI-assisted learning tools. It does not claim personal hobbies or unverified specialties.
+Technical focus: web applications, applied machine learning, and AI-assisted learning tools.
 
 ## Education
 
@@ -27,11 +27,11 @@ Both project views identify this internship and the contributions below.
 
 React, FastAPI, Stockfish WASM, OpenAI API.
 
-I built the analysis interface and feedback features that take a player from reviewing a mistake to practicing the same position. Stockfish supplies the engine evidence; the app connects it to explanations and candidate moves.
+I built the interface and feedback features for a chess coaching app. Players can review a mistake with Stockfish, compare an alternative move, and practice the same position.
 
-One problem was keeping the interface correct when a player changed positions quickly. I ran Stockfish in a Web Worker, cancelled old requests, and versioned results so a late response would not overwrite the current board.
+When players change positions, engine responses can arrive out of order. I ran Stockfish in a Web Worker and added request cancellation and result versioning to prevent an old response from overwriting the current analysis.
 
-I also added structured-output validation and checks against engine evidence, with fallbacks for API failures. Saved reviews reopen without another LLM call.
+I validated LLM output against the expected structure and engine evidence, and added fallbacks for API failures. Saved reviews reopen without another LLM call.
 
 The clip has six plain chapters: Import, Review, Explain, Compare, Practice, Solve. Actual local app screenshots show a sample PGN, the critical 3…Nf6 move, engine-backed coaching, the Qe7 alternative arrow, and practice ending with Qxf7#. The alternative is an overlay, not a played move. No live LLM request was made during capture; keep this context visible beneath the clip and in the enlarged viewer.
 
@@ -39,11 +39,11 @@ The clip has six plain chapters: Import, Review, Explain, Compare, Practice, Sol
 
 Python, PyTorch, FastAPI, JavaScript.
 
-I worked on an agent that plays with only a partial view of the board: preparing observations from **1,554 games and 88,949 plies**, training policy-and-value models, and connecting inference to a browser script.
+I worked on a chess agent that can see only part of the board. I prepared observations from **1,554 games and 88,949 plies**, trained policy-and-value models, and connected inference to a browser script.
 
-The main data constraint was making sure the model could not see what the player could not. I constructed player-visible observations, masked opponent move histories, and kept complete games together when splitting training and evaluation data.
+Hidden information had to stay out of the model's input. I built observations from the player's view and masked opponent move histories. I also split the data by complete games, keeping positions from the same game together.
 
-I worked on self-play updates and resumable checkpoints, then connected the model to a FastAPI service and JavaScript browser bridge.
+I worked on self-play updates and checkpoint resumption, and connected the model to a FastAPI service and JavaScript browser bridge.
 
 Two selectable clips show fresh local execution:
 
@@ -54,9 +54,9 @@ These are short demonstrations, recorded separately from the historical training
 
 ## Media and presentation
 
-Navigation selects one of four views: About, Chess, FOW or Research. Each project places internship context, contribution and engineering notes beside its recording on desktop; phones stack the active view. About links directly to both projects and Research. Hash links and browser history preserve navigation through [nav.js](nav.js).
+Navigation selects one of four views: About, Chess, FOW or Research. Desktop projects place the introduction and notes beside the recording. At widths of 1000px or less, they stack introduction, media, then notes. About links to both projects and Research; [nav.js](nav.js) supports hash links and browser history.
 
-Clips start paused and provide play/pause, previous/next, plain chapter links, an enlarged viewer and GIF download. Reduced-motion users navigate manually. Changing views pauses playback and closes the enlarged viewer. Playback also pauses when the document is hidden or the inline player leaves view; an enlarged clip can continue playing.
+Clips start paused with step counts, chapter navigation and GIF downloads. Clicking a screenshot or Enlarge opens the same viewer. Playback, chapter, clip-selection, retry and download controls have a 44px minimum height. Loading and retry states handle unavailable images; the modal has a live status region. Reduced-motion users navigate manually. View changes pause playback and close the viewer; hidden documents and offscreen inline players pause playback.
 
 The players and GIFs use snapshots of actual execution. Frame timing is edited for readability; these are not continuous screen videos or measurements of execution time. Captions must identify the local demonstration conditions in both inline and enlarged views.
 
@@ -70,7 +70,7 @@ I studied how supplement-promotion posts disclose sponsorship and health credent
 
 Advised by [Prof. Archana Krishnan](https://www.albany.edu/communication/faculty/archana-krishnan) and PhD candidate Alex R. Stankus.
 
-Our co-authored extended abstract was **accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/)**, November 2026. This status comes from the resume; the conference page is general event information. Do not change to presented/published without confirmation.
+An extended abstract I co-authored was **accepted for presentation at the [112th NCA Annual Convention](https://www.natcom.org/nca-112th-annual-convention/)**, November 2026. This status comes from the resume; the conference page is general event information. Do not change to presented/published without confirmation.
 
 The [research listing in the adviser's CV, page 12](https://www.albany.edu/sites/default/files/resumes/Archana%20Krishnan_CV%20%28Feb%202026%29.pdf#page=12) identifies related work, “Unlabeled influence,” as a COMET submission in February 2026. It is not the NCA abstract or evidence of NCA acceptance. No exact public NCA abstract link has been verified.
 
