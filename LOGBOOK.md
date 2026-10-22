@@ -1,6 +1,6 @@
 # Homepage logbook
 
-Completed: 35/36 slices. Current: verify and publish grouped navigation. Blockers: none. Next: inspect the public desktop and phone layouts.
+Completed: 36/36 slices. Current: grouped Projects navigation published and verified. Blockers: none. Next: user review.
 
 Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HISTORY.md).
 
@@ -13,7 +13,7 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 | S33 | Publish and verify live result | 已完成 | Pages built 1638e90; live clip-switch announcement matches its selected step | [Live](https://jiufuzh.github.io/) |
 | S34 | Center the portrait and prevent head cropping | 已完成 | Pages built 8fd9c60; full head and horizontal centering inspected at desktop and phone sizes | [Portrait style](styles.css) |
 | S35 | Group Chess and FOW under Projects | 已完成 | Group/default/leaf/history/focus checks pass; 19 player checks pass; assets and fragments resolve | [Navigation](nav.js) |
-| S36 | Verify and publish grouped navigation | 进行中 | Local checks passed; desktop/phone inspection pending deployment | [QA](QA.md) |
+| S36 | Verify and publish grouped navigation | 已完成 | Pages built 749132d; desktop/phone layout, switch, history, keyboard focus and playback pause verified live | [QA](QA.md) |
 
 2026-10-21: User requests all relevant skills for polish. Using UI Taste polish/craft, frontend-design, content-research-writer, browser verification and the previously approved Jev agent simulation. The established direction and disclosure scope remain binding, so no repeat interview is needed. Current screenshots are the constrained visual baseline; this is refinement, not a new visual concept.
 
@@ -22,3 +22,5 @@ Previous slices and publication evidence are in [LOGBOOK-HISTORY.md](LOGBOOK-HIS
 2026-10-21: Corrected the portrait crop to center top without modifying image pixels or frame dimensions. Live 1440px and 390px captures show the complete head.
 
 2026-10-21: User requests a Projects tab containing Chess and FOW. Keep the established visual style; use About / Projects / Research above a Chess / FOW switch. No new interview or Jev judgment needed for this explicit change.
+
+2026-10-21: Published 749132d. Live Projects opens Chess; both children keep Projects active. Browser history and keyboard focus work; switching to FOW pauses Chess. Desktop 1440px and phone 390px layouts inspected, with no phone horizontal overflow or browser warnings/errors.

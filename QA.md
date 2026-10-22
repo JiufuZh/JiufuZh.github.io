@@ -1,6 +1,6 @@
-# Verification — October 21, 2026 polish
+# Verification — October 21, 2026
 
-This pass refines the established four-view homepage. Earlier source, recording and navigation verification remains in [QA-HISTORY.md](QA-HISTORY.md).
+The table records the earlier polish pass; subsequent portrait and grouped-navigation checks follow below. Earlier source, recording and navigation verification remains in [QA-HISTORY.md](QA-HISTORY.md).
 
 | Check | Evidence / result |
 |---|---|
@@ -21,3 +21,13 @@ Evidence remains in ignored `.research/` and `.qa/`. No physical-device or forma
 ## Portrait framing correction
 
 Pages built `8fd9c60`. The existing photo now uses a horizontally centered, top-aligned crop. Inspected live captures at 1440px and 390px: the full head remains visible in the unchanged 230×250 and 170×185 frames. Phone horizontal center differs from its profile container by less than 1px. Original image pixels are unchanged. Screenshots are saved in `.qa/portrait-centered-desktop.png` and `.qa/portrait-centered-mobile.png`.
+
+## Grouped Projects navigation
+
+Pages built `749132d`. Top navigation now reads About / Projects / Research; Projects contains Chess / FOW links and defaults to Chess. Existing project content, portrait and recordings are unchanged.
+
+Isolated navigation checks pass for group selection, secondary visibility, current states, project switching, history, focus, skip link, old hashes and invalid routes. All 19 player checks still pass; 29 references resolve and 15 IDs are unique.
+
+Live browser inspection at 1440×1000 and a 390×844 phone viewport confirms the new hierarchy, one project at a time, and no horizontal overflow. Secondary links measure at least 44px high. Projects remains active on FOW; Research hides the secondary links. Back/Forward restores the selected project, Enter focuses the project heading, and switching to FOW pauses Chess playback. Browser warnings/errors: none. Viewport overrides were restored.
+
+Screenshots: `.qa/projects-navigation-desktop.png`, `.qa/projects-navigation-mobile.png`, and `.qa/projects-fow-mobile.png`. Phone screenshots show viewport portions, not the whole page. This was a scoped UI Taste refinement; no new design concept or Jev judgment was needed.
